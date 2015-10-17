@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<HTML XMLNS:Tree>
+<head>
+	<meta charset="UTF-8"/>
+	<title>tssForm from json test</title>
+
+	<link href="../css/boubei.css" rel="stylesheet">
+
+	<script src="../js/tssJS.js"></script>
+	<script src="../js/tssJS.ajax.js"></script>
+	<script src="../js/tssJS.message.js"></script>
+	<script src="../js/tssJS.calendar.js"></script>
+	<script src="../js/tssJS.tool.js"></script>
+    <script src="../js/tssJS.form.js"></script>
+    <script src="../js/tssJS.json2Form.js"></script>
+    <script src="../js/tssJS.tree.js"></script>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+    var customizeJS = 
+    'function f1() { ' + 
+    '   $.alert("我是自定义脚本，tssForm已成功加载。" + $("#param4").value()); ' + 
+    '   $("#param7").click(function(){ this.value = "鸡蛋要不要" });' +
+    '} ' + 
+    'f1();';
+ 
+    function init() {
+		$("#btQuery").click(function() {
+			query();
+		});
+
+		$.ajax({ 
+			url: "data/form.json", 
+			method : "GET",
+			ondata: function() {
+				var queryForm = $.json2Form("queryForm", this.getResponseJSON(), null, customizeJS);
+				$.cache.XmlDatas["queryFormXML"] = queryForm.template.sourceXML;
+			}
+		});
+    }
+
+	function f2(value) {
+		var tssForm = $.F("queryForm");
+		tssForm.updateDataExternal("param2", value);
+
+		$.getNextLevelOption(tssForm, "param1", value, "data/3.json", "param3")
+	}
+
+    function query() {
+        var queryForm = $.F("queryForm");
+        if(  !queryForm.checkForm() ) {
+            return;
+        }
+ 
+		var dataXML = $.cache.XmlDatas["queryFormXML"];
+		var dataNode = dataXML.querySelector("data");
+        if(dataNode) {
+            window.alert("成功提交" + $.XML.toXml(dataNode));
+        }
+    }
+
+    window.onload = init;
+
+//-->
+</SCRIPT>
+</head>
+
+<body>
+    
+	<div style="background-color:white; padding:10px; width:400px; margin:10px; border:1px solid #ABAAAF;">
+		<div id="queryForm" editable="true">
+			<div class="loading"></div>
+		</div>
+		<div style="padding:10px 20px 0 180px;">
+			<input id="btQuery" type="button" class="tssbutton orange small" value="查询"/>
+		</div>
+	</div>
+	 
+</body>
+</html>

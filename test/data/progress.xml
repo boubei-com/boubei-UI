@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<ProgressInfo>
+		<actionSet>
+			<percent>60</percent>
+			<delay>1</delay>
+			<estimateTime>80</estimateTime>
+			<code>syncUser</code>
+		</actionSet>
+	</ProgressInfo>
+</Response>

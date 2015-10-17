@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+	<meta charset="UTF-8"/>
+	<title>tssAjax test</title>
+
+	<link href="../css/boubei.css" rel="stylesheet">
+
+	<script src="../js/tssJS.js"></script>
+	<script src="../js/tssJS.ajax.js"></script>
+	<script src="../js/tssJS.message.js"></script>
+	<script src="../js/tssJS.tool.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+FROMEWORK_CODE = 'TSS';
+CONTEXTPATH = 'tss';
+
+	$().ready( function () {
+
+		if(1) {
+			// $.ajax({
+			// 	url : 'data/_success.xml',
+			// 	method : "GET"
+			// });
+
+			$.ajax({
+				url : 'data/_error.xml',
+				method : "GET"
+			});
+
+			$.ajax({
+				url : 'data/neverfind.xml',
+				method : "GET"
+			});
+		}
+
+		$.ajax({
+			url : 'data/operation.xml',
+			method : "GET",
+			onresult : function() {
+				// alert($.XML.toXml(this.getResponseXML()));
+				var operationNode = this.getNodeValue("Operation");
+				$.assertEquals("p1,p2,1,2,3,4,5,6,7,8", operationNode);
+			}
+		});
+
+		$.ajax({
+			url : 'data/tree.xml',
+			method : "GET",
+			headers : {"token": "1234567890"},
+			params  : {"param1": "xxx", "param2": "yyy"}, 
+			onresult : function() {
+				// alert($.XML.toXml(this.getResponseXML()));
+				var actionSetNode = this.getNodeValue("ParamTree");
+
+				$.assertEquals("actionSet", actionSetNode.nodeName);
+
+				var treeNodes = actionSetNode.querySelectorAll("treeNode");
+				console.log(treeNodes.length);
+			}
+		});
+
+		$.ajax({
+			url : 'data/1.json',
+			type : "json",
+			method : "GET",
+			ondata : function() { 
+				// alert(this.getResponseText());
+			}
+		});
+	} );
+ 
+</SCRIPT>
+</HEAD>
+
+<BODY>
+ 
+</BODY>
+</HTML>

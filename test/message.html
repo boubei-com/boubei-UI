@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> test messager </title>
+
+    <link rel="stylesheet" href="../css/boubei.css"/>
+
+    <script src="../js/tssJS.js"></script>
+    <script src="../js/tssJS.tool.js"></script>
+    <script src="../js/tssJS.message.js"></script>
+
+    <style type="text/css">
+        .demo {
+            padding: 30px;
+        }
+    </style>
+
+    <script>
+        function test(){
+            var info = "我是提示气球！1234567890+1234567890+1234567890+1234567890+1234567890+1234567890";        
+
+            var x = Math.max(100, Math.round(document.body.clientWidth * Math.random()));
+            var y = Math.round(document.body.clientHeight * Math.random());
+            var w = Math.max(100, Math.round(500 * Math.random()));
+
+            var $targetEl = $("#xxx");
+            $targetEl.css("left", x + "px").css("top", y + "px").css("width", w + "px");
+            $targetEl.notice(info);
+        }
+
+ 
+window.onload = function() { //加载
+    $.tssTip("您有新的消息没有查收,没有什么能够阻挡，你对自由的向往。");
+
+    $.tip("您有新的消息没有查收");
+}
+
+    </script>
+
+</head>
+<body>
+
+    <div id="xxx" style="position:absolute; border:1px solid red;">没有什么能够阻挡，你对自由的向往。天马行空的生涯，你的心了无牵挂。穿过幽暗的岁月，也曾感到仿徨。当你低头的瞬间，才发觉脚下的路。心中那自由的世界，如此的清澈高远，盛开着永不凋零，蓝莲花。</div>
+
+    <div class="demo">
+        <a href="#" class="tssbutton blue normal">test alert</a> 
+        <a href="#" class="tssbutton blue bigrounded">test confirm</a> 
+        <a href="#" class="tssbutton blue medium">test prompt</a> 
+        <input type="button" class="tssbutton black" value="test气泡" onclick="test()"/>
+    </div>
+
+
+    <script type="text/javascript">
+        function callback() {
+            $.alert("我们关注业内发展动态，我们热爱WEB设计与开发，我们关注用户体验和网站的可用性，并遵循WEB标准，我们以推动规范设计为己任，我们致力于WEB前端技术在中国的应用，我们为用户提供优质高效的网站设计。<a href='http://www.helloweba.com'>helloweba.com</a>我们关注业内发展动态，我们热爱WEB设计与开发，我们关注用户体验和网站的可用性，并遵循WEB标准，我们以推动规范设计为己任，我们致力于WEB前端技术在中国的应用，我们为用户提供优质高效的网站设计。<a href='http://www.helloweba.com'>helloweba.com</a>", "这是一段测试用的文字");
+        }
+
+        $(".normal").click(function(){
+            $.alert("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss2sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss2", "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss2", callback);
+        });
+
+        $(".bigrounded").click(function(){
+            $.confirm("你确定要删除这个节点吗", "删除确认", function() {
+                $.alert("你选择了确认删除。");
+            },
+            function() {
+                $.alert("你选择了取消删除。");
+            });
+        });
+
+        $(".medium").click(function(){
+            $.prompt("请输入你要查找的关键字", "内容搜索", function(result) {
+                $.alert("your input keyword: " + result);
+            }, "123456");
+        });
+ 
+    </script>  
+
+<!--
+<div id="alert_box" class="moveable" style="position: fixed; z-index: 99999; top: 116px; left: 580px; width:300px;">
+    <h1 class="title">提示</h1>
+    <span class="close"></span>
+    <div class="content alert">
+        <div class="message">欢迎来到helloweba.com</div>
+        <div class="btbox"><input type="button" value="确 定" class="ok"></div>
+    </div>
+
+
+    <h1 class="title">输入框</h1>
+    <span class="close"></span>
+    <div class="content prompt">
+        <div class="message">请填写:<br><input type="text"></div>
+        <div class="btbox">
+            <input type="button" value="确 定" class="ok"> &nbsp;
+            <input type="button" value="取 消" class="cancel">
+        </div>
+    </div>
+
+
+    <h1 class="title">确认框</h1>
+    <span class="close"></span>
+    <div class="content confirm">
+        <div class="message">你确认此操作吗?</div>
+        <div class="btbox">
+            <input type="button" value="确 定" class="ok"> &nbsp;
+            <input type="button" value="取 消" class="cancel">
+        </div>
+    </div>
+
+</div>
+-->
+
+</body>
+</html>

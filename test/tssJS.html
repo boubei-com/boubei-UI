@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>tssJS test</title>
+
+	<script src="../js/tssJS.js"></script>
+ 
+	<style>
+
+		.cc { width: 250px; }
+	
+	</style>
+
+	<script type="text/javascript">
+
+	 $(function() {
+ 		$.assertEquals("1.2.0", this.version, "get tssJS.version error.");
+	 });
+
+
+	// test core
+	$.assertEquals(true, !!$);
+	$.noConflict();
+	tssJS.assertEquals(false, !!$);
+
+	$ = tssJS;
+
+	$.assertEquals(true,  $.isFunction( function(){}) );
+	$.assertEquals(true,  $.isArray( [1,2,3] ) );
+	$.assertEquals(true,  $.isWindow( this ) );
+	$.assertEquals(true,  $.isEmptyObject( {} ) );
+	$.assertEquals(false, $.isEmptyObject( {"x":"1"} ) );
+	$.assertEquals(true,  $.isNullOrEmpty( " " ) );
+
+	console.log($.now());
+	console.log($.now(true)); // format data
+
+	var json = '{"x":"1", "y":"2"}';
+	var data = $.parseJSON(json);
+	$.assertEquals("12", data["x"] + data["y"], "$.parseJSON(json) error.");
+
+	var f1 = "function f1() { return console.log('f1'); };";
+	$.globalEval(f1 + "f1();");
+
+	var f2 = function(x) { return "f2" + (x?x:"");}
+	$.assertEquals("f2", $.execCommand(f2), "$.execCommand() error.");
+	$.assertEquals("f299", $.execCommand("f2", 99), "$.execCommand() error.");
+
+	var map = {"x":"1", "y":"2"};
+	$.each(map, function(name, value) {
+		console.log("this=" + this + "  " + name + "=" + value);
+	});
+
+	$.each(map, function(arg1, arg2) {
+		console.log("this=" + this + "  args=[" + arg1 + "," + arg2 + "]");
+	}, [3, 4]);
+
+	var array = [{"x":"1", "y":"2"}, {"x":"7", "y":"9"}];
+	$.each(array, function(name, value) {
+		console.log("$.each(array) --> this.x=" + this.x + "  value.x=" + value.x);
+	});
+
+	array.each(function(name, value) {
+		console.log("array.each --> this.x=" + this.x + "  value.x=" + value.x);
+	});
+
+	var array3 = [4,6,3,8,2,5];
+	$.assertEquals(true, array3.contains(5), "Array.contains() error.");
+	var result1 = array3.slice().sort( function(n1, n2) {return n2 - n1;} );
+	console.log(result1);
+
+	var result2 = array3.slice().sort();
+	console.log(result2);
+ 
+ 	$.assertEquals("Good morning!", $.trim(" Good morning! "), "$.trim() error.");
+
+ 	var array2 = $.grep(array, function(item, index) {
+ 		return index == 1 && item.x == 7;
+ 	}); 
+ 	$.assertEquals("9", array2[0].y, "$.grep() error.");
+
+ 	$.assertEquals("_0", $.getUniqueID(), "$.getUniqueID() error.");
+ 	$.assertEquals("_1", $.getUniqueID(), "$.getUniqueID() error.");
+
+ 	console.log((new Date()).format("yyyy-MM-dd"));
+
+ 	// test encode & decode
+ 	var key = 502;
+ 	var info = 'Jon.King!#$%&';
+	var test = $.encode(info, key);
+	console.log(test);
+	$.assertEquals(info, $.decode(test, key));
+
+	for(var key = 1; key < 127; key++) {
+		$.assertEquals(info, $.decode($.encode(info, key), key));
+ 	}
+ 
+ 	// test Element
+
+ 	$(function(name) {
+ 		var $el = $("#div1");
+ 		$.assertEquals(1, $el.size());
+ 	});
+
+ 	$().ready(function(name) {
+ 		$.assertEquals("tssJS1.2.0", name + this.version, "$().ready(fn) method error.");
+ 		
+ 		// test id selector
+ 		var $el = $("#div1");
+ 		$.assertEquals(1, $el.size(), "$el.size() error.");
+ 		$.assertEquals("div1", $el[0].id, "$el[0].id error.");
+
+ 		$el.each(function(x) { 
+ 			$.assertEquals("div1234", this.id + x, "$el.each() error.");
+ 		}, [234]);
+
+		$el.css("backgroundColor", "#565656");
+		$.assertEquals("rgb(86, 86, 86)", $el.css("backgroundColor"), "$el.css(xx) error.");
+
+		// test class selector
+		$el = $(".c2");
+		$.assertEquals(4, $el.size());
+		$el.css("backgroundColor", "yellow");
+		$el.addClass("cc");
+
+		$("#d2").removeClass("cc");
+
+		console.log($("#div1").html());
+		$("#div1").html('<input id="d1" class="c2 cc" style="background-color: red;">');
+
+		$("#d1").hover( function() { this.value = "over"; }, function() { this.value = "out"; } );
+
+		$(".btClass").toggle(function() { this.value = "B-click-1"; }, function() { this.value = "B-click-2"; } );
+
+		$("a").click( function() { 
+				$("#d4").show()
+					.css("backgroundColor", "grey")
+					.css("height", "150px")
+					.center(); 
+				console.log( $.absPosition($("#d4")[0]) );
+			} 			
+		);
+
+		var newElement = $.createElement("div", "cc");
+		$(newElement).html("<br/>new Div<br/>123456").css("backgroundColor", "#396656");
+		document.body.appendChild(newElement);
+
+		newElement = $.createNSElement("Page", "WorkSpace");
+		$(newElement).addClass("cc")
+			.html("<br/> new WorkSpace:Page")
+			.css("backgroundColor", "red")
+			.css("display", "block");
+		document.body.appendChild(newElement);
+
+		$.assertEquals(1, $.getNSElements(document.body, "Page", "WorkSpace").length);
+		$.assertEquals(1, $("WorkSpace\\:Page").size());
+
+		$.createScript("console.log('test createScript')");
+
+		$.showWaitingLayer();
+		setTimeout($.hideWaitingLayer, 1000);
+
+		$.assertEquals("L1", $1("layout.id").value);
+		$.assertEquals("L1", $$("layout.id").value);
+
+		$.assertEquals("2", $.radioValue("fileType"));
+
+	 }, "tssJS");
+
+ 	// test Cookie、Query等
+ 	$.Query.init("name=JK&id=1");
+	$.assertEquals($.Query.get("id", true), "1");
+
+ 	$.Cookie.setValue("token", "1234567890", null, "/tss");
+	$.Cookie.del("token", "/tss");
+
+	$.Cookie.setValue("token", "abceefghij");
+	var token = $.Cookie.getValue("token");
+	if($.isChrome) {
+		$.assertTrue(token == null); // Chrome只支持在线网站的cookie的读写操作，对本地html的cookie操作是禁止的。
+	} else {
+		$.assertEquals(token, "abceefghij"); 
+	}
+
+	$.Cookie.delAll();
+
+ 	// test Event
+	$().ready(function() {
+		var clearObj = $("#d4")[0];
+		var f2 = function() { alert("test Event"); }
+
+		$.Event.addEvent(clearObj, "click", f2);
+		$.Event.removeEvent(clearObj, "click", f2);
+
+	    $.Event.addEvent(clearObj, "dblclick", function(eventObj) {
+			var srcElement = $.Event.getSrcElement(eventObj);
+
+			alert("事件坐标："  + eventObj.clientX + ", " + eventObj.clientY );
+
+			$.Event.cancel(eventObj);
+		});
+
+		$.Event.setCapture(clearObj, $.Event.MOUSEDOWN);
+		$.Event.releaseCapture(clearObj, $.Event.MOUSEDOWN);
+	});
+
+ 	// test XML
+	var str = [];
+    str[str.length] = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+    str[str.length] = "<book id=\"1\">";
+	str[str.length] = "	<title>TSS Framework</title>";
+	str[str.length] = "	<author>Jon.King</author>";
+	str[str.length] = "	<year>2005</year>";
+	str[str.length] = "</book>";
+
+	var dataXml = str.join("\r\n");
+	$.assertEquals(dataXml, dataXml.convertEntry().revertEntity());
+
+	var cdateNodeXML = "<![CDATA[ 1 > 2 ]]>";
+	$.assertEquals(cdateNodeXML, cdateNodeXML.convertCDATA().revertCDATA());
+
+	var xml = $.parseXML(dataXml);
+	var xmlNode = $.XML.toNode(dataXml);
+	console.log($.XML.toString(xmlNode));
+
+	var xmlNode2 = $.XML.toNode("<author>Jon.King</author>");
+	$.assertEquals("Jon.King", $.XML.getText(xmlNode2));
+
+	var xmlNode3 = $.XML.createNode("author");
+	$.assertEquals("", $.XML.getText(xmlNode3));
+
+	var cdataNode = $.XML.createCDATA("1<>2");
+	$.assertEquals("1<>2", $.XML.getText(cdataNode));	
+
+	var xmlNode4 = $.XML.appendCDATA("test", "1<>2");
+	$.assertEquals("<test><![CDATA[1<>2]]></test>",$.XML.toString(xmlNode4));
+	$.assertEquals("1<>2", $.XML.getText(xmlNode4));
+
+	var xmlNode5 = $.XML.toNode("<p></p>")
+	$.XML.setCDATA(xmlNode5, "test", "3<>4");
+	$.assertEquals("3<>4", $.XML.getCDATA(xmlNode5, "test"));
+
+	$.XML.removeCDATA(xmlNode5, "test");
+	$.assertEquals("", $.XML.getText(xmlNode5));
+
+	// try {
+	// 	var xmlDom = $.parseXML("<test>1<>2</test>");
+	// } catch (e) {
+	// 	console.log($.XML.getParseError(xmlDom));
+	// }
+
+	</script>
+</head>
+
+<body>
+
+
+	<div id='div1' class="c1">
+		<input id='d1' class="c2"> </input> <input type='button' name='B1' value='B1' class='btClass'></input>
+	</div>
+ 
+ 	<div id='div2' class="c3">
+		<input id='d2' class="c2"> </input> <input type='button' name='B2' value='B2' class='btClass'></input>
+	</div>
+
+	 <div id='div3' class="c3">
+		<input id='d3' class="c2"> </input> <input type='button' name='B3' value='B3' class='btClass'></input>
+	</div>
+
+	<div id='div4' class="c3" >
+		<div id='d4' class="c2" style="display:none;"> you catch me now </div> 
+		<input type='button' id='B4' value='B4' class='btClass'></input> 
+		<a href='#'>i'm a href, click me</a>
+	</div>
+
+	<input id="layout.id" value="L1"/>
+
+	<div>测试单选按钮：
+		<label><input name="fileType" type="radio" value="1"/> 图片 </label> 
+        <label><input name="fileType" type="radio" value="2" checked="checked"/> 文档 </label> 
+	</div>
+
+</body>
+</html>

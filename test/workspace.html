@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<HTML XMLNS:WorkSpace>
+<head>
+	<meta charset="UTF-8"/>
+	<title>WorkSpace test</title>
+
+	<link href="../css/boubei.css" rel="stylesheet">
+
+	<script src="../js/tssJS.js"></script>
+	<script src="../js/tssJS.workspace.js"></script>
+
+<style type="text/css">
+
+	ul, ol { list-style:circle; line-height: 25px; margin:10px; padding:15px; }
+	
+</style> 
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+	var ws;
+	$().ready( function () {
+		  ws = new $.WorkSpace("ws");
+
+		  var inf = {};
+		  inf.label = "页面1";
+		  inf.SID = "page1"
+		  inf.defaultPage = "page1";
+
+		  var phases = [];
+		  phases[0] = {page: "page1", label: "组织信息"};
+		  phases[1] = {page: "page2", label: "组对用户"};
+		  phases[2] = {page: "page3", label: "组对角色"};
+		  inf.phases = phases;
+		  inf.callback = null;
+
+		  ws.open(inf);
+	} );
+ 
+	function openNewTab(i) {
+		var inf = {};
+	    inf.label = "资源" + i;
+	    inf.SID = "tab" + i;
+	    inf.defaultPage = "page2";
+
+		var phases = [];
+		phases[0] = {page: "page1", label: "第一步"};
+		phases[1] = {page: "page2", label: "第二步"};
+		phases[2] = {page: "page3", label: "第三步"};
+	    inf.phases = phases;
+	    inf.callback = null;
+
+	    ws.open(inf);
+	}
+	
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+  <TABLE width="80%" height="80%" border="1" align="center">
+    <TR height="60">
+      <TD  colspan="2" style="height:60px;text-align:center;background-color:#F75B67;">
+		<h1>LOGO</h1>
+	  </TD>
+    </TR>
+
+    <TR>
+      <TD width="120" valign="top" style="background-color:#ffffff;padding-top:10px;">
+         <ul>
+			<li><a href=# onclick="openNewTab(1)">资源一</a>
+			<li><a href=# onclick="openNewTab(2)">资源二</a>
+			<li><a href=# onclick="openNewTab(3)">资源三</a>
+			<li><a href=# onclick="openNewTab(4)">资源四</a>
+			<li><a href=# onclick="openNewTab(5)">资源五</a>
+			<li><a href=# onclick="openNewTab(6)">资源六</a>
+			<li><a href=# onclick="openNewTab(7)">资源七</a>
+			<li><a href=# onclick="openNewTab(8)">资源八</a>
+         </ul>
+	  </TD>
+      <TD valign = "top">
+			<WorkSpace:Box id="ws">
+				<WorkSpace:Page id = "page1">
+					<h2>Page-1</h2><br/><p>welcome to page1</p><br/><br/><br/>
+					<a href=# onclick="ws.nextPhase(true)"><h2>下一步</h2></a><br/>
+				</WorkSpace:Page>
+
+				<WorkSpace:Page id = "page2">
+					<h2>Page-2</h2><br/><p>welcome to page2<br/><br/><br/>
+					<a href=# onclick="ws.prevPhase(true)"><h2>上一步</h2></a><br/><br/>
+					<a href=# onclick="ws.nextPhase(true)"><h2>下一步</h2></a><br/>
+				</WorkSpace:Page>
+
+				<WorkSpace:Page id = "page3" class="tight">
+					<h2>Page-3</h2><br/><p>welcome to page3<br/><br/><br/>
+					<a href=# onclick="ws.prevPhase(true)"><h2>上一步</h2></a><br/>
+				</WorkSpace:Page>
+			</WorkSpace:Box>
+		</TD>
+    </TR>
+  </TABLE>
+</BODY>
+</HTML>

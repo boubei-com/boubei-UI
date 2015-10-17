@@ -1,0 +1,21 @@
+
+WorkSpace\:Box { width:100%; height:100%; overflow:hidden; font-size:12px; vertical-align:top; display:inline-block; }
+WorkSpace\:Tab { color:#575B67; width:100px; height:19px; cursor:pointer; position:relative; display:inline-block;background-image:url(../images/ws/bg_tab_inactive.gif); }
+WorkSpace\:Tab.active { color:#333333; font-weight:bold; background-image:url(../images/ws/bg_tab_active.gif); }
+WorkSpace\:Tab div { width:90px; letter-spacing:0px; padding:0px 12px 0px 3px; overflow:hidden; text-overflow:ellipsis; word-break:keep-all; white-space:nowrap; }
+WorkSpace\:Tab WorkSpace\:Icon { width:10px; height:10px; position:absolute; right:6px; top:4px; cursor:pointer; background-image:url(../images/ws/icon_tab_close.gif); }
+WorkSpace\:Phase { cursor:pointer; width:20px; height:73px; overflow:hidden; display:block; background-image:url(../images/ws/bg_phase_inactive.gif);}
+WorkSpace\:Phase div { height:73px; padding:4px 3px 1px 1px; text-align:center; }
+WorkSpace\:Phase.active { background-image:url(../images/ws/bg_phase_active.gif); }
+WorkSpace\:TabBox { width:100%; height:19px; position:relative; display:inline-block; }
+WorkSpace\:TabBox.hasTab { background:url(../images/ws/bg_tab_box.gif) repeat-x;}
+WorkSpace\:PhaseBox { line-height:14px; width:20px; height:100%; display:inline-block; overflow:hidden; margin-left:-4px;
+	position:relative; float:right; z-index:100;
+	border-right:1px solid #999999;
+	border-bottom:1px solid #999999;
+	background:#BEC5E7 url(../images/ws/bg_phase_box.gif) repeat-y;
+}
+WorkSpace\:PhaseBox td { vertical-align:top; } 
+WorkSpace\:Page { height:100%; padding:20px; margin-right:0px; overflow:hidden; background-color:#F7F8FD; border:1px solid #98989C; border-top:0px;}
+WorkSpace\:Page.tight { padding:0px; }
+WorkSpace\:PageStep { text-align:center; padding:0; width:100%; display:block;}

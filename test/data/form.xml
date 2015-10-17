@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<UserInfo>
+      <xform>
+        <declare>
+    	   <column name="id"        caption="ID"   mode="hidden"/>
+          <column name="loginName" caption="帐号" mode="string" empty="false" maxLength="100" editable="false"/>
+          <column name="userName"  caption="姓名" mode="string" empty="false" maxLength="100"/>
+          <column name="jianjie"   caption="简介" mode="string" maxLength="400" />
+          <column name="groupName" caption="组织" mode="string" maxLength="10" />
+          <column name="groupId"   caption="组ID" mode="hidden"/>
+          <column name="address"   caption="地址" mode="string" empty="true" maxLength="100" />
+          <column name="postCode"  caption="邮编" mode="string" maxLength="6" inputReg="^\d{0,10}$" errorMsg="邮编的格式不正确，我是自定义错误提示" />
+          <column name="email"     caption="邮件" mode="string" maxLength="100" inputReg="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"  />
+          <column name="birthday"  caption="生日" mode="string" inputReg="^((?:19|20)\d\d)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$" maxLength="32" />
+          <column name="sex"       caption="性别" mode="combo" values="0|1|2" texts="男|女|其它" empty="false" onchange="f2"/> 
+          <column name="sex2"      caption="性别" mode="combo" values="0|1|2" texts="男|女|其它" editable="true"/> 
+          <column name="season"    caption="季节" mode="combo" values="0|1|2|3|4|5|6" texts="春天|夏天|秋天|寒冬腊月111111|寒冬腊月222222222|寒冬腊月3333333333333|寒冬腊月44444444444444444" multiple="true"/> 
+		      <column name="temp1"     caption="函数" mode="function" cmd="func1()" editable="true"  empty="false"/>
+          <column name="temp2"     caption="日期" mode="datetime"  empty="false"/>
+
+          <column name="season2"    caption="季节2" mode="combotree" values="0|1|2|3|4|5|6" texts="春天|夏天|秋天|寒冬腊月|阳春三月|清明时节|时维九月" onchange="f2"/> 
+          <column name="season3"    caption="季节3" mode="combotree" values="0|1|2|3|4|5|6" texts="春天|夏天|秋天|寒冬腊月|阳春三月|清明时节|时维九月" multiple="true"/> 
+        </declare>
+        <layout>
+          <TR>
+              <TD width="45"><label binding="loginName"/></TD>
+              <TD width="350"><input binding="loginName"/></TD>
+              <TD><label binding="userName"/></TD>
+              <TD><input binding="userName"/></TD>
+          </TR>
+          <TR>
+              <TD><label binding="sex"/></TD>
+              <TD><input binding="sex"/><input binding="sex2"/></TD>
+              <TD><label binding="birthday"/></TD>
+              <TD>
+                  <input binding="birthday"/> 格式要求：yyyy-MM-dd
+              </TD>
+          </TR>
+          <TR>
+              <TD><label binding="temp1"/></TD><TD><input binding="temp1"/></TD>
+              <TD><label binding="email"/></TD><TD><input binding="email"/></TD>
+          </TR>
+          <TR>
+              <TD><label binding="groupName"/></TD>
+              <TD><input binding="groupName"/></TD>
+              <TD><label binding="address"/></TD>
+              <TD><input binding="address" style="width:360px;"/></TD>
+          </TR>
+          <TR>
+		          <TD><label binding="postCode"/></TD>
+              <TD><input binding="postCode"/></TD>              
+              <TD><label binding="jianjie"/></TD>
+              <TD>
+			           <textarea binding="jianjie" style="width:300px;height:100px"/>
+              </TD>
+          </TR>
+          <TR>
+              <TD><label binding="season"/></TD>
+              <TD><input binding="season"/></TD>              
+              <TD><label binding="temp2"/></TD>
+              <TD><input binding="temp2"/></TD>
+          </TR>
+          <TR>
+              <TD><label binding="season2"/></TD>
+              <TD><input binding="season2"/></TD>              
+              <TD><label binding="season3"/></TD>
+              <TD><input binding="season3"/></TD>
+          </TR>
+        </layout>
+  		<data>
+  			<row>
+  				<loginName><![CDATA[Jon.King]]></loginName>
+  				<userName><![CDATA[金以渐]]></userName>
+  				<groupName><![CDATA[他山石]]></groupName>
+            <sex><![CDATA[-12]]></sex>
+  			    <sex2><![CDATA[2]]></sex2>
+  				<email><![CDATA[xxx@xxx.com]]></email>
+  				<temp1><![CDATA[testFunction]]></temp1>
+  				<birthday><![CDATA[1983-06-06]]></birthday>
+          <season2><![CDATA[2]]></season2>
+          <season3><![CDATA[3,4]]></season3>
+  			</row>
+  		</data>
+        <script>
+            <![CDATA[
+                function f1() {
+                    $.alert("我是自定义脚本，tssForm已成功加载。" + $("#birthday").value());
+                }
+                f1();
+            ]]>
+        </script>
+	
+	  </xform>
+	</UserInfo>
+</Response>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<HTML XMLNS:Tree>
+<head>
+	<meta charset="UTF-8"/>
+	<title>tssForm from xml test</title>
+
+	<link href="../css/boubei.css" rel="stylesheet">
+
+	<script src="../js/tssJS.js"></script>
+	<script src="../js/tssJS.ajax.js"></script>
+	<script src="../js/tssJS.message.js"></script>
+	<script src="../js/tssJS.calendar.js"></script>
+	<script src="../js/tssJS.tool.js"></script>
+    <script src="../js/tssJS.form.js"></script>
+    <script src="../js/tssJS.tree.js"></script>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+    URL_XFORM_DEMO = "data/form.xml";
+	URL_SAVE_USER  = "data/_success.xml";
+
+	var cacheID = "user1-xml";
+
+    function init() {
+ 
+		$$("btSave").onclick = function() {
+			saveUser(cacheID);
+		}
+
+		$.ajax({ 
+			url: URL_XFORM_DEMO, 
+			method : "GET",
+			onresult: function() {
+				var dataXML = this.getNodeValue("UserInfo");
+				$.cache.XmlDatas[cacheID] = dataXML;
+
+				var xfomrId = "userForm";
+				// var userForm = $.F(xfomrId, dataXML);
+                var userForm = $("#" + xfomrId).form(dataXML);
+
+				// attachReminder(xfomrId, userForm); // 离开提醒
+
+				userForm.setFieldEditable("address", "false");	
+			}, 
+			onexception: function() { 
+				alert("ajax has exception"); 
+			} 
+		});
+    }
+
+	function func1() {
+		updateField("temp1", "12345678");
+	}
+
+	function f2(value) {
+	    updateField("sex2", value);    
+	}
+
+	function updateField(code, value) {
+	    var xform = $.F("userForm");
+	    xform.updateDataExternal(code, value);    
+	    xform.updateData( $1(code) );
+	}
+
+    function saveUser(cacheID) {
+        var userForm = $.F("userForm");
+        if(  !userForm.checkForm() ) {
+            return;
+        }
+ 
+		var dataXML = $.cache.XmlDatas[cacheID];
+		var dataNode = dataXML.querySelector("data");
+ 
+        if(dataNode) {
+            $.ajax({
+            	url: URL_SAVE_USER,
+            	formNode: dataNode,
+            	onsuccess: function() {
+					window.alert("成功提交" + $.XML.toXml(dataNode));
+	            }
+            })
+        }
+    }
+
+    window.onload = init;
+
+//-->
+</SCRIPT>
+</head>
+
+<body>
+    
+	<div style="background-color:white; padding:10px; width:880px; margin:10px; border:1px solid #ABAAAF;">
+		<div id="userForm" editable="true">
+			<div class="loading"></div>
+		</div>
+		<div style="padding:10px 20px 0 280px;">
+			<input id="btSave" type="button" class="tssbutton orange small" value="完成"/>
+		</div>
+	</div>
+	 
+</body>
+</html>

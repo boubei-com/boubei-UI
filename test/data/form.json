@@ -1,0 +1,9 @@
+[
+	{"label":"分公司", "type":"combotree", "nullable":"false", "jsonUrl":"data/2.json", "onchange":"f2", "defaultValue": "2"},
+	{"label":"分公司ID"},
+	{"label":"分拨", "nullable":"false"},
+	{"label":"日期", "type":"date", "nullable":"false", "defaultValue": "today - 12"},
+	{"label":"级别", "type":"combo", "options": {"codes": "紧急|一般|还好", "names": "紧急|一般|还好"}},
+	{"label":"百分比", "type":"number", "defaultValue": "12", "errorMsg": "请输入1到100的整数字"},
+	{"label":"其它", "width": "200", "height": "100"}
+]

@@ -1,0 +1,175 @@
+/* =Reset
+-----------------------------------------------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+body {
+  font-family: "微软雅黑", Verdana, Arial, Helvetica, AppleGothic, sans-serif;
+  font-size: 12px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+img {
+  box-sizing: content-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption,
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+}
+thead th,
+thead td {
+  font-weight: bold;
+  vertical-align: bottom;
+}
+a img,
+th img,
+td img {
+  vertical-align: top;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+button {
+  width: auto;
+  overflow: visible;
+}
+input[type="reset"],
+input[type="submit"],
+input[type="file"],
+input[type="radio"],
+input[type="checkbox"],
+select,
+button {
+  cursor: pointer;
+}
+button:active,
+button:focus {
+  outline: none;
+}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  font-size: 110%;
+  position: relative;
+  margin-right: 3px;
+  padding: 0;
+}
+hr {
+  display: block;
+  box-sizing: content-box;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+img,
+video,
+audio,
+embed,
+object {
+  max-width: 100%;
+}
+img,
+video,
+embed,
+object {
+  height: auto;
+}
+embed,
+object {
+  height: 100%;
+}
+img {
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
+/* 发光输入框 start */
+input[type=text],
+textarea {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+}
+input[type=text]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px #51cbee;
+  border: 1px solid #51cbee;
+}
+/* 发光输入框 end */
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.clearfix {
+  display: table;
+  zoom: 1;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+}

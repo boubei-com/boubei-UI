@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>tssCalendar test</title>
+
+	<link href="../css/boubei.css" rel="stylesheet">
+
+    <style type="text/css">
+    	pre,code {
+    		width: 500px;
+		    text-align: left;
+		    white-space: pre;
+		    word-spacing: normal;
+		    color: #f8f8f2;
+		    background: #1e2328;
+		    border-radius: 5px;
+		    overflow: auto;
+		    padding: 1em;
+		    margin: 1em 0;
+		    font-size: .9em;
+		    float: right;
+		}
+
+		#div1 { position: absolute; left: 30px; top: 30px; }
+		#div2 { position: absolute; left: 30px; top: 250px; }
+		#div1 pre, #div2 pre { margin-left:50px; }
+
+    </style>
+
+    <script src="../js/tssJS.js"></script>
+	<script src="../js/tssJS.calendar.js"></script>
+
+	<script type="text/javascript">
+
+	 window.onload = function() {
+
+		var pd1 = $("#d1").calendar( {
+	        firstDay: 1,
+	        minDate: new Date('2000-01-01'),
+	        maxDate: new Date('2020-12-31'),
+	        yearRange: [2000,2020],
+	        format: 'yyyy-MM-dd',
+	        // onOpen: function() {alert(this._y);},
+	        // onClose: function() {alert("close");},
+	        // onSelect: function() { this._o.field.value += " 00:00:00"; },
+	    });
+
+        pd1.show();
+
+
+        $("#d2").calendar({
+            firstDay: 1,
+            minDate: new Date('2000-01-01'),
+            maxDate: new Date('2020-12-31'),
+            yearRange: [2000,2020],
+            format: 'yyyy-MM-dd',
+            careTime: true
+        }).show();
+
+
+        $("#d3").calendar({
+            firstDay: 1,
+            careTime: true
+        }).show();
+
+
+        // $("#d4").calendar();
+        $.createCalendar($1("d4"));
+	 }
+
+	</script>
+</head>
+
+<body>
+
+<div id='div1'>
+	<input id="d1" style="width:200px;display:inline;" value="2014-12-13"> </input>
+	<pre>
+    $("#d2").calendar({
+            firstDay: 1,
+            minDate: new Date('2000-01-01'),
+            maxDate: new Date('2020-12-31'),
+            yearRange: [2000,2020],
+            format: 'yyyy-MM-dd',
+            careTime: true
+        }).show();
+	</pre>
+</div>
+
+<div id='div2'>
+	<input id="d2" style="width:200px;display:inline;"> </input>
+	<input id="d3" style="width:200px;display:inline;" value="2014-12-13 16:36:59"> </input>
+	<input id="d4" style="width:200px;display:inline;"> </input>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <ParamTree>
+        <actionSet>
+            <treeNode name="XXX公司" id="_root" _open="true">
+                <treeNode id="-1" parentId="0" icon="images/user_group.gif" disabled="0" _open="true" name="行政部" >
+                    <treeNode id="1" parentId="-1" icon="images/user_0.gif" disabled="0" name="行政用户一" />
+                    <treeNode id="2" parentId="-1" icon="images/user_1.gif" disabled="1" name="行政用户二" />
+                    <treeNode id="3" parentId="-1" icon="images/user_0.gif" disabled="0" name="行政用户三" />
+                </treeNode>
+                <treeNode id="-2" parentId="0" icon="images/user_group.gif" disabled="0" name="人事部" _open="true">
+                    <treeNode id="4" parentId="-2" icon="images/user_0.gif" disabled="0" name="人事用户一"/>
+                    <treeNode id="5" parentId="-2" icon="images/user_1.gif" disabled="1" name="人事用户二"/>
+                    <treeNode id="6" parentId="-2" icon="images/user_0.gif" disabled="0" name="人事用户三"/>
+                </treeNode>
+    			<treeNode id="-3" parentId="0" icon="images/user_group.gif" disabled="0" name="研发部" _open="true">
+                    <treeNode id="7" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员1"/>
+                    <treeNode id="8" parentId="-3" icon="images/user_group.gif" disabled="0" name="Research Devlope">
+    					<treeNode id="9" parentId="8" icon="images/user_0.gif" disabled="0" name="RD人员1"/>
+    				</treeNode>
+                     <treeNode id="28" parentId="-3" icon="images/user_group.gif" disabled="0" name="Information Technology"/>
+                    <treeNode id="10" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员3" />
+    				<treeNode id="11" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员4" />
+    				<treeNode id="12" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员5" />
+    				<treeNode id="13" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员6" />
+    				<treeNode id="14" parentId="-3" icon="images/user_1.gif" disabled="1" name="研发人员7" />
+    				<treeNode id="15" parentId="-3" icon="images/user_1.gif" disabled="1" name="研发人员8" />
+    				<treeNode id="16" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员9" />
+                    <treeNode id="17" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员10" />
+                    <treeNode id="18" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员11" />
+                    <treeNode id="19" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员12" />
+                    <treeNode id="20" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员20" />
+                    <treeNode id="21" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员21" />
+                    <treeNode id="22" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员22" />
+                    <treeNode id="23" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员23" />
+                    <treeNode id="24" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员24" />
+                    <treeNode id="25" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员25" />
+                    <treeNode id="26" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员26" />
+                    <treeNode id="27" parentId="-3" icon="images/user_0.gif" disabled="0" name="研发人员27" />
+                </treeNode>
+            </treeNode>
+        </actionSet>
+    </ParamTree>
+</Response>

@@ -1,0 +1,136 @@
+
+@import "variables.less";
+@import "mixins.less";
+
+.tssbutton {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font: 16px/100% @fontFamily;
+  padding: .5em 2em .55em;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  border-radius: .5em;
+}
+.tssbutton:hover { text-decoration: none; }
+.tssbutton:active { position: relative; top: 1px;}
+
+.bigrounded { 
+  -webkit-border-radius: 2em; 
+     -moz-border-radius: 2em; 
+          border-radius: 2em; 
+}
+.medium { font-size: 12px; padding: .4em 1.5em .42em; }
+.small  { font-size: 11px; padding: .2em 1em .275em;}
+
+.create-btn(@color, @bgcolor) {  
+  color: @color; 
+  border: solid 1px @bgcolor; 
+  background: @bgcolor; 
+
+  &:hover { .background-color-dark(@bgcolor, 3); }
+  &:active { .color-dark(@color, 9) }
+}
+
+.orange {
+  .create-btn(@white, @orange);
+}
+.blue {
+  .create-btn(@white, @blue);
+}
+.black {
+  .create-btn(@white, @black);
+}
+
+
+.tss-panel { 
+  position: absolute; 
+  vertical-align: top; 
+  box-sizing: border-box; 
+  border: 1px solid @blue; 
+  background-color: @white; 
+}
+.tss-panel-max { top: 0; left: 0; }
+.tss-panel-min { height: 20px; overflow: hidden; }
+
+.tss-panel>.content { height: 96%; }
+.tss-panel>.title { 
+  position: relative; 
+  background: url(../img/alert/title.gif) repeat-x 0px -2px; 
+
+  & h2 {
+    text-align: left; text-indent: 3px; font-size: 1.1em; 
+    height: 21px; 
+    cursor:move; 
+    color: @white;
+  }
+  & div {
+    position:absolute; top:1px; right:1px;
+    height:19px; 
+  
+    & span { 
+      display: inline-block; float: left; 
+      width: 21px; height: 19px; margin-left: 5px; 
+      cursor: pointer;
+      background:url(../img/panel.png) no-repeat;
+
+      &.min { 
+        background-position: -29px 0; 
+        &:hover { background-position: -29px -29px; }
+      }
+      &.max { 
+        background-position: -60px 0;
+        &:hover { background-position: -60px  -29px; }
+      }
+      &.revert { 
+        background-position: -149px 0; 
+        display: none;
+        &:hover { background-position: -149px -29px; }
+      }
+      &.close { 
+        background-position: -89px 0; 
+        &:hover { background-position: -89px -29px; }
+      }
+    } 
+  }
+}
+
+
+.leftbar {
+    box-sizing: content-box;
+    position: fixed; bottom: 20%; 
+    z-index: 100;
+    width: 30px; height: 200px;
+    background-color: @lightgrey; 
+    border-right: 2px solid @yellow;
+    border-radius: 3px;
+    .transition()
+}
+.leftbar-open   { left: 0; border-right: 1px solid transparent; }
+.leftbar-hidden { left: -30px; }
+
+.leftbar .leftbar-menu { 
+  width: 27px; height: 110px; padding: 90px 0 0 4px; border-radius: 3px; 
+  opacity: .5;  
+
+  &:hover {
+    background-color: @orange; 
+    opacity:1; 
+    cursor: pointer;
+  }
+}
+
+.leftbar .leftbar-menu span, 
+.leftbar .leftbar-menu span:before,
+.leftbar .leftbar-menu span:after {
+  position: absolute;
+  border-radius: 1px;
+  height: 5px;
+  width: 20px;
+  background: #000;
+  display: block;
+  content: '';
+}
+.leftbar .leftbar-menu span:before { top: -10px; }
+.leftbar .leftbar-menu span:after  { bottom: -10px; }

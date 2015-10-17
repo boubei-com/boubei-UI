@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>tssCalendar test</title>
+
+    <link href="../css/boubei.css" rel="stylesheet">
+
+    <script src="../js/tssJS.js"></script>
+    <script src="../js/tssJS.ajax.js"></script>
+	<script src="../js/tssJS.progress.js"></script>
+
+	<script type="text/javascript">
+
+	var url = 'data/progress.xml?';
+
+	window.onload = function() {
+
+	 	$.ajax({
+	 		url: url,
+	 		method : "GET",
+	 		onresult: function() {
+	 			var data = this.getNodeValue("ProgressInfo");
+	 			var progress = new $.Progress(url, data, 'data/_success.xml?');
+
+				progress.oncomplete = function() {
+					alert("done!");                
+				}
+				progress.start();
+	 		}
+	 	});
+	}
+
+	</script>
+</head>
+
+<body>
+
+
+</body>
+</html>

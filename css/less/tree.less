@@ -1,0 +1,25 @@
+
+Tree * { padding:0px; margin:0px; font-size:14px; }
+Tree { height: 100%; display:block; padding:5px; color:#333; overflow-y: scroll; }
+Tree li { list-style:none; line-height:22px; text-align:left; white-space:nowrap; }
+Tree li ul { padding-left:18px; }
+Tree li a { padding:0px 1px 3px 3px;cursor:pointer;height:17px;color:#333;text-decoration:none;display:inline-block;}
+Tree li>a:hover { text-decoration:underline; }
+Tree li>a.active { background-color: #FEF7A9; font-weight: bold; }
+Tree li>a.disable { color: grey; }
+Tree li span { width:16px; height:16px; margin-right:2px; display: inline-block; vertical-align:middle; cursor: pointer; }
+Tree .hidden { display: none; }
+Tree li>span.checkbox { width:13px; height:13px; margin-right:3px; background:url("../images/tree/checkbox.png") no-repeat; }
+Tree li>span.checkstate_0_0 { background-position:0px 0px; }
+Tree li>span.checkstate_1_0 { background-position:0px -36px; }
+Tree li>span.checkstate_2_0 { background-position:0px -24px; }
+Tree li>span.checkstate_0_1 { background-position:0px -72px; }
+Tree li>span.checkstate_1_1 { background-position:0px -48px; }
+Tree li>span.checkstate_2_1 { background-position:0px -48px; }
+Tree li>span.switch { width:18px; height:18px; }
+Tree li>span.node_open { background-image:url("../images/tree/minus.gif"); }
+Tree li>span.node_close{ background-image:url("../images/tree/plus.gif"); }
+Tree li>span.node_leaf { background:none;cursor:default;}
+Tree li>div.selfIcon { width:16px; height:16px; margin-right:3px; vertical-align:middle; display: inline-block; }
+Tree li>div.folder { background-image:url("../images/tree/folder.gif"); }
+Tree li>div.leaf { width:0px; height:0px; background:none; }
