@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * boubei v1.2.0
+ * boubei-UI v1.2.0
  *
  * Copyright 2015 杭州卜贝软件有限公司
  * Licensed under the MIT License
@@ -146,31 +146,6 @@ img {
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
-/* 发光输入框 start */
-input[type=text],
-textarea {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  outline: none;
-  border: 1px solid #DDDDDD;
-}
-input[type=text]:focus,
-textarea:focus {
-  box-shadow: 0 0 5px #51cbee;
-  border: 1px solid #51cbee;
-}
-/* 发光输入框 end */
-.text2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.text1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-all;
-}
 .clearfix {
   display: table;
   zoom: 1;
@@ -180,10 +155,21 @@ textarea:focus {
   display: block;
   clear: both;
 }
+/* = message
+-----------------------------------------------------------------------------*/
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
 .tssJS-bubble {
   position: absolute;
-  background-color: #292929;
-  color: white;
+  background-color: #222;
+  color: #fff;
   border-radius: 10px;
   display: table;
   /* 使垂直居中 */
@@ -203,13 +189,13 @@ textarea:focus {
   position: absolute;
 }
 .tssJS-bubble-arrow-top:after {
-  border-bottom-color: #292929;
+  border-bottom-color: #222;
   bottom: 100%;
   left: 50%;
   margin-left: -15px;
 }
 .tssJS-bubble-arrow-bottom:after {
-  border-top-color: #292929;
+  border-top-color: #222;
   top: 100%;
   left: 50%;
   margin-left: -15px;
@@ -220,17 +206,17 @@ textarea:focus {
   min-width: 360px;
   border: solid 1px #99b1c4;
   font-size: 12px;
-  color: #000;
+  color: #555;
   background-color: #fff;
 }
 #alert_box .title {
   padding-left: 8px;
   font-weight: bold;
   font-size: 13px;
-  line-height: 1.9em;
+  line-height: 22px;
   color: #fff;
+  background-color: #049cdb;
   cursor: move;
-  background: url(../img/alert/title.gif) repeat-x 0px -2px;
 }
 #alert_box .ok,
 #alert_box .cancel {
@@ -245,8 +231,8 @@ textarea:focus {
 }
 #alert_box .close {
   position: absolute;
-  right: 7px;
-  top: 4px;
+  right: 3px;
+  top: 3px;
   width: 16px;
   height: 16px;
   background: url(../img/alert/close.gif) no-repeat;
@@ -254,6 +240,12 @@ textarea:focus {
 }
 #alert_box .close:hover {
   background: url(../img/alert/close.gif) no-repeat -17px 0;
+}
+#alert_box .btbox {
+  text-align: right;
+  border-top: 1px solid #d7d7d7;
+  margin: 1em 0em 0em 1em;
+  padding-top: 10px;
 }
 #alert_box .alert {
   background: url(../img/alert/info.gif) no-repeat 20px 18px;
@@ -264,12 +256,6 @@ textarea:focus {
 #alert_box .prompt {
   background: url(../img/alert/help.gif) no-repeat 20px 14px;
 }
-#alert_box .btbox {
-  text-align: right;
-  border-top: 1px solid #d7d7d7;
-  margin: 1em 0em 0em 1em;
-  padding-top: 10px;
-}
 #alert_box .content {
   padding: 20px 12px 10px 12px;
 }
@@ -277,70 +263,70 @@ textarea:focus {
   max-height: 150px;
   padding-left: 50px;
   padding-bottom: 10px;
-  font-size: 13px;
 }
 #alert_box .message input {
   margin: .5em 0em;
-  height: 20px;
+  height: 25px;
   width: 250px;
-  line-height: 20px;
+  line-height: 22px;
+  text-indent: 3px;
 }
 #tssTip {
-  width: 200px;
   position: absolute;
   right: 1px;
   bottom: 1px;
-  border: 1px solid #99b1c4;
-  overflow: hidden;
   display: none;
-  font-size: 12px;
+  width: 200px;
+  overflow: hidden;
+  border: 1px solid #95B8E7;
   font-weight: bold;
-  background-color: white;
+  background-color: #fff;
+  color: #9d261d;
+  text-align: center;
 }
 #tssTip .title {
   width: 100%;
   height: 22px;
   line-height: 20px;
-  background: #FFCC00;
-  text-align: center;
+  background-color: #ffc40d;
+  font-size: 14px;
 }
 #tssTip .content {
   line-height: 20px;
-  color: #FF0000;
-  text-align: center;
   padding: 10px 4px;
 }
 #tssTip .close {
   position: absolute;
   right: 4px;
-  top: -1px;
-  color: #FFF;
+  top: 1px;
+  color: #fff;
   cursor: pointer;
+  font-size: 16px;
 }
 /* message相关 */
 .popupBox {
-  background-color: white;
-  border: 1px solid #98989C;
-  margin-left: auto;
-  margin-right: auto;
   position: absolute;
   top: 1px;
   left: -100px;
   right: -100px;
   z-Index: 10001;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  border: 1px solid #98989C;
 }
 /* relogin相关 */
 #relogin_box {
   width: 300px;
-  border: solid 1px #99b1c4;
+  border: solid 1px #95B8E7;
   border-radius: 5px;
-  background-color: #EEEEEE;
-  font-size: 15px;
+  background-color: #fff;
+  font-size: 14px;
 }
 #relogin_box h1 {
-  line-height: 40px;
+  line-height: 30px;
   padding: 0px 10px;
-  background-color: #003399;
+  background-color: #0064cd;
   color: #fff;
 }
 #relogin_box span {
@@ -351,30 +337,23 @@ textarea:focus {
 }
 #relogin_box span input {
   margin-left: 10px;
+  height: 25px;
 }
 #relogin_box #loginName,
 #relogin_box #password {
   width: 250px;
-  height: 22px;
-  font-size: 13px;
-  border-radius: 3px;
-  border: 1px solid #0C6F73;
-  padding-left: 5px;
 }
 #relogin_box .bottonBox input {
-  background-color: #999999;
-  color: #FFFFFF;
+  width: 112px;
+  background-color: #049cdb;
+  color: #fff;
   cursor: pointer;
-  border-radius: 3px;
-  border: 1px solid #88D0E7;
-  width: 117px;
-  height: 25px;
-  font-size: 14px;
 }
 #relogin_box .bottonBox input:hover {
-  font-weight: bold;
-  background-color: #003399;
+  background-color: #0064cd;
 }
+/* =Tool
+-----------------------------------------------------------------------------*/
 .tssbutton {
   display: inline-block;
   outline: none;
@@ -558,6 +537,8 @@ textarea:focus {
 .leftbar .leftbar-menu span:after {
   bottom: -10px;
 }
+/* =Calendar
+-----------------------------------------------------------------------------*/
 .pika-single * {
   padding: 0;
   border: 0;
@@ -705,47 +686,48 @@ textarea:focus {
   border: 1px solid #dedede;
   letter-spacing: 3px;
 }
+/* =Menu
+-----------------------------------------------------------------------------*/
 .rmenu {
   position: absolute;
   width: 135px;
   padding: 1px;
-  border: 1px solid #666666;
-  background: #F9F8F7 url(../images/menu_bg.gif) repeat-y;
+  border: 1px solid #95B8E7;
+  background: #fff url(../img/menu_bg.gif) repeat-y;
 }
 .rmenu div {
-  padding: 5px 0px 0px 30px;
-  font-size: 12px;
-  line-height: 12px;
+  position: relative;
   width: 104px;
   height: 22px;
   overflow: hidden;
-  position: relative;
+  padding: 5px 0px 0px 30px;
+  line-height: 12px;
 }
 .rmenu div.separator {
-  padding: 0px;
   width: 103px;
   height: 1px;
   overflow: hidden;
-  background-color: #A6A6A6;
+  padding: 0;
   margin: 1px 0px 1px 30px;
+  background-color: #95B8E7;
 }
 .rmenu div img {
   position: absolute;
-  width: 16px;
-  height: 16px;
   left: 2px;
   top: 2px;
-}
-.rmenu div .hasChild {
   width: 16px;
   height: 16px;
+}
+.rmenu div .hasChild {
   position: absolute;
   right: -25px;
   top: 2px;
-  background: url(../images/icon_has_child.gif) no-repeat left top;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_has_child.gif) no-repeat left top;
 }
 .rmenu div.active {
-  background-color: #B6BDD2;
+  background-color: #eee;
   cursor: pointer;
 }
 .rmenu div.active img {
@@ -759,89 +741,101 @@ textarea:focus {
   color: #A6A6A6;
 }
 .rmenu div.disable img {
-  filter: gray();
+  fiter: gray();
   opacity: 0.4;
+}
+/* =tssForm
+-----------------------------------------------------------------------------*/
+/* 输入框基本样式 */
+input,
+input[type=text],
+input[type=password],
+textarea,
+select {
+  outline: none;
+  border: 1px solid #95B8E7;
+  border-radius: 3px;
+  color: #555;
+  text-indent: 3px;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+input:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #049cdb;
+  box-shadow: 0 0 5px #049cdb;
 }
 .tssForm {
   width: 100%;
   display: block;
-  font-size: 12px;
 }
 .tssForm table {
   width: 100%;
 }
-.tssForm td {
+.tssForm table td {
   padding: 3px 2px;
-  border-width: 0;
+}
+.tssForm label {
+  color: #555;
 }
 .tssForm input,
 .tssForm textarea,
 .tssForm select {
-  border: 1px solid #ABAAAF;
-  background-color: #ECEFF8;
-  padding-left: 2px;
+  background-color: #F7FBFC;
 }
-.tssForm input {
-  height: 18px;
-}
-.tssForm textarea {
-  word-break: break-all;
-}
+.tssForm input,
 .tssForm select {
-  height: 18px;
+  height: 20px;
 }
 .tssForm input[type='button'] {
   border: 0;
-}
-.tssForm .button {
-  background-color: #E4EBF3;
-  border-style: outset;
-}
-.tssForm .field_disabled {
-  border: 1px dotted #ABAAAF;
-  background-color: transparent;
-}
-.tssForm .hidden {
-  display: none;
 }
 .tssForm input.function {
   padding-right: 18px;
 }
 .tssForm .functionBt {
+  position: relative;
+  top: 5px;
+  left: -21px;
   display: inline-block;
   width: 20px;
   height: 18px;
-  position: relative;
-  top: 4px;
-  left: -21px;
-  background-image: url(../images/icon_function.gif);
+  background-image: url(../img/icon_function.gif);
 }
 .tssForm .required {
   color: red;
   margin-left: 3px;
   margin-right: 5px;
+  font-size: 15px;
+}
+.tssForm .hidden {
+  display: none;
+}
+.tssForm .field_disabled {
+  background-color: #eee;
 }
 .comboTree {
-  background-color: white;
-  border: 1px solid #ABAAAF;
-  border-top: none;
   padding: 1px;
   z-index: 10002;
+  background-color: #fff;
+  border: 1px solid #95B8E7;
+  border-top: none;
 }
 .comboTree .switch {
   width: 5px;
 }
-Tree * {
-  padding: 0px;
-  margin: 0px;
-  font-size: 14px;
-}
+/* =Tree
+-----------------------------------------------------------------------------*/
 Tree {
   height: 100%;
   display: block;
   padding: 5px;
   color: #333;
   overflow-y: scroll;
+  font-size: 14px;
 }
 Tree li {
   list-style: none;
@@ -885,7 +879,7 @@ Tree li > span.checkbox {
   width: 13px;
   height: 13px;
   margin-right: 3px;
-  background: url("../images/tree/checkbox.png") no-repeat;
+  background: url("../img/tree/checkbox.png") no-repeat;
 }
 Tree li > span.checkstate_0_0 {
   background-position: 0px 0px;
@@ -910,10 +904,10 @@ Tree li > span.switch {
   height: 18px;
 }
 Tree li > span.node_open {
-  background-image: url("../images/tree/minus.gif");
+  background-image: url("../img/tree/minus.gif");
 }
 Tree li > span.node_close {
-  background-image: url("../images/tree/plus.gif");
+  background-image: url("../img/tree/plus.gif");
 }
 Tree li > span.node_leaf {
   background: none;
@@ -927,13 +921,15 @@ Tree li > div.selfIcon {
   display: inline-block;
 }
 Tree li > div.folder {
-  background-image: url("../images/tree/folder.gif");
+  background-image: url("../img/tree/folder.gif");
 }
 Tree li > div.leaf {
   width: 0px;
   height: 0px;
   background: none;
 }
+/* =Grid
+-----------------------------------------------------------------------------*/
 Grid {
   width: 100%;
   height: 100%;
@@ -1054,6 +1050,8 @@ Grid .sorting {
   top: -4px;
   right: 1px;
 }
+/* = workspace
+-----------------------------------------------------------------------------*/
 WorkSpace\:Box {
   width: 100%;
   height: 100%;

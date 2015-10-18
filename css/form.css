@@ -1,0 +1,83 @@
+/* =tssForm
+-----------------------------------------------------------------------------*/
+/* 输入框基本样式 */
+input,
+input[type=text],
+input[type=password],
+textarea,
+select {
+  outline: none;
+  border: 1px solid #95B8E7;
+  border-radius: 3px;
+  color: #555;
+  text-indent: 3px;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+input:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #049cdb;
+  box-shadow: 0 0 5px #049cdb;
+}
+.tssForm {
+  width: 100%;
+  display: block;
+}
+.tssForm table {
+  width: 100%;
+}
+.tssForm table td {
+  padding: 3px 2px;
+}
+.tssForm label {
+  color: #555;
+}
+.tssForm input,
+.tssForm textarea,
+.tssForm select {
+  background-color: #F7FBFC;
+}
+.tssForm input,
+.tssForm select {
+  height: 20px;
+}
+.tssForm input[type='button'] {
+  border: 0;
+}
+.tssForm input.function {
+  padding-right: 18px;
+}
+.tssForm .functionBt {
+  position: relative;
+  top: 5px;
+  left: -21px;
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  background-image: url(../img/icon_function.gif);
+}
+.tssForm .required {
+  color: red;
+  margin-left: 3px;
+  margin-right: 5px;
+  font-size: 15px;
+}
+.tssForm .hidden {
+  display: none;
+}
+.tssForm .field_disabled {
+  background-color: #eee;
+}
+.comboTree {
+  padding: 1px;
+  z-index: 10002;
+  background-color: #fff;
+  border: 1px solid #95B8E7;
+  border-top: none;
+}
+.comboTree .switch {
+  width: 5px;
+}

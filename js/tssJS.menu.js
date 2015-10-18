@@ -227,12 +227,12 @@
         this.el.title = this.label;
         this.el.innerHTML = this.bold ? ("<b>" + this.label + "</b>") : this.label;
 
-        if(this.icon && "" != this.icon) {
+        if( this.icon ) {
             var img = $.createElement("img");
             img.src = this.icon;
             this.el.appendChild(img);
         }
-        if(this.submenu) {
+        if( this.submenu ) {
             var img = $.createElement("div", "hasChild");
             this.el.appendChild(img);
             

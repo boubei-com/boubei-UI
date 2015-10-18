@@ -9,6 +9,13 @@
 	<script src="../js/tssJS.js"></script>
 	<script src="../js/tssJS.menu.js"></script>
 
+<style>
+    html, body {
+      height: 100%;
+      box-sizing: content-box;
+    }
+</style>
+
 <script language="javascript">
 <!--
     var menu1 = new $.Menu();
@@ -17,7 +24,7 @@
 	var item1 = {
 		label:"剪切",
 		callback:function() {alert("剪切")},
-		icon:"../images/icon_cut.gif",
+		icon:"../img/icon_del.gif",
 		enable: function() { return true; },
 		visible: function() { return true; },
 		bold:true,
@@ -26,14 +33,14 @@
 	var item2 = {
 		label:"复制",
 		callback:function() {alert("复制")},
-		icon:"../images/icon_copy.gif",
+		icon:"../img/icon_copy.gif",
 		enable: function() { return false; },
 		visible: function() { return true; }
 	}
 	var item3 = {
 		label:"粘贴",
 		callback:function() {alert("粘贴")},
-		icon:"../images/icon_paste.gif",
+		icon:"../img/icon_pen.gif",
 		enable: function() { return true; },
 		visible: function() { return true; }
 	}
@@ -58,10 +65,9 @@
 	var item10 = {
 		label:"测试",
 		callback:function() {alert("测试")},
-		icon:"../images/icon_cut.gif",
+		icon:"../img/icon_next.gif",
 		enable: function() { return true; },
-		visible: function() { return false; },
-		bold:true
+		visible: function() { return true; }
 	}
 
 	var uid1 = menu1.addItem(item1);

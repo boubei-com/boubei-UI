@@ -4,7 +4,7 @@ html {
   box-sizing: border-box;
 }
 body {
-  font-family: "微软雅黑", Verdana, Arial, Helvetica, AppleGothic, sans-serif;
+  font-family: Arial, Helvetica, 'Microsoft yahei', sans-serif;
   font-size: 12px;
 }
 *,
@@ -81,6 +81,7 @@ textarea {
   overflow: auto;
   vertical-align: top;
   resize: vertical;
+  word-break: break-all;
 }
 button {
   width: auto;
@@ -138,31 +139,6 @@ object {
 img {
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
-}
-/* 发光输入框 start */
-input[type=text],
-textarea {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  outline: none;
-  border: 1px solid #DDDDDD;
-}
-input[type=text]:focus,
-textarea:focus {
-  box-shadow: 0 0 5px #51cbee;
-  border: 1px solid #51cbee;
-}
-/* 发光输入框 end */
-.text2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.text1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-all;
 }
 .clearfix {
   display: table;

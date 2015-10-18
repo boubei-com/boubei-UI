@@ -1,0 +1,58 @@
+/* =Menu
+-----------------------------------------------------------------------------*/
+.rmenu {
+  position: absolute;
+  width: 135px;
+  padding: 1px;
+  border: 1px solid #95B8E7;
+  background: #fff url(../img/menu_bg.gif) repeat-y;
+}
+.rmenu div {
+  position: relative;
+  width: 104px;
+  height: 22px;
+  overflow: hidden;
+  padding: 5px 0px 0px 30px;
+  line-height: 12px;
+}
+.rmenu div.separator {
+  width: 103px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  margin: 1px 0px 1px 30px;
+  background-color: #95B8E7;
+}
+.rmenu div img {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+}
+.rmenu div .hasChild {
+  position: absolute;
+  right: -25px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: url(../img/icon_has_child.gif) no-repeat left top;
+}
+.rmenu div.active {
+  background-color: #eee;
+  cursor: pointer;
+}
+.rmenu div.active img {
+  left: 1px;
+  top: 1px;
+}
+.rmenu div.active .hasChild {
+  top: 3px;
+}
+.rmenu div.disable {
+  color: #A6A6A6;
+}
+.rmenu div.disable img {
+  fiter: gray();
+  opacity: 0.4;
+}

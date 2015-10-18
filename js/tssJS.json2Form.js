@@ -97,8 +97,8 @@ var Field = function(info) {
 		},
 
 		createLayout: function() {	
-			var height = this.height||'18px';
-			var tag = (parseInt(height.replace('px', '')) > 18 && !this.options && !this.jsonUrl) ? 'textarea' : 'input';		
+			var height = this.height||'20px';
+			var tag = (parseInt(height.replace('px', '')) > 20 && !this.options && !this.jsonUrl) ? 'textarea' : 'input';		
 			var layout = [];
 			layout[layout.length] = " <TR>";
 			layout[layout.length] = "    <TD width='88'><label binding='" + this.name + "'/></TD>";
@@ -201,7 +201,7 @@ var Field = function(info) {
 						texts.push( $.vt(item).text );
 					});
 					
-					$("#" + nextLevel).css("height", "18px");
+					$("#" + nextLevel).css("height", "20px");
 					form.updateField(nextLevel, [
 						{"name": "mode", "value": "combotree"},
 						{"name": "texts", "value": texts.join('|')},

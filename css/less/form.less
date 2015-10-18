@@ -1,18 +1,58 @@
+@import "variables.less";
+@import "mixins.less";
 
-.tssForm { width:100%; display:block; font-size:12px; } 
-.tssForm table { width:100%; }
-.tssForm td { padding:3px 2px; border-width: 0; }
-.tssForm input, .tssForm textarea, .tssForm select { border:1px solid #ABAAAF; background-color:#ECEFF8; padding-left:2px; }
-.tssForm input { height:18px; }
-.tssForm textarea { word-break:break-all; }
-.tssForm select { height:18px; }
-.tssForm input[type='button'] { border: 0; }
-.tssForm .button { background-color:#E4EBF3; border-style:outset; }
-.tssForm .field_disabled { border:1px dotted #ABAAAF; background-color:transparent; }
-.tssForm .hidden { display:none; }
-.tssForm input.function { padding-right:18px; }
-.tssForm .functionBt { display:inline-block; width:20px; height:18px; position:relative; top:4px; left:-21px; background-image:url(../images/icon_function.gif); }
-.tssForm .required { color:red; margin-left:3px; margin-right:5px; }
-.tssForm .combo { }
-.comboTree { background-color: white; border:1px solid #ABAAAF; border-top:none; padding: 1px; z-index:10002; }
-.comboTree .switch { width: 5px; }
+/* =tssForm
+-----------------------------------------------------------------------------*/
+/* 输入框基本样式 */
+input, input[type=text], input[type=password], textarea, select { 
+  outline: none;
+  border: 1px solid @borderColor;
+  border-radius: 3px; 
+  color: @textColor;
+  text-indent: 3px;
+  .transition(all .3s ease-in-out);
+
+  &:focus {  	
+    border: 1px solid @blue;
+    box-shadow: 0 0 5px @blue;
+  }
+}
+
+.tssForm { 
+	width: 100%; display: block; 
+
+	& table { 
+		width : 100%; 
+		& td {
+			padding: 3px 2px;
+		}
+	}
+	& label { color: @textColor; }
+	& input, textarea, select {
+		background-color: #F7FBFC; 
+	}
+	& input, select { height: 20px; }
+	& input[type='button'] { border: 0; }
+	& input.function { padding-right: 18px; }
+	& .functionBt { 
+		position: relative; top: 5px; left: -21px;
+		display: inline-block; 
+		width: 20px; height: 18px;  
+		background-image: url(../img/icon_function.gif); 
+	}
+
+	& .required { color: red; margin-left: 3px; margin-right: 5px; font-size: 15px; }
+	& .hidden { display: none; }
+	& .field_disabled { background-color: @grayLighter; }
+	& .combo { }
+} 
+
+.comboTree { 
+	padding: 1px; 
+	z-index: 10002; 
+	background-color: @white; 
+	border: 1px solid @borderColor; 
+	border-top: none; 
+
+	& .switch { width: 5px; }
+}
