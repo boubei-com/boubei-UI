@@ -1007,35 +1007,40 @@ WorkSpace\:Box {
   height: 100%;
   overflow: hidden;
   vertical-align: top;
+  box-sizing: content-box;
 }
 WorkSpace\:Box WorkSpace\:TabBox {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: 25px;
+  height: 23px;
 }
 WorkSpace\:Box WorkSpace\:TabBox.hasTab {
-  border-bottom: 1px solid #999;
-  *background: url(../img/ws/bg_tab_box.gif) repeat-x;
+  border-bottom: 1px solid #95B8E7;
+  background-color: #E0ECFF;
 }
 WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab {
   position: relative;
   display: inline-block;
-  width: 100px;
-  height: 25px;
+  height: 20px;
+  line-height: 18px;
   color: #555;
   cursor: pointer;
-  background-image: url(../img/ws/bg_tab_inactive.gif);
+  margin: 2px 4px -1px 0;
+  padding-right: 22px;
+  border: 1px solid #95B8E7;
+  border-radius: 8px 8px 0 0;
+  background-color: #E0ECFF;
 }
 WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab.active {
   color: #333;
   font-weight: bold;
-  background-image: url(../img/ws/bg_tab_active.gif);
+  background-color: #fff;
+  border-bottom-color: #fff;
 }
 WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab div {
-  width: 90px;
-  letter-spacing: 0px;
-  padding: 0px 12px 0px 3px;
+  max-width: 100px;
+  text-indent: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: keep-all;
@@ -1048,7 +1053,7 @@ WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab WorkSpace\:Icon {
   width: 10px;
   height: 10px;
   cursor: pointer;
-  background-image: url(../img/ws/icon_tab_close.gif);
+  background-image: url(../img/icon_close.gif);
 }
 WorkSpace\:Box WorkSpace\:PhaseBox {
   position: relative;
@@ -1058,42 +1063,39 @@ WorkSpace\:Box WorkSpace\:PhaseBox {
   width: 20px;
   height: 100%;
   overflow: hidden;
-  margin-left: -4px;
-  line-height: 14px;
-  border-right: 1px solid #999999;
-  border-bottom: 1px solid #999999;
-  background: #BEC5E7 url(../img/ws/bg_phase_box.gif) repeat-y;
-}
-WorkSpace\:Box WorkSpace\:PhaseBox td {
-  vertical-align: top;
+  background-color: #E0ECFF;
 }
 WorkSpace\:Box WorkSpace\:PhaseBox WorkSpace\:Phase {
   display: block;
-  width: 20px;
-  height: 73px;
+  width: 18px;
   overflow: hidden;
-  background-image: url(../img/ws/bg_phase_inactive.gif);
+  margin: 4px 3px 0 -2px;
+  border: 1px solid #95B8E7;
+  border-radius: 0 10px 10px 0;
   cursor: pointer;
 }
 WorkSpace\:Box WorkSpace\:PhaseBox WorkSpace\:Phase div {
-  height: 73px;
-  padding: 4px 3px 1px 1px;
+  max-height: 73px;
   text-align: center;
+  padding: 5px 0;
 }
 WorkSpace\:Box WorkSpace\:PhaseBox WorkSpace\:Phase.active {
-  background-image: url(../img/ws/bg_phase_active.gif);
+  color: #333;
+  font-weight: bold;
+  background-color: #fff;
 }
 WorkSpace\:Box WorkSpace\:Page {
   height: 100%;
   overflow: hidden;
   padding: 20px;
-  margin-right: 0px;
+  margin-right: 0;
   background-color: #F7F8FD;
-  border: 1px solid #98989C;
+  border: 1px solid #95B8E7;
   border-top: 0;
+  border-right: 0;
 }
 WorkSpace\:Box WorkSpace\:Page.tight {
-  padding: 0px;
+  padding: 0;
 }
 WorkSpace\:Box WorkSpace\:PageStep {
   display: block;
