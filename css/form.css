@@ -20,7 +20,7 @@ input[type=password]:focus,
 textarea:focus,
 select:focus {
   border: 1px solid #049cdb;
-  box-shadow: 0 0 5px #049cdb;
+  box-shadow: 0 0 3px #049cdb;
 }
 .tssForm {
   width: 100%;

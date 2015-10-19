@@ -1,122 +1,104 @@
 /* =Grid
 -----------------------------------------------------------------------------*/
 Grid {
+  position: relative;
+  display: inline-block;
   width: 100%;
   height: 100%;
   overflow: auto;
-  position: relative;
   padding-top: 0px;
-  display: inline-block;
-}
-Grid div {
-  position: relative;
-  left: 0px;
-  top: 0px;
+  /* & div { position: relative; left: 0; top: 0; } */
 }
 Grid table {
   width: 100%;
   height: auto;
   table-layout: fixed;
-  border: 0px;
-  margin: 0px;
-  border-collapse: collapse;
 }
-Grid td {
-  font-size: 12px;
-  text-align: center;
-  border-style: solid;
-  border-color: #FFFFFF #96969E #96969E #FFFFFF;
-  border-width: 1px;
-}
-Grid thead td {
-  background-color: #E4E6F5;
+Grid table tr {
   height: 25px;
+}
+Grid table td {
+  text-align: center;
+  border: 1px solid #ccc;
+  border-width: 0 1px 1px 0;
+}
+Grid table thead {
+  background-color: #E4E6F5;
+}
+Grid table thead td {
   width: 50px;
 }
-Grid tbody td {
+Grid table tbody {
+  background-color: #fff;
+}
+Grid table tbody td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   word-break: keep-all;
 }
-Grid tbody {
-  background-color: #F7F8FD;
-}
-Grid tbody tr {
-  height: 25px;
-}
-Grid .highlightCol {
-  background-color: #FFFFCC;
-}
-Grid .highlightRow td {
-  background-color: #FEF7A9;
-}
-Grid .rolloverRow {
+Grid .highlight {
   background-color: #FEF7A9;
 }
 Grid .hidden {
   display: none;
 }
 Grid .asc {
-  background: #FFFFCC url(../images/direction_up.gif) no-repeat right 5px;
+  background: #FEF7A9 url(../img/direction_up.gif) no-repeat right 5px;
 }
 Grid .desc {
-  background: #FFFFCC url(../images/direction_down.gif) no-repeat right 5px;
+  background: #FEF7A9 url(../img/direction_down.gif) no-repeat right 5px;
 }
 Grid .sorting {
-  background: #F0EFE5;
+  background: #FEF7A9;
 }
 /* grid列表标题栏 */
 #gridTitle {
-  color: #0a1755;
-  font-size: 12px;
-  font-weight: bold;
+  position: relative;
   height: 21px;
   padding-left: 8px;
+  font-weight: bold;
   background-color: #BEC6EE;
-  border-bottom: 1px solid #96969E;
-  position: relative;
 }
 #gridTitle .icon {
   display: inline-block;
   width: 8px;
   height: 8px;
   margin-right: 5px;
-  background-image: url(../images/minus.gif);
+  background-image: url(../img/minus.gif);
 }
 #gridTitle .buttonBox {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
 }
-#gridTitle .button {
+#gridTitle .buttonBox .button {
   display: inline-block;
   width: 16px;
   height: 15px;
+  margin: 2px;
   background-repeat: no-repeat;
   background-position: center;
-  cursor: hand;
-  margin: 2px;
+  cursor: pointer;
 }
-#gridTitle .refresh {
-  background-image: url(../images/icon_refresh.gif);
+#gridTitle .buttonBox .refresh {
+  background-image: url(../img/icon_refresh.gif);
 }
-#gridTitle .first {
-  background-image: url(../images/first.gif);
+#gridTitle .buttonBox .first {
+  background-image: url(../img/page/first.gif);
 }
-#gridTitle .prev {
-  background-image: url(../images/prev.gif);
+#gridTitle .buttonBox .prev {
+  background-image: url(../img/page/prev.gif);
 }
-#gridTitle .next {
-  background-image: url(../images/next.gif);
+#gridTitle .buttonBox .next {
+  background-image: url(../img/page/next.gif);
 }
-#gridTitle .last {
-  background-image: url(../images/last.gif);
+#gridTitle .buttonBox .last {
+  background-image: url(../img/page/last.gif);
 }
-#gridTitle select {
-  font-size: 10px;
-  font-family: Verdana;
+#gridTitle .buttonBox select {
   position: relative;
   top: -4px;
   right: 1px;
+  font-size: 10px;
 }

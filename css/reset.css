@@ -21,7 +21,6 @@ img {
   border: 0;
   outline: 0;
   font-size: 100%;
-  vertical-align: baseline;
   background: transparent;
 }
 h1,
@@ -55,22 +54,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-caption,
-th,
-td {
-  text-align: left;
-  vertical-align: top;
-}
-thead th,
-thead td {
-  font-weight: bold;
-  vertical-align: bottom;
-}
-a img,
-th img,
-td img {
-  vertical-align: top;
-}
 button,
 input,
 select,
@@ -81,7 +64,6 @@ textarea {
   overflow: auto;
   vertical-align: top;
   resize: vertical;
-  word-break: break-all;
 }
 button {
   width: auto;

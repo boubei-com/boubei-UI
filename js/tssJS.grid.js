@@ -300,10 +300,10 @@
         processDataRow: function(curRow) {
             $(curRow).hover(
                 function() { 
-                    $(curRow).addClass("rolloverRow"); 
+                    $(curRow).addClass("highlight"); 
                 }, 
                 function() { 
-                    $(curRow).removeClass("rolloverRow");
+                    $(curRow).removeClass("highlight");
                 } 
             );
             
@@ -335,7 +335,7 @@
             } 
 
             if(column.getAttribute("highlight") == "true") {
-                $(cell).addClass("highlightCol");
+                $(cell).addClass("highlight");
             }
             $(cell).css("text-align", getAlign(column));
 
@@ -488,7 +488,7 @@
         },
 
         getHighlightRow: function() {
-            return $(".rolloverRow", this.tbody)[0];
+            return $(".highlight", this.tbody)[0];
         },
 
         getCheckedRows: function() {
