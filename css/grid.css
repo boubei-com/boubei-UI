@@ -59,6 +59,7 @@ Grid .sorting {
   padding-left: 8px;
   font-weight: bold;
   background-color: #BEC6EE;
+  color: #555;
 }
 #gridTitle .icon {
   display: inline-block;

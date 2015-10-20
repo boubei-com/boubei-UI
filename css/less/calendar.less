@@ -4,10 +4,11 @@
 /* =Calendar
 -----------------------------------------------------------------------------*/
 .pika-single { 
+	box-sizing: border-box;
 	z-index: 9999; 
 	position: relative; width: 202px; padding: 6px; 
 	color: @textColor; background: @white;
-  border: 1px solid #ccc; 
+    border: 1px solid #ccc; 
 
   &.is-hidden{ display: none; }
 	&.is-bound { position: absolute; box-shadow: 0 5px 15px -5px rgba(0,0,0,.5); }

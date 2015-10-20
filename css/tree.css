@@ -81,7 +81,7 @@ Tree li > span.node_leaf {
 }
 Tree li > div.selfIcon {
   display: inline-block;
-  width: 14px;
+  width: 15px;
   height: 14px;
   margin-right: 3px;
   vertical-align: middle;

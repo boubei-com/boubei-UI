@@ -9,14 +9,16 @@ input, input[type=text], input[type=password], textarea, select {
   border: 1px solid @borderColor;
   border-radius: 3px; 
   color: @textColor;
+  background-color: @white;
   text-indent: 3px;
   .transition(all .3s ease-in-out);
 
   &:focus {  	
-    border: 1px solid @blue;
     box-shadow: 0 0 3px @blue;
   }
 }
+input[type=button]:focus { box-shadow: none;}
+select { text-indent: 0px; }
 
 .tssForm { 
 	width: 100%; display: block; 

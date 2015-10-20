@@ -1,6 +1,7 @@
 /* =Calendar
 -----------------------------------------------------------------------------*/
 .pika-single {
+  box-sizing: border-box;
   z-index: 9999;
   position: relative;
   width: 202px;
