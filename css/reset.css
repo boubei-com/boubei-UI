@@ -4,7 +4,7 @@ html {
   box-sizing: border-box;
 }
 body {
-  font-family: Arial, Helvetica, 'Microsoft yahei', sans-serif;
+  font-family: Arial, Helvetica, '微软雅黑', sans-serif;
   font-size: 12px;
 }
 *,
@@ -101,7 +101,6 @@ hr {
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-img,
 video,
 audio,
 embed,
@@ -117,10 +116,6 @@ object {
 embed,
 object {
   height: 100%;
-}
-img {
-  vertical-align: middle;
-  -ms-interpolation-mode: bicubic;
 }
 .clearfix {
   display: table;

@@ -4,24 +4,22 @@
 <script src="../tssJS.all.js"></script>
 <script src="../js/tssJS.jsonp.js"></script>
 
- <SCRIPT LANGUAGE="JavaScript">
- <!--
-	
-	$.JSONP.getJSON("http://localhost:8088/tss/data/jsonp/GetAllVisitors", {'param1': 'hello jsonp!'}, 
-		function(result) { 
-			console.log(result[0]); 
-		});
+<script type="text/javascript">
 
-	/*
-	$.ajax({
-		url: "http://bl00618-l:8088/dms/display/json/GetAllVisitors",
-		method: "GET"
+$.JSONP.getJSON("http://localhost:8088/tss/data/jsonp/GetAllVisitors", {'param1': 'hello jsonp!'}, 
+	function(result) { 
+		console.log(result[0]); 
 	});
-	*/
 
- //-->
- </SCRIPT>
+/*
+$.ajax({
+	url: "http://bl00618-l:8088/dms/display/json/GetAllVisitors",
+	method: "GET"
+});
+*/
+
+</script>
+
 </head>
-<body>
-</body>
+
 </html> 

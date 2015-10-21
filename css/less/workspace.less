@@ -12,7 +12,7 @@ WorkSpace\:Box {
 	& WorkSpace\:TabBox { 
 		position: relative; 
 		display: inline-block;
-		width: 100%; height: 20px; padding-left: 3px;
+		width: 100%; height: 23px; padding-left: 3px;
 
 		&.hasTab { 
 			border-bottom: 1px solid @borderColor;
@@ -22,10 +22,10 @@ WorkSpace\:Box {
 		& WorkSpace\:Tab { 
 			position: relative; 
 			display: inline-block;
-			height: 18px; line-height: 16px;
+			height: 20px; line-height: 18px;
 			color: @textColor;  
 			cursor: pointer; 
-			margin: 1px 4px -1px 0;
+			margin: 2px 4px -1px 0;
 			padding-right: 22px;
 			border: 1px solid @borderColor;
 			border-radius: 8px 8px 0 0;			
@@ -55,12 +55,13 @@ WorkSpace\:Box {
 		position: relative; 
 		display: inline-block;
 		float: right; z-index: 100;
-		width: 20px; height: 100%; overflow: hidden; 
+		width: 22px; height: 100%; overflow: hidden; 
+		padding-right: 2px;
 		background-color: @blueLight;
 
 		& WorkSpace\:Phase { 
 			display: block;
-			width: 18px; overflow: hidden; 
+			width: 20px; overflow: hidden; 
 			margin: 4px 3px 0 -2px;			 
 			border: 1px solid @borderColor;
 			border-radius: 0 10px 10px 0;	
@@ -88,6 +89,6 @@ WorkSpace\:Box {
 	}
 
 	& WorkSpace\:PageStep { 
-		display: block; width: 100%; padding: 0; text-align: center; 
+		display: block; width: 100%; padding: 5px 0; text-align: center; 
 	}
 }

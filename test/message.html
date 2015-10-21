@@ -1,45 +1,45 @@
 <!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title> test messager </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title> test messager </title>
 
-    <link rel="stylesheet" href="../css/boubei.css"/>
+<link rel="stylesheet" href="../css/boubei.css"/>
 
-    <script src="../js/tssJS.js"></script>
-    <script src="../js/tssJS.tool.js"></script>
-    <script src="../js/tssJS.message.js"></script>
+<script src="../js/tssJS.js"></script>
+<script src="../js/tssJS.tool.js"></script>
+<script src="../js/tssJS.message.js"></script>
 
-    <style type="text/css">
-        html, body {
-          height: 100%;
-        }
-        .demo {
-            padding: 30px;
-        }
-    </style>
+<style type="text/css">
+    html, body {
+      height: 100%;
+    }
+    .demo {
+        padding: 30px;
+    }
+</style>
 
-    <script>
-        function test(){
-            var info = "我是提示气球！1234567890+1234567890+1234567890+1234567890+1234567890+1234567890";        
+<script>
+    function test(){
+        var info = "我是提示气球！1234567890+1234567890+1234567890+1234567890+1234567890+1234567890";        
 
-            var x = Math.max(100, Math.round(document.body.clientWidth * Math.random()));
-            var y = Math.round(document.body.clientHeight * Math.random());
-            var w = Math.max(100, Math.round(500 * Math.random()));
+        var x = Math.max(100, Math.round(document.body.clientWidth * Math.random()));
+        var y = Math.round(document.body.clientHeight * Math.random());
+        var w = Math.max(100, Math.round(500 * Math.random()));
 
-            var $targetEl = $("#xxx");
-            $targetEl.css("left", x + "px").css("top", y + "px").css("width", w + "px");
-            $targetEl.notice(info);
-        }
+        var $targetEl = $("#xxx");
+        $targetEl.css("left", x + "px").css("top", y + "px").css("width", w + "px");
+        $targetEl.notice(info);
+    }
 
  
-window.onload = function() { //加载
-    $.tssTip("您有新的消息没有查收,没有什么能够阻挡，你对自由的向往。");
+    window.onload = function() { //加载
+        $.tssTip("您有新的消息没有查收,没有什么能够阻挡，你对自由的向往。");
 
-    $.tip("您有新的消息没有查收");
-}
+        $.tip("您有新的消息没有查收");
+    }
 
-    </script>
+</script>
 
 </head>
 <body>

@@ -1,93 +1,91 @@
 <!DOCTYPE html>
 <HTML XMLNS:Tree>
 <head>
-	<meta charset="UTF-8"/>
-	<title>tssForm from xml test</title>
+<meta charset="UTF-8"/>
+<title>tssForm from xml test</title>
 
-	<link href="../css/boubei.css" rel="stylesheet">
+<link href="../css/boubei.css" rel="stylesheet">
 
-	<script src="../js/tssJS.js"></script>
-	<script src="../js/tssJS.ajax.js"></script>
-	<script src="../js/tssJS.message.js"></script>
-	<script src="../js/tssJS.calendar.js"></script>
-	<script src="../js/tssJS.tool.js"></script>
-    <script src="../js/tssJS.form.js"></script>
-    <script src="../js/tssJS.tree.js"></script>
+<script src="../js/tssJS.js"></script>
+<script src="../js/tssJS.ajax.js"></script>
+<script src="../js/tssJS.message.js"></script>
+<script src="../js/tssJS.calendar.js"></script>
+<script src="../js/tssJS.tool.js"></script>
+<script src="../js/tssJS.form.js"></script>
+<script src="../js/tssJS.tree.js"></script>
 
+<script type="text/javascript">
 
-<SCRIPT LANGUAGE="JavaScript">
-<!--
+URL_XFORM_DEMO = "data/form.xml";
+URL_SAVE_USER  = "data/_success.xml";
 
-    URL_XFORM_DEMO = "data/form.xml";
-	URL_SAVE_USER  = "data/_success.xml";
+var cacheID = "user1-xml";
 
-	var cacheID = "user1-xml";
+function init() {
 
-    function init() {
- 
-		$$("btSave").onclick = function() {
-			saveUser(cacheID);
-		}
+	$$("btSave").onclick = function() {
+		saveUser(cacheID);
+	}
 
-		$.ajax({ 
-			url: URL_XFORM_DEMO, 
-			method : "GET",
-			onresult: function() {
-				var dataXML = this.getNodeValue("UserInfo");
-				$.cache.XmlDatas[cacheID] = dataXML;
+	$.ajax({ 
+		url: URL_XFORM_DEMO, 
+		method : "GET",
+		onresult: function() {
+			var dataXML = this.getNodeValue("UserInfo");
+			$.cache.XmlDatas[cacheID] = dataXML;
 
-				var xfomrId = "userForm";
-				// var userForm = $.F(xfomrId, dataXML);
-                var userForm = $("#" + xfomrId).form(dataXML);
+			var xfomrId = "userForm";
+			// var userForm = $.F(xfomrId, dataXML);
+            var userForm = $("#" + xfomrId).form(dataXML);
 
-				// attachReminder(xfomrId, userForm); // 离开提醒
+			// attachReminder(xfomrId, userForm); // 离开提醒
 
-				userForm.setFieldEditable("address", "false");	
-			}, 
-			onexception: function() { 
-				alert("ajax has exception"); 
-			} 
-		});
+			userForm.setFieldEditable("address", "false");	
+		}, 
+		onexception: function() { 
+			alert("ajax has exception"); 
+		} 
+	});
+}
+
+function func1() {
+	updateField("temp1", "12345678");
+}
+
+function f2(value) {
+    updateField("sex2", value);    
+}
+
+function updateField(code, value) {
+    var xform = $.F("userForm");
+    xform.updateDataExternal(code, value);    
+    xform.updateData( $1(code) );
+}
+
+function saveUser(cacheID) {
+    var userForm = $.F("userForm");
+    if(  !userForm.checkForm() ) {
+        return;
     }
 
-	function func1() {
-		updateField("temp1", "12345678");
-	}
+	var dataXML = $.cache.XmlDatas[cacheID];
+	var dataNode = dataXML.querySelector("data");
 
-	function f2(value) {
-	    updateField("sex2", value);    
-	}
-
-	function updateField(code, value) {
-	    var xform = $.F("userForm");
-	    xform.updateDataExternal(code, value);    
-	    xform.updateData( $1(code) );
-	}
-
-    function saveUser(cacheID) {
-        var userForm = $.F("userForm");
-        if(  !userForm.checkForm() ) {
-            return;
-        }
- 
-		var dataXML = $.cache.XmlDatas[cacheID];
-		var dataNode = dataXML.querySelector("data");
- 
-        if(dataNode) {
-            $.ajax({
-            	url: URL_SAVE_USER,
-            	formNode: dataNode,
-            	onsuccess: function() {
-					window.alert("成功提交" + $.XML.toXml(dataNode));
-	            }
-            })
-        }
+    if(dataNode) {
+        $.ajax({
+        	url: URL_SAVE_USER,
+        	formNode: dataNode,
+        	onsuccess: function() {
+				window.alert("成功提交" + $.XML.toXml(dataNode));
+            }
+        })
     }
+}
 
-    window.onload = init;
+window.onload = init;
 
-//-->
-</SCRIPT>
+</script>
+
 </head>
 
 <body>

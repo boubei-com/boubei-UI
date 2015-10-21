@@ -108,7 +108,6 @@ hr {
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-img,
 video,
 audio,
 embed,
@@ -125,10 +124,6 @@ embed,
 object {
   height: 100%;
 }
-img {
-  vertical-align: middle;
-  -ms-interpolation-mode: bicubic;
-}
 .clearfix {
   display: table;
   zoom: 1;
@@ -138,391 +133,303 @@ img {
   display: block;
   clear: both;
 }
-/* = message
+/* =tssForm
 -----------------------------------------------------------------------------*/
-.text2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.text1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-all;
-}
-.tssJS-bubble {
-  position: absolute;
-  background-color: #222;
-  color: #fff;
-  border-radius: 10px;
-  display: table;
-  /* 使垂直居中 */
-}
-.tssJS-bubble p {
-  display: table-cell;
-  padding: 5px;
-  text-align: center;
-  word-break: break-all;
-}
-/* 箭头 */
-.tssJS-bubble:after {
-  content: '';
-  width: 0;
-  height: 0;
-  border: 15px solid transparent;
-  position: absolute;
-}
-.tssJS-bubble-arrow-top:after {
-  border-bottom-color: #222;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -15px;
-}
-.tssJS-bubble-arrow-bottom:after {
-  border-top-color: #222;
-  top: 100%;
-  left: 50%;
-  margin-left: -15px;
-}
-#alert_box {
-  z-index: 99999;
-  width: 380px;
-  min-width: 360px;
-  border: solid 1px #99b1c4;
-  font-size: 12px;
+/* 输入框基本样式 */
+input,
+input[type=text],
+input[type=password],
+textarea,
+select {
+  outline: none;
+  border: 1px solid #95B8E7;
+  border-radius: 3px;
   color: #555;
   background-color: #fff;
+  text-indent: 3px;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-#alert_box .title {
-  padding-left: 8px;
-  font-weight: bold;
+input:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 3px #049cdb;
+}
+input[type=button]:focus {
+  box-shadow: none;
+}
+select {
+  text-indent: 0px;
+}
+.tssForm {
+  width: 100%;
+  display: block;
+}
+.tssForm table {
+  width: 100%;
+}
+.tssForm table td {
+  padding: 3px 2px;
+}
+.tssForm label {
+  color: #555;
+}
+.tssForm input,
+.tssForm textarea,
+.tssForm select {
+  background-color: #F7FBFC;
+}
+.tssForm input,
+.tssForm select {
+  height: 20px;
+}
+.tssForm input[type='button'] {
+  border: 0;
+}
+.tssForm input.function {
+  padding-right: 18px;
+}
+.tssForm .functionBt {
+  position: relative;
+  top: 5px;
+  left: -21px;
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  background-image: url(../img/icon_function.gif);
+}
+.tssForm .required {
+  color: red;
+  margin-left: 3px;
+  margin-right: 5px;
+  font-size: 15px;
+}
+.tssForm .hidden {
+  display: none;
+}
+.tssForm .field_disabled {
+  background-color: #eee;
+}
+.comboTree {
+  padding: 1px;
+  z-index: 10002;
+  background-color: #fff;
+  border: 1px solid #95B8E7;
+  border-top: none;
+}
+.comboTree .switch {
+  width: 5px;
+}
+/* =Tree
+-----------------------------------------------------------------------------*/
+Tree {
+  display: block;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 5px;
   font-size: 13px;
+}
+Tree li {
+  list-style: none;
   line-height: 22px;
-  color: #fff;
-  background-color: #049cdb;
-  cursor: move;
+  text-align: left;
+  white-space: nowrap;
+  /* 树节点复选框 及 伸缩符号 */
+  /* 树节点自定义图标 */
 }
-#alert_box .ok,
-#alert_box .cancel {
-  width: 58px;
-  height: 24px;
-  margin-right: 10px;
-  background: url(../img/alert/btn.gif) no-repeat;
-  padding: 0 4px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
+Tree li ul {
+  padding-left: 18px;
 }
-#alert_box .close {
-  position: absolute;
-  right: 3px;
-  top: 3px;
+Tree li a {
+  height: 17px;
+  padding: 0 1px 3px 3px;
+  display: inline-block;
+}
+Tree li a:hover {
+  text-decoration: underline;
+}
+Tree li a.active {
+  background-color: #FEF7A9;
+  font-weight: bold;
+}
+Tree li a.disable {
+  color: #A6A6A6;
+}
+Tree li span {
   width: 16px;
   height: 16px;
-  background: url(../img/alert/close.gif) no-repeat;
+  margin-right: 2px;
+  display: inline-block;
+  vertical-align: middle;
   cursor: pointer;
 }
-#alert_box .close:hover {
-  background: url(../img/alert/close.gif) no-repeat -17px 0;
+Tree li > span.checkbox {
+  width: 13px;
+  height: 13px;
+  margin-right: 3px;
+  background: url("../img/tree/checkbox.png") no-repeat;
 }
-#alert_box .btbox {
-  text-align: right;
-  border-top: 1px solid #d7d7d7;
-  margin: 1em 0em 0em 1em;
-  padding-top: 10px;
+Tree li > span.checkstate_0_0 {
+  background-position: 0px 0px;
 }
-#alert_box .alert {
-  background: url(../img/alert/info.gif) no-repeat 20px 18px;
+Tree li > span.checkstate_1_0 {
+  background-position: 0px -36px;
 }
-#alert_box .confirm {
-  background: url(../img/alert/important.gif) no-repeat 20px 14px;
+Tree li > span.checkstate_2_0 {
+  background-position: 0px -24px;
 }
-#alert_box .prompt {
-  background: url(../img/alert/help.gif) no-repeat 20px 14px;
+Tree li > span.checkstate_0_1 {
+  background-position: 0px -72px;
 }
-#alert_box .content {
-  padding: 20px 12px 10px 12px;
+Tree li > span.checkstate_1_1 {
+  background-position: 0px -48px;
 }
-#alert_box .message {
-  max-height: 150px;
-  padding-left: 50px;
-  padding-bottom: 10px;
+Tree li > span.checkstate_2_1 {
+  background-position: 0px -48px;
 }
-#alert_box .message input {
-  margin: .5em 0em;
-  height: 25px;
-  width: 250px;
-  line-height: 22px;
-  text-indent: 3px;
+Tree li > span.switch {
+  width: 18px;
+  height: 18px;
 }
-#tssTip {
-  position: absolute;
-  right: 1px;
-  bottom: 1px;
+Tree li > span.node_open {
+  background-image: url("../img/tree/minus.gif");
+}
+Tree li > span.node_close {
+  background-image: url("../img/tree/plus.gif");
+}
+Tree li > span.node_leaf {
+  background: none;
+  cursor: default;
+}
+Tree li > div.selfIcon {
+  display: inline-block;
+  width: 15px;
+  height: 14px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+Tree li > div.folder {
+  background-image: url("../img/tree/folder.gif");
+}
+Tree li > div.leaf {
+  width: 0;
+  height: 0;
+  background: none;
+}
+Tree .hidden {
   display: none;
-  width: 200px;
-  overflow: hidden;
-  border: 1px solid #95B8E7;
-  font-weight: bold;
-  background-color: #fff;
-  color: #9d261d;
-  text-align: center;
 }
-#tssTip .title {
-  width: 100%;
-  height: 22px;
-  line-height: 20px;
-  background-color: #ffc40d;
-  font-size: 14px;
-}
-#tssTip .content {
-  line-height: 20px;
-  padding: 10px 4px;
-}
-#tssTip .close {
-  position: absolute;
-  right: 4px;
-  top: 1px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-}
-/* message相关 */
-.popupBox {
-  position: absolute;
-  top: 1px;
-  left: -100px;
-  right: -100px;
-  z-Index: 10001;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #fff;
-  border: 1px solid #98989C;
-}
-/* relogin相关 */
-#relogin_box {
-  width: 300px;
-  border: solid 1px #95B8E7;
-  border-radius: 5px;
-  background-color: #fff;
-  font-size: 14px;
-}
-#relogin_box h1 {
-  line-height: 30px;
-  padding: 0px 10px;
-  background-color: #0064cd;
-  color: #fff;
-}
-#relogin_box span {
-  display: block;
-  height: 30px;
-  margin: 15px 0px;
-  padding: 0px 10px;
-}
-#relogin_box span input {
-  margin-left: 10px;
-  height: 25px;
-}
-#relogin_box #loginName,
-#relogin_box #password {
-  width: 250px;
-}
-#relogin_box .bottonBox input {
-  width: 112px;
-  background-color: #049cdb;
-  color: #fff;
-  cursor: pointer;
-}
-#relogin_box .bottonBox input:hover {
-  background-color: #0064cd;
-}
-/* =Tool
+/* =Grid
 -----------------------------------------------------------------------------*/
-.tssbutton {
-  display: inline-block;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  font: 16px/100% Arial, Helvetica, 'Microsoft yahei', sans-serif;
-  padding: .5em 2em .55em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  border-radius: .5em;
-}
-.tssbutton:hover {
-  text-decoration: none;
-}
-.tssbutton:active {
+Grid {
   position: relative;
-  top: 1px;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-top: 0px;
+  /* & div { position: relative; left: 0; top: 0; } */
 }
-.bigrounded {
-  -webkit-border-radius: 2em;
-  -moz-border-radius: 2em;
-  border-radius: 2em;
+Grid table {
+  width: 100%;
+  height: auto;
+  table-layout: fixed;
 }
-.medium {
-  font-size: 12px;
-  padding: .4em 1.5em .42em;
+Grid table tr {
+  height: 25px;
 }
-.small {
-  font-size: 11px;
-  padding: .2em 1em .275em;
+Grid table td {
+  text-align: center;
+  border: 1px solid #ccc;
+  border-width: 0 1px 1px 0;
 }
-.orange {
-  color: #fff;
-  border: solid 1px #f89406;
-  background: #f89406;
+Grid table thead {
+  background-color: #E4E6F5;
 }
-.orange:hover {
-  background-color: #e98b06;
+Grid table thead td {
+  width: 50px;
 }
-.orange:active {
-  color: #e8e8e8;
-}
-.blue {
-  color: #fff;
-  border: solid 1px #049cdb;
-  background: #049cdb;
-}
-.blue:hover {
-  background-color: #0491cc;
-}
-.blue:active {
-  color: #e8e8e8;
-}
-.black {
-  color: #fff;
-  border: solid 1px #000;
-  background: #000;
-}
-.black:hover {
-  background-color: #000000;
-}
-.black:active {
-  color: #e8e8e8;
-}
-.tss-panel {
-  position: absolute;
-  vertical-align: top;
-  box-sizing: border-box;
-  border: 1px solid #049cdb;
+Grid table tbody {
   background-color: #fff;
 }
-.tss-panel-max {
-  top: 0;
-  left: 0;
-}
-.tss-panel-min {
-  height: 20px;
+Grid table tbody td {
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
 }
-.tss-panel > .content {
-  height: 96%;
+Grid .highlight {
+  background-color: #FEF7A9;
 }
-.tss-panel > .title {
-  position: relative;
-  background: url(../img/alert/title.gif) repeat-x 0px -2px;
-}
-.tss-panel > .title h2 {
-  text-align: left;
-  text-indent: 3px;
-  font-size: 1.1em;
-  height: 21px;
-  cursor: move;
-  color: #fff;
-}
-.tss-panel > .title div {
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  height: 19px;
-}
-.tss-panel > .title div span {
-  display: inline-block;
-  float: left;
-  width: 21px;
-  height: 19px;
-  margin-left: 5px;
-  cursor: pointer;
-  background: url(../img/panel.png) no-repeat;
-}
-.tss-panel > .title div span.min {
-  background-position: -29px 0;
-}
-.tss-panel > .title div span.min:hover {
-  background-position: -29px -29px;
-}
-.tss-panel > .title div span.max {
-  background-position: -60px 0;
-}
-.tss-panel > .title div span.max:hover {
-  background-position: -60px -29px;
-}
-.tss-panel > .title div span.revert {
-  background-position: -149px 0;
+Grid .hidden {
   display: none;
 }
-.tss-panel > .title div span.revert:hover {
-  background-position: -149px -29px;
+Grid .asc {
+  background: #FEF7A9 url(../img/direction_up.gif) no-repeat right 5px;
 }
-.tss-panel > .title div span.close {
-  background-position: -89px 0;
+Grid .desc {
+  background: #FEF7A9 url(../img/direction_down.gif) no-repeat right 5px;
 }
-.tss-panel > .title div span.close:hover {
-  background-position: -89px -29px;
+Grid .sorting {
+  background: #FEF7A9;
 }
-.leftbar {
-  box-sizing: content-box;
-  position: fixed;
-  bottom: 20%;
-  z-index: 100;
-  width: 30px;
-  height: 200px;
-  background-color: lightgrey;
-  border-right: 2px solid #ffc40d;
-  border-radius: 3px;
-  -moz-transition: all linear 0.3s;
-  transition: all linear 0.3s;
+/* grid列表标题栏 */
+#gridTitle {
+  position: relative;
+  height: 21px;
+  padding-left: 8px;
+  font-weight: bold;
+  background-color: #BEC6EE;
+  color: #555;
 }
-.leftbar-open {
-  left: 0;
-  border-right: 1px solid transparent;
+#gridTitle .icon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  background-image: url(../img/minus.gif);
 }
-.leftbar-hidden {
-  left: -30px;
+#gridTitle .buttonBox {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
-.leftbar .leftbar-menu {
-  width: 27px;
-  height: 110px;
-  padding: 90px 0 0 4px;
-  border-radius: 3px;
-  opacity: .5;
-}
-.leftbar .leftbar-menu:hover {
-  background-color: #f89406;
-  opacity: 1;
+#gridTitle .buttonBox .button {
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  margin: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
-.leftbar .leftbar-menu span,
-.leftbar .leftbar-menu span:before,
-.leftbar .leftbar-menu span:after {
-  position: absolute;
-  border-radius: 1px;
-  height: 5px;
-  width: 20px;
-  background: #000;
-  display: block;
-  content: '';
+#gridTitle .buttonBox .refresh {
+  background-image: url(../img/icon_refresh.gif);
 }
-.leftbar .leftbar-menu span:before {
-  top: -10px;
+#gridTitle .buttonBox .first {
+  background-image: url(../img/page/first.gif);
 }
-.leftbar .leftbar-menu span:after {
-  bottom: -10px;
+#gridTitle .buttonBox .prev {
+  background-image: url(../img/page/prev.gif);
+}
+#gridTitle .buttonBox .next {
+  background-image: url(../img/page/next.gif);
+}
+#gridTitle .buttonBox .last {
+  background-image: url(../img/page/last.gif);
+}
+#gridTitle .buttonBox select {
+  position: relative;
+  top: -4px;
+  right: 1px;
+  font-size: 10px;
 }
 /* =Calendar
 -----------------------------------------------------------------------------*/
 .pika-single {
+  box-sizing: border-box;
   z-index: 9999;
   position: relative;
   width: 202px;
@@ -713,292 +620,6 @@ img {
   fiter: gray();
   opacity: 0.4;
 }
-/* =tssForm
------------------------------------------------------------------------------*/
-/* 输入框基本样式 */
-input,
-input[type=text],
-input[type=password],
-textarea,
-select {
-  outline: none;
-  border: 1px solid #95B8E7;
-  border-radius: 3px;
-  color: #555;
-  text-indent: 3px;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-input:focus,
-input[type=text]:focus,
-input[type=password]:focus,
-textarea:focus,
-select:focus {
-  border: 1px solid #049cdb;
-  box-shadow: 0 0 3px #049cdb;
-}
-.tssForm {
-  width: 100%;
-  display: block;
-}
-.tssForm table {
-  width: 100%;
-}
-.tssForm table td {
-  padding: 3px 2px;
-}
-.tssForm label {
-  color: #555;
-}
-.tssForm input,
-.tssForm textarea,
-.tssForm select {
-  background-color: #F7FBFC;
-}
-.tssForm input,
-.tssForm select {
-  height: 20px;
-}
-.tssForm input[type='button'] {
-  border: 0;
-}
-.tssForm input.function {
-  padding-right: 18px;
-}
-.tssForm .functionBt {
-  position: relative;
-  top: 5px;
-  left: -21px;
-  display: inline-block;
-  width: 20px;
-  height: 18px;
-  background-image: url(../img/icon_function.gif);
-}
-.tssForm .required {
-  color: red;
-  margin-left: 3px;
-  margin-right: 5px;
-  font-size: 15px;
-}
-.tssForm .hidden {
-  display: none;
-}
-.tssForm .field_disabled {
-  background-color: #eee;
-}
-.comboTree {
-  padding: 1px;
-  z-index: 10002;
-  background-color: #fff;
-  border: 1px solid #95B8E7;
-  border-top: none;
-}
-.comboTree .switch {
-  width: 5px;
-}
-/* =Tree
------------------------------------------------------------------------------*/
-Tree {
-  display: block;
-  height: 100%;
-  overflow-y: scroll;
-  padding: 5px;
-  font-size: 13px;
-}
-Tree li {
-  list-style: none;
-  line-height: 22px;
-  text-align: left;
-  white-space: nowrap;
-  /* 树节点复选框 及 伸缩符号 */
-  /* 树节点自定义图标 */
-}
-Tree li ul {
-  padding-left: 18px;
-}
-Tree li a {
-  height: 17px;
-  padding: 0 1px 3px 3px;
-  display: inline-block;
-}
-Tree li a:hover {
-  text-decoration: underline;
-}
-Tree li a.active {
-  background-color: #FEF7A9;
-  font-weight: bold;
-}
-Tree li a.disable {
-  color: #A6A6A6;
-}
-Tree li span {
-  width: 16px;
-  height: 16px;
-  margin-right: 2px;
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
-}
-Tree li > span.checkbox {
-  width: 13px;
-  height: 13px;
-  margin-right: 3px;
-  background: url("../img/tree/checkbox.png") no-repeat;
-}
-Tree li > span.checkstate_0_0 {
-  background-position: 0px 0px;
-}
-Tree li > span.checkstate_1_0 {
-  background-position: 0px -36px;
-}
-Tree li > span.checkstate_2_0 {
-  background-position: 0px -24px;
-}
-Tree li > span.checkstate_0_1 {
-  background-position: 0px -72px;
-}
-Tree li > span.checkstate_1_1 {
-  background-position: 0px -48px;
-}
-Tree li > span.checkstate_2_1 {
-  background-position: 0px -48px;
-}
-Tree li > span.switch {
-  width: 18px;
-  height: 18px;
-}
-Tree li > span.node_open {
-  background-image: url("../img/tree/minus.gif");
-}
-Tree li > span.node_close {
-  background-image: url("../img/tree/plus.gif");
-}
-Tree li > span.node_leaf {
-  background: none;
-  cursor: default;
-}
-Tree li > div.selfIcon {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-right: 3px;
-  vertical-align: middle;
-}
-Tree li > div.folder {
-  background-image: url("../img/tree/folder.gif");
-}
-Tree li > div.leaf {
-  width: 0;
-  height: 0;
-  background: none;
-}
-Tree .hidden {
-  display: none;
-}
-/* =Grid
------------------------------------------------------------------------------*/
-Grid {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  padding-top: 0px;
-  /* & div { position: relative; left: 0; top: 0; } */
-}
-Grid table {
-  width: 100%;
-  height: auto;
-  table-layout: fixed;
-}
-Grid table tr {
-  height: 25px;
-}
-Grid table td {
-  text-align: center;
-  border: 1px solid #ccc;
-  border-width: 0 1px 1px 0;
-}
-Grid table thead {
-  background-color: #E4E6F5;
-}
-Grid table thead td {
-  width: 50px;
-}
-Grid table tbody {
-  background-color: #fff;
-}
-Grid table tbody td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-break: keep-all;
-}
-Grid .highlight {
-  background-color: #FEF7A9;
-}
-Grid .hidden {
-  display: none;
-}
-Grid .asc {
-  background: #FEF7A9 url(../img/direction_up.gif) no-repeat right 5px;
-}
-Grid .desc {
-  background: #FEF7A9 url(../img/direction_down.gif) no-repeat right 5px;
-}
-Grid .sorting {
-  background: #FEF7A9;
-}
-/* grid列表标题栏 */
-#gridTitle {
-  position: relative;
-  height: 21px;
-  padding-left: 8px;
-  font-weight: bold;
-  background-color: #BEC6EE;
-}
-#gridTitle .icon {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 5px;
-  background-image: url(../img/minus.gif);
-}
-#gridTitle .buttonBox {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-#gridTitle .buttonBox .button {
-  display: inline-block;
-  width: 16px;
-  height: 15px;
-  margin: 2px;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-}
-#gridTitle .buttonBox .refresh {
-  background-image: url(../img/icon_refresh.gif);
-}
-#gridTitle .buttonBox .first {
-  background-image: url(../img/page/first.gif);
-}
-#gridTitle .buttonBox .prev {
-  background-image: url(../img/page/prev.gif);
-}
-#gridTitle .buttonBox .next {
-  background-image: url(../img/page/next.gif);
-}
-#gridTitle .buttonBox .last {
-  background-image: url(../img/page/last.gif);
-}
-#gridTitle .buttonBox select {
-  position: relative;
-  top: -4px;
-  right: 1px;
-  font-size: 10px;
-}
 /* = workspace
 -----------------------------------------------------------------------------*/
 WorkSpace\:Box {
@@ -1014,6 +635,7 @@ WorkSpace\:Box WorkSpace\:TabBox {
   display: inline-block;
   width: 100%;
   height: 23px;
+  padding-left: 3px;
 }
 WorkSpace\:Box WorkSpace\:TabBox.hasTab {
   border-bottom: 1px solid #95B8E7;
@@ -1060,14 +682,15 @@ WorkSpace\:Box WorkSpace\:PhaseBox {
   display: inline-block;
   float: right;
   z-index: 100;
-  width: 20px;
+  width: 22px;
   height: 100%;
   overflow: hidden;
+  padding-right: 2px;
   background-color: #E0ECFF;
 }
 WorkSpace\:Box WorkSpace\:PhaseBox WorkSpace\:Phase {
   display: block;
-  width: 18px;
+  width: 20px;
   overflow: hidden;
   margin: 4px 3px 0 -2px;
   border: 1px solid #95B8E7;
@@ -1089,7 +712,7 @@ WorkSpace\:Box WorkSpace\:Page {
   overflow: hidden;
   padding: 20px;
   margin-right: 0;
-  background-color: #F7F8FD;
+  background-color: #fff;
   border: 1px solid #95B8E7;
   border-top: 0;
   border-right: 0;
@@ -1100,6 +723,389 @@ WorkSpace\:Box WorkSpace\:Page.tight {
 WorkSpace\:Box WorkSpace\:PageStep {
   display: block;
   width: 100%;
-  padding: 0;
+  padding: 5px 0;
   text-align: center;
+}
+/* = message
+-----------------------------------------------------------------------------*/
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.tssJS-bubble {
+  position: absolute;
+  background-color: #222;
+  color: #fff;
+  border-radius: 10px;
+  display: table;
+  /* 使垂直居中 */
+}
+.tssJS-bubble p {
+  display: table-cell;
+  padding: 5px;
+  text-align: center;
+  word-break: break-all;
+}
+/* 箭头 */
+.tssJS-bubble:after {
+  content: '';
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  position: absolute;
+}
+.tssJS-bubble-arrow-top:after {
+  border-bottom-color: #222;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -15px;
+}
+.tssJS-bubble-arrow-bottom:after {
+  border-top-color: #222;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+}
+#alert_box {
+  z-index: 99999;
+  width: 380px;
+  min-width: 360px;
+  border: solid 1px #99b1c4;
+  font-size: 12px;
+  color: #555;
+  background-color: #fff;
+}
+#alert_box .title {
+  padding-left: 8px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 22px;
+  color: #fff;
+  background-color: #049cdb;
+  cursor: move;
+}
+#alert_box .ok,
+#alert_box .cancel {
+  width: 58px;
+  height: 24px;
+  margin-right: 10px;
+  background: url(../img/alert/btn.gif) no-repeat;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+#alert_box .close {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  background: url(../img/alert/close.gif) no-repeat;
+  cursor: pointer;
+}
+#alert_box .close:hover {
+  background: url(../img/alert/close.gif) no-repeat -17px 0;
+}
+#alert_box .btbox {
+  text-align: right;
+  border-top: 1px solid #d7d7d7;
+  margin: 1em 0em 0em 1em;
+  padding-top: 10px;
+}
+#alert_box .alert {
+  background: url(../img/alert/info.gif) no-repeat 20px 18px;
+}
+#alert_box .confirm {
+  background: url(../img/alert/important.gif) no-repeat 20px 14px;
+}
+#alert_box .prompt {
+  background: url(../img/alert/help.gif) no-repeat 20px 14px;
+}
+#alert_box .content {
+  padding: 20px 12px 10px 12px;
+}
+#alert_box .message {
+  max-height: 150px;
+  padding-left: 50px;
+  padding-bottom: 10px;
+}
+#alert_box .message input {
+  margin: .5em 0em;
+  height: 25px;
+  width: 250px;
+  line-height: 22px;
+  text-indent: 3px;
+}
+#tssTip {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  display: none;
+  width: 200px;
+  overflow: hidden;
+  border: 1px solid #95B8E7;
+  font-weight: bold;
+  background-color: #fff;
+  color: #9d261d;
+  text-align: center;
+}
+#tssTip .title {
+  width: 100%;
+  height: 22px;
+  line-height: 20px;
+  background-color: #ffc40d;
+  font-size: 14px;
+}
+#tssTip .content {
+  line-height: 20px;
+  padding: 10px 4px;
+}
+#tssTip .close {
+  position: absolute;
+  right: 4px;
+  top: 1px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+/* message相关 */
+.popupBox {
+  position: absolute;
+  top: 1px;
+  left: -100px;
+  right: -100px;
+  z-Index: 10001;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  border: 1px solid #98989C;
+}
+/* relogin相关 */
+#relogin_box {
+  width: 300px;
+  border: solid 1px #95B8E7;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 14px;
+}
+#relogin_box h1 {
+  line-height: 30px;
+  padding: 0px 10px;
+  background-color: #0064cd;
+  color: #fff;
+}
+#relogin_box span {
+  display: block;
+  height: 30px;
+  margin: 15px 0px;
+  padding: 0px 10px;
+}
+#relogin_box span input {
+  margin-left: 10px;
+  height: 25px;
+}
+#relogin_box #loginName,
+#relogin_box #password {
+  width: 250px;
+}
+#relogin_box .bottonBox input {
+  width: 112px;
+  background-color: #049cdb;
+  color: #fff;
+  cursor: pointer;
+}
+#relogin_box .bottonBox input:hover {
+  background-color: #0064cd;
+}
+/* =Tool
+-----------------------------------------------------------------------------*/
+.tssbutton {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font: 16px/100% Arial, Helvetica, '微软雅黑', sans-serif;
+  padding: .5em 2em .55em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  border-radius: .5em;
+  letter-spacing: 1px;
+}
+.tssbutton:hover {
+  text-decoration: none;
+}
+.tssbutton:active {
+  position: relative;
+  top: 1px;
+}
+.bigrounded {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+.medium {
+  font-size: 12px;
+  padding: .4em 1.5em .42em;
+}
+.small {
+  font-size: 11px;
+  padding: .2em 1em .275em;
+}
+.orange {
+  color: #fff;
+  border: solid 1px #f89406;
+  background: #f89406;
+}
+.orange:hover {
+  background-color: #e98b06;
+}
+.orange:active {
+  color: #e8e8e8;
+}
+.blue {
+  color: #fff;
+  border: solid 1px #049cdb;
+  background: #049cdb;
+}
+.blue:hover {
+  background-color: #0491cc;
+}
+.blue:active {
+  color: #e8e8e8;
+}
+.black {
+  color: #fff;
+  border: solid 1px #000;
+  background: #000;
+}
+.black:hover {
+  background-color: #000000;
+}
+.black:active {
+  color: #e8e8e8;
+}
+.tss-panel {
+  position: absolute;
+  vertical-align: top;
+  box-sizing: border-box;
+  border: 1px solid #049cdb;
+  background-color: #fff;
+}
+.tss-panel-max {
+  top: 0;
+  left: 0;
+}
+.tss-panel-min {
+  height: 20px;
+  overflow: hidden;
+}
+.tss-panel > .content {
+  height: 96%;
+}
+.tss-panel > .title {
+  position: relative;
+  background-color: #049cdb;
+}
+.tss-panel > .title h2 {
+  text-align: left;
+  text-indent: 3px;
+  font-size: 1.1em;
+  height: 21px;
+  line-height: 20px;
+  cursor: move;
+  color: #fff;
+}
+.tss-panel > .title div {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  height: 19px;
+}
+.tss-panel > .title div span {
+  display: inline-block;
+  float: left;
+  width: 21px;
+  height: 19px;
+  margin-left: 5px;
+  cursor: pointer;
+  background: url(../img/panel.png) no-repeat;
+}
+.tss-panel > .title div span.min {
+  background-position: -29px 0;
+}
+.tss-panel > .title div span.min:hover {
+  background-position: -29px -29px;
+}
+.tss-panel > .title div span.max {
+  background-position: -60px 0;
+}
+.tss-panel > .title div span.max:hover {
+  background-position: -60px -29px;
+}
+.tss-panel > .title div span.revert {
+  background-position: -149px 0;
+  display: none;
+}
+.tss-panel > .title div span.revert:hover {
+  background-position: -149px -29px;
+}
+.tss-panel > .title div span.close {
+  background-position: -89px 0;
+}
+.tss-panel > .title div span.close:hover {
+  background-position: -89px -29px;
+}
+.leftbar {
+  box-sizing: content-box;
+  position: fixed;
+  bottom: 20%;
+  z-index: 100;
+  width: 30px;
+  height: 200px;
+  background-color: lightgrey;
+  border-right: 2px solid #ffc40d;
+  border-radius: 3px;
+  -moz-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+.leftbar-open {
+  left: 0;
+  border-right: 1px solid transparent;
+}
+.leftbar-hidden {
+  left: -30px;
+}
+.leftbar .leftbar-menu {
+  width: 27px;
+  height: 110px;
+  padding: 90px 0 0 4px;
+  border-radius: 3px;
+  opacity: .5;
+}
+.leftbar .leftbar-menu:hover {
+  background-color: #f89406;
+  opacity: 1;
+  cursor: pointer;
+}
+.leftbar .leftbar-menu span,
+.leftbar .leftbar-menu span:before,
+.leftbar .leftbar-menu span:after {
+  position: absolute;
+  border-radius: 1px;
+  height: 5px;
+  width: 20px;
+  background: #000;
+  display: block;
+  content: '';
+}
+.leftbar .leftbar-menu span:before {
+  top: -10px;
+}
+.leftbar .leftbar-menu span:after {
+  bottom: -10px;
 }
