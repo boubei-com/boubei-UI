@@ -8,8 +8,7 @@ Tree {
 	display: block; 
 	height: 100%; 
 	overflow-y: scroll;
-	padding: 5px; 
-	font-size: 13px;
+	padding: 5px; 	
 
 	& li { 
 		list-style: none; line-height: 22px; text-align: left; white-space: nowrap; 
@@ -19,6 +18,7 @@ Tree {
 			height: 17px;
 			padding: 0 1px 3px 3px; 
 			display: inline-block;
+			font-size: 14px;
 
 			&:hover { text-decoration: underline; }
 			&.active { background-color: @highlight; font-weight: bold; }
@@ -50,7 +50,7 @@ Tree {
 		&>div {
 			&.selfIcon { 
 				display: inline-block; 
-				width: 15px; height: 14px; margin-right: 3px; 
+				width: 15px; height: 15px; margin-right: 3px; 
 				vertical-align: middle; 
 			}
 			&.folder { background-image: url("../img/tree/folder.gif"); }

@@ -157,6 +157,9 @@ textarea:focus,
 select:focus {
   box-shadow: 0 0 3px #049cdb;
 }
+input[type=file] {
+  background-color: inherit;
+}
 input[type=button]:focus {
   box-shadow: none;
 }
@@ -229,7 +232,6 @@ Tree {
   height: 100%;
   overflow-y: scroll;
   padding: 5px;
-  font-size: 13px;
 }
 Tree li {
   list-style: none;
@@ -246,6 +248,7 @@ Tree li a {
   height: 17px;
   padding: 0 1px 3px 3px;
   display: inline-block;
+  font-size: 14px;
 }
 Tree li a:hover {
   text-decoration: underline;
@@ -306,7 +309,7 @@ Tree li > span.node_leaf {
 Tree li > div.selfIcon {
   display: inline-block;
   width: 15px;
-  height: 14px;
+  height: 15px;
   margin-right: 3px;
   vertical-align: middle;
 }
@@ -950,11 +953,11 @@ WorkSpace\:Box WorkSpace\:PageStep {
 }
 .medium {
   font-size: 12px;
-  padding: .4em 1.5em .42em;
+  padding: .4em 1.5em .4em;
 }
 .small {
   font-size: 11px;
-  padding: .2em 1em .275em;
+  padding: .2em 1em .2em;
 }
 .orange {
   color: #fff;
