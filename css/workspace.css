@@ -1,3 +1,18 @@
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.text3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 /* = workspace
 -----------------------------------------------------------------------------*/
 WorkSpace\:Box {
@@ -43,7 +58,7 @@ WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab div {
   text-indent: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: keep-all;
+  word-break: break-all;
   white-space: nowrap;
 }
 WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab WorkSpace\:Icon {

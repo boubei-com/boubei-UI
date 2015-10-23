@@ -86,3 +86,7 @@
     -o-transform: rotate(@deg);
     transform: rotate(@deg);
 }
+
+.text2 { overflow: hidden; text-overflow: ellipsis; }
+.text1 { .text2; word-break: break-all; }
+.text3 { .text1; white-space: nowrap; }

@@ -1,3 +1,18 @@
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.text3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 /* =Grid
 -----------------------------------------------------------------------------*/
 Grid {
@@ -21,9 +36,10 @@ Grid table td {
   text-align: center;
   border: 1px solid #ccc;
   border-width: 0 1px 1px 0;
+  padding: 0 2px;
 }
 Grid table thead {
-  background-color: #E4E6F5;
+  background: linear-gradient(#f9f9f9 0px, #efefef 100%) repeat-x;
 }
 Grid table thead td {
   width: 50px;
@@ -34,8 +50,8 @@ Grid table tbody {
 Grid table tbody td {
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-all;
   white-space: nowrap;
-  word-break: keep-all;
 }
 Grid .highlight {
   background-color: #FEF7A9;

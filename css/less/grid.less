@@ -15,19 +15,21 @@ Grid {
 		height: auto;
 		table-layout: fixed;
 
-		& tr { height:25px; }
+		& tr { height: 25px; }
 		& td {
 			text-align: center; 
-			border: 1px solid #ccc; border-width: 0 1px 1px 0;
+			border: 1px solid @grayLight2; 
+			border-width: 0 1px 1px 0;
+			padding: 0 2px;
 		}
 
 		& thead {
-			background-color: #E4E6F5; 
+			background: linear-gradient(rgb(249, 249, 249) 0px, rgb(239, 239, 239) 100%) repeat-x;
 			& td { width: 50px; }
 		}
 		& tbody {
-			background-color: #fff;
-			& td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: keep-all; }
+			background-color: @white;
+			& td { .text3; }
 		}
 	}
 

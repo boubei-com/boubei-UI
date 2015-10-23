@@ -4,9 +4,6 @@
 
 /* = message
 -----------------------------------------------------------------------------*/
-.text2 { overflow: hidden; text-overflow: ellipsis; }
-.text1 { .text2; word-break: break-all; }
-
 
 .tssJS-bubble {  
 	position: absolute; 
@@ -30,8 +27,8 @@
 #alert_box { 
 	z-index: 99999; 
 	width: 380px; min-width: 360px; 
-	border: solid 1px #99b1c4; 
-	font-size: @fontSize; 
+	border: solid 1px @borderColor; 
+	font-size: 13px; 
 	color: @textColor; 
 	background-color: @white; 
 
@@ -58,7 +55,7 @@
 
 		&:hover { background:url(../img/alert/close.gif) no-repeat -17px 0; }
 	}
-	& .btbox   { text-align: right; border-top: 1px solid #d7d7d7; margin: 1em 0em 0em 1em; padding-top: 10px; }
+	& .btbox   { text-align: right; border-top: 1px solid @hrColor; margin: 1em 0em 0em 1em; padding-top: 10px; }
 	& .alert   { background: url(../img/alert/info.gif) no-repeat 20px 18px; }
 	& .confirm { background: url(../img/alert/important.gif) no-repeat 20px 14px; }
 	& .prompt  { background: url(../img/alert/help.gif) no-repeat 20px 14px; }
@@ -85,12 +82,13 @@
 	& .close { position: absolute; right: 4px; top: 1px; color: @white; cursor: pointer; font-size: 16px; }
 }
 
-/* message相关 */
+/* message相关: 目前就 reloginBox 用到 */
 .popupBox { 
-	position: absolute; top: 1px; left: -100px; right: -100px; z-Index: 10001;
-	margin-left: auto; margin-right: auto; 
+	z-Index: 10001;
+	position: absolute; top: 1px; 
+	left: -100px; right: -100px; margin-left: auto; margin-right: auto; /* 使居中 */
 	background-color: @white; 
-	border: 1px solid #98989C; 
+	border: 1px solid @borderColor; 
 }
 
 /* relogin相关 */

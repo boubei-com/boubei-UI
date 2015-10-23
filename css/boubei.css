@@ -5,6 +5,21 @@
  * Copyright 2015 杭州卜贝软件有限公司
  * Licensed under the MIT License
  */
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.text3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 /* =Reset
 -----------------------------------------------------------------------------*/
 html {
@@ -347,9 +362,10 @@ Grid table td {
   text-align: center;
   border: 1px solid #ccc;
   border-width: 0 1px 1px 0;
+  padding: 0 2px;
 }
 Grid table thead {
-  background-color: #E4E6F5;
+  background: linear-gradient(#f9f9f9 0px, #efefef 100%) repeat-x;
 }
 Grid table thead td {
   width: 50px;
@@ -360,8 +376,8 @@ Grid table tbody {
 Grid table tbody td {
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-all;
   white-space: nowrap;
-  word-break: keep-all;
 }
 Grid .highlight {
   background-color: #FEF7A9;
@@ -439,7 +455,7 @@ Grid .sorting {
   padding: 6px;
   color: #555;
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #95B8E7;
 }
 .pika-single.is-hidden {
   display: none;
@@ -523,7 +539,7 @@ Grid .sorting {
   font-size: 14px;
   line-height: 15px;
   text-align: right;
-  background: #f5f5f5;
+  background: #E0ECFF;
   color: #555;
   cursor: pointer;
 }
@@ -561,9 +577,14 @@ Grid .sorting {
   float: right;
   width: 50px;
   margin-right: 70px;
+  padding: 1px;
+  border-radius: 2px;
   background-color: #049cdb;
   color: #fff;
   letter-spacing: 3px;
+}
+.pika-single .timeAera button:hover {
+  background-color: #f89406;
 }
 /* =Menu
 -----------------------------------------------------------------------------*/
@@ -668,7 +689,7 @@ WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab div {
   text-indent: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: keep-all;
+  word-break: break-all;
   white-space: nowrap;
 }
 WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab WorkSpace\:Icon {
@@ -731,15 +752,6 @@ WorkSpace\:Box WorkSpace\:PageStep {
 }
 /* = message
 -----------------------------------------------------------------------------*/
-.text2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.text1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-all;
-}
 .tssJS-bubble {
   position: absolute;
   background-color: #222;
@@ -778,15 +790,15 @@ WorkSpace\:Box WorkSpace\:PageStep {
   z-index: 99999;
   width: 380px;
   min-width: 360px;
-  border: solid 1px #99b1c4;
-  font-size: 12px;
+  border: solid 1px #95B8E7;
+  font-size: 13px;
   color: #555;
   background-color: #fff;
 }
 #alert_box .title {
   padding-left: 8px;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 22px;
   color: #fff;
   background-color: #049cdb;
@@ -816,7 +828,7 @@ WorkSpace\:Box WorkSpace\:PageStep {
 }
 #alert_box .btbox {
   text-align: right;
-  border-top: 1px solid #d7d7d7;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin: 1em 0em 0em 1em;
   padding-top: 10px;
 }
@@ -876,17 +888,18 @@ WorkSpace\:Box WorkSpace\:PageStep {
   cursor: pointer;
   font-size: 16px;
 }
-/* message相关 */
+/* message相关: 目前就 reloginBox 用到 */
 .popupBox {
+  z-Index: 10001;
   position: absolute;
   top: 1px;
   left: -100px;
   right: -100px;
-  z-Index: 10001;
   margin-left: auto;
   margin-right: auto;
+  /* 使居中 */
   background-color: #fff;
-  border: 1px solid #98989C;
+  border: 1px solid #95B8E7;
 }
 /* relogin相关 */
 #relogin_box {
