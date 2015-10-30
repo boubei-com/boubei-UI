@@ -1,3 +1,18 @@
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.text3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 /* =Menu
 -----------------------------------------------------------------------------*/
 .rmenu {
@@ -6,6 +21,7 @@
   padding: 1px;
   border: 1px solid #95B8E7;
   background: #fff url(../img/menu_bg.gif) repeat-y;
+  box-shadow: #555 0px 0px 5px;
 }
 .rmenu div {
   position: relative;

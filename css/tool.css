@@ -1,3 +1,18 @@
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.text3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 /* =Tool
 -----------------------------------------------------------------------------*/
 .tssbutton {
@@ -7,9 +22,9 @@
   text-align: center;
   text-decoration: none;
   font: 16px/100% Arial, Helvetica, '微软雅黑', sans-serif;
-  padding: .5em 2em .55em;
+  padding: .5em 2em .5em;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  border-radius: .5em;
+  border-radius: 3px;
   letter-spacing: 1px;
 }
 .tssbutton:hover {
@@ -26,11 +41,11 @@
 }
 .medium {
   font-size: 12px;
-  padding: .4em 1.5em .4em;
+  padding: .4em 1em .4em;
 }
 .small {
   font-size: 11px;
-  padding: .2em 1em .2em;
+  padding: .2em .8em .2em;
 }
 .orange {
   color: #fff;
@@ -38,7 +53,7 @@
   background: #f89406;
 }
 .orange:hover {
-  background-color: #e98b06;
+  background-color: #bc7005;
 }
 .orange:active {
   color: #e8e8e8;
@@ -49,20 +64,31 @@
   background: #049cdb;
 }
 .blue:hover {
-  background-color: #0491cc;
+  background-color: #03719f;
 }
 .blue:active {
   color: #e8e8e8;
 }
-.black {
+.green {
   color: #fff;
-  border: solid 1px #000;
-  background: #000;
+  border: solid 1px #8bcf7b;
+  background: #8bcf7b;
 }
-.black:hover {
-  background-color: #000000;
+.green:hover {
+  background-color: #64bf4e;
 }
-.black:active {
+.green:active {
+  color: #e8e8e8;
+}
+.red {
+  color: #fff;
+  border: solid 1px #e36f5f;
+  background: #e36f5f;
+}
+.red:hover {
+  background-color: #da402b;
+}
+.red:active {
   color: #e8e8e8;
 }
 .tss-panel {

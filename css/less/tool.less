@@ -11,9 +11,9 @@
   text-align: center;
   text-decoration: none;
   font: 16px/100% @fontFamily;
-  padding: .5em 2em .55em;
+  padding: .5em 2em .5em;
   text-shadow: 0 1px 1px rgba(0,0,0,.3);
-  border-radius: .5em;
+  border-radius: 3px;
   letter-spacing: 1px;
 }
 .tssbutton:hover { text-decoration: none; }
@@ -24,15 +24,15 @@
      -moz-border-radius: 2em; 
           border-radius: 2em; 
 }
-.medium { font-size: 12px; padding: .4em 1.5em .4em; }
-.small  { font-size: 11px; padding: .2em 1em .2em;}
+.medium { font-size: 12px; padding: .4em 1em .4em; }
+.small  { font-size: 11px; padding: .2em .8em .2em;}
 
 .create-btn(@color, @bgcolor) {  
   color: @color; 
   border: solid 1px @bgcolor; 
   background: @bgcolor; 
 
-  &:hover { .background-color-dark(@bgcolor, 3); }
+  &:hover { .background-color-dark(@bgcolor, 12); }
   &:active { .color-dark(@color, 9) }
 }
 
@@ -42,8 +42,11 @@
 .blue {
   .create-btn(@white, @blue);
 }
-.black {
-  .create-btn(@white, @black);
+.green {
+  .create-btn(@white, @green);
+}
+.red {
+  .create-btn(@white, @tiered);
 }
 
 

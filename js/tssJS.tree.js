@@ -699,7 +699,7 @@
                 node = findedNodes[++ currentIndex % findedNodes.length];
             }
             else {
-                $(tree.el).notice("没有找到名称含有【" + lastSearchStr + "】的树节点。");
+                $.alert("没有找到名称含有【" + lastSearchStr + "】的树节点。");
             }
             tree.setActiveTreeNode(node);
         }

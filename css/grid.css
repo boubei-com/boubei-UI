@@ -71,7 +71,7 @@ Grid .sorting {
 /* grid列表标题栏 */
 #gridTitle {
   position: relative;
-  height: 21px;
+  height: 23px;
   padding-left: 8px;
   font-weight: bold;
   background-color: #BEC6EE;
@@ -86,7 +86,7 @@ Grid .sorting {
 }
 #gridTitle .buttonBox {
   position: absolute;
-  top: 0;
+  top: 1px;
   right: 0;
 }
 #gridTitle .buttonBox .button {
