@@ -1,6 +1,7 @@
 
 @import "variables.less";
 @import "mixins.less";
+@import "tool.less";
 
 /* = message
 -----------------------------------------------------------------------------*/
@@ -31,22 +32,25 @@
 	font-size: 13px; 
 	color: @textColor; 
 	background-color: @white; 
+	box-shadow: @gray 0px 0px 20px;
+	border-radius: 0 0 5px 5px;
 
 	& .title {
-		padding-left: 8px; 
+		padding-left: 4px; 
 		font-weight: bold; 
 		font-size: 13px; 
+		letter-spacing: 1px;
 		line-height: 22px; 
 		color: @white; 		
 		background-color: @blue;
 		cursor: move;
 	}
 	& .ok, .cancel { 
-		width: 58px; height: 24px; margin-right: 10px;
-		background: url(../img/alert/btn.gif) no-repeat; 
-		border: none; 
-		cursor: pointer; 
-		text-align: center;  
+		.create-btn(@white, @blue);
+		font-size: 11px; padding: .2em .8em .2em; margin-left: 1em; 
+		
+		&:hover { text-decoration: none; }
+  		&:active { position: relative; top: 1px;}
 	}
 	& .close {
 		position: absolute; right: 3px; top: 3px; width: 16px; height: 16px; 
@@ -93,28 +97,24 @@
 
 /* relogin相关 */
 #relogin_box { 
-	width:300px; 
-	border: solid 1px @borderColor; border-radius:5px; 
-	background-color: @white; 
-	
+	width: 300px; 
+	border: solid 1px @borderColor; border-radius: 0 0 5px 5px; 
+	background-color: @white; 	
 	font-size: 14px; 
 
-	& h1 { line-height: 30px; padding: 0px 10px; background-color: @blueDark; color: @white; }
+	& h1 { line-height: 25px; padding: 0px 10px; background-color: @blue; color: @white; }
 	& span { 
 		display: block; height: 30px; 
-		margin: 15px 0px; 
+		margin: 14px 0px; 
 		padding: 0px 10px; 
 
-		& input { margin-left: 10px; height: 25px; }
+		& input { margin-left: 10px; height: 28px; }
 	} 
 	& #loginName, #password { 
 		width: 250px; 
 	}
-	& .bottonBox input { 
-		width: 112px; 
-		background-color: @blue; color: @white;
-		cursor: pointer;		
-
-		&:hover { background-color: @blueDark; }
+	& .bottonBox button { 
+		width: 112px; height: 24px; font-size: 14px;
+		margin-left: 10px;		
 	}	
 }

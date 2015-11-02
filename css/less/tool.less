@@ -7,17 +7,16 @@
 .tssbutton {
   display: inline-block;
   outline: none;
-  cursor: pointer;
   text-align: center;
   text-decoration: none;
   font: 16px/100% @fontFamily;
   padding: .5em 2em .5em;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
   border-radius: 3px;
   letter-spacing: 1px;
+
+  &:hover { text-decoration: none; }
+  &:active { position: relative; top: 1px;}
 }
-.tssbutton:hover { text-decoration: none; }
-.tssbutton:active { position: relative; top: 1px;}
 
 .bigrounded { 
   -webkit-border-radius: 2em; 
@@ -31,6 +30,8 @@
   color: @color; 
   border: solid 1px @bgcolor; 
   background: @bgcolor; 
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
 
   &:hover { .background-color-dark(@bgcolor, 12); }
   &:active { .color-dark(@color, 9) }
@@ -56,6 +57,8 @@
   box-sizing: border-box; 
   border: 1px solid @blue; 
   background-color: @white; 
+  box-shadow: @gray 0px 0px 80px;
+  border-radius: 0 0 5px 5px;
 }
 .tss-panel-max { top: 0; left: 0; }
 .tss-panel-min { height: 20px; overflow: hidden; }

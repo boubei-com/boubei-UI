@@ -5,6 +5,8 @@
  * Copyright 2015 杭州卜贝软件有限公司
  * Licensed under the MIT License
  */
+/* =Mixins
+-----------------------------------------------------------------------------*/
 .text2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -397,11 +399,12 @@ Grid .sorting {
 /* grid列表标题栏 */
 #gridTitle {
   position: relative;
-  height: 23px;
+  height: 22px;
   padding-left: 8px;
   font-weight: bold;
-  background-color: #BEC6EE;
+  background-color: #E0ECFF;
   color: #555;
+  border-bottom: 1px solid #95B8E7;
 }
 #gridTitle .icon {
   display: inline-block;
@@ -412,7 +415,7 @@ Grid .sorting {
 }
 #gridTitle .buttonBox {
   position: absolute;
-  top: 1px;
+  top: 2px;
   right: 0;
 }
 #gridTitle .buttonBox .button {
@@ -441,7 +444,7 @@ Grid .sorting {
 }
 #gridTitle .buttonBox select {
   position: relative;
-  top: -4px;
+  top: -6px;
   right: 1px;
   font-size: 10px;
 }
@@ -594,7 +597,8 @@ Grid .sorting {
   padding: 1px;
   border: 1px solid #95B8E7;
   background: #fff url(../img/menu_bg.gif) repeat-y;
-  box-shadow: #555 0px 0px 5px;
+  box-shadow: #555 0px 0px 20px;
+  border-radius: 5px;
 }
 .rmenu div {
   position: relative;
@@ -795,11 +799,14 @@ WorkSpace\:Box WorkSpace\:PageStep {
   font-size: 13px;
   color: #555;
   background-color: #fff;
+  box-shadow: #555 0px 0px 20px;
+  border-radius: 0 0 5px 5px;
 }
 #alert_box .title {
-  padding-left: 8px;
+  padding-left: 4px;
   font-weight: bold;
   font-size: 13px;
+  letter-spacing: 1px;
   line-height: 22px;
   color: #fff;
   background-color: #049cdb;
@@ -807,13 +814,31 @@ WorkSpace\:Box WorkSpace\:PageStep {
 }
 #alert_box .ok,
 #alert_box .cancel {
-  width: 58px;
-  height: 24px;
-  margin-right: 10px;
-  background: url(../img/alert/btn.gif) no-repeat;
-  border: none;
+  color: #fff;
+  border: solid 1px #049cdb;
+  background: #049cdb;
   cursor: pointer;
-  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  font-size: 11px;
+  padding: .2em .8em .2em;
+  margin-left: 1em;
+}
+#alert_box .ok:hover,
+#alert_box .cancel:hover {
+  background-color: #03719f;
+}
+#alert_box .ok:active,
+#alert_box .cancel:active {
+  color: #e8e8e8;
+}
+#alert_box .ok:hover,
+#alert_box .cancel:hover {
+  text-decoration: none;
+}
+#alert_box .ok:active,
+#alert_box .cancel:active {
+  position: relative;
+  top: 1px;
 }
 #alert_box .close {
   position: absolute;
@@ -906,50 +931,45 @@ WorkSpace\:Box WorkSpace\:PageStep {
 #relogin_box {
   width: 300px;
   border: solid 1px #95B8E7;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   background-color: #fff;
   font-size: 14px;
 }
 #relogin_box h1 {
-  line-height: 30px;
+  line-height: 25px;
   padding: 0px 10px;
-  background-color: #0064cd;
+  background-color: #049cdb;
   color: #fff;
 }
 #relogin_box span {
   display: block;
   height: 30px;
-  margin: 15px 0px;
+  margin: 14px 0px;
   padding: 0px 10px;
 }
 #relogin_box span input {
   margin-left: 10px;
-  height: 25px;
+  height: 28px;
 }
 #relogin_box #loginName,
 #relogin_box #password {
   width: 250px;
 }
-#relogin_box .bottonBox input {
+#relogin_box .bottonBox button {
   width: 112px;
-  background-color: #049cdb;
-  color: #fff;
-  cursor: pointer;
-}
-#relogin_box .bottonBox input:hover {
-  background-color: #0064cd;
+  height: 24px;
+  font-size: 14px;
+  margin-left: 10px;
 }
 /* =Tool
 -----------------------------------------------------------------------------*/
 .tssbutton {
   display: inline-block;
   outline: none;
-  cursor: pointer;
   text-align: center;
   text-decoration: none;
   font: 16px/100% Arial, Helvetica, '微软雅黑', sans-serif;
   padding: .5em 2em .5em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   letter-spacing: 1px;
 }
@@ -977,6 +997,8 @@ WorkSpace\:Box WorkSpace\:PageStep {
   color: #fff;
   border: solid 1px #f89406;
   background: #f89406;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .orange:hover {
   background-color: #bc7005;
@@ -988,6 +1010,8 @@ WorkSpace\:Box WorkSpace\:PageStep {
   color: #fff;
   border: solid 1px #049cdb;
   background: #049cdb;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .blue:hover {
   background-color: #03719f;
@@ -999,6 +1023,8 @@ WorkSpace\:Box WorkSpace\:PageStep {
   color: #fff;
   border: solid 1px #8bcf7b;
   background: #8bcf7b;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .green:hover {
   background-color: #64bf4e;
@@ -1010,6 +1036,8 @@ WorkSpace\:Box WorkSpace\:PageStep {
   color: #fff;
   border: solid 1px #e36f5f;
   background: #e36f5f;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .red:hover {
   background-color: #da402b;
@@ -1023,6 +1051,8 @@ WorkSpace\:Box WorkSpace\:PageStep {
   box-sizing: border-box;
   border: 1px solid #049cdb;
   background-color: #fff;
+  box-shadow: #555 0px 0px 80px;
+  border-radius: 0 0 5px 5px;
 }
 .tss-panel-max {
   top: 0;

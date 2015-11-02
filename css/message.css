@@ -1,3 +1,5 @@
+/* =Mixins
+-----------------------------------------------------------------------------*/
 .text2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -12,6 +14,212 @@
   text-overflow: ellipsis;
   word-break: break-all;
   white-space: nowrap;
+}
+/* =Tool
+-----------------------------------------------------------------------------*/
+.tssbutton {
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  font: 16px/100% Arial, Helvetica, '微软雅黑', sans-serif;
+  padding: .5em 2em .5em;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+.tssbutton:hover {
+  text-decoration: none;
+}
+.tssbutton:active {
+  position: relative;
+  top: 1px;
+}
+.bigrounded {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+.medium {
+  font-size: 12px;
+  padding: .4em 1em .4em;
+}
+.small {
+  font-size: 11px;
+  padding: .2em .8em .2em;
+}
+.orange {
+  color: #fff;
+  border: solid 1px #f89406;
+  background: #f89406;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.orange:hover {
+  background-color: #bc7005;
+}
+.orange:active {
+  color: #e8e8e8;
+}
+.blue {
+  color: #fff;
+  border: solid 1px #049cdb;
+  background: #049cdb;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.blue:hover {
+  background-color: #03719f;
+}
+.blue:active {
+  color: #e8e8e8;
+}
+.green {
+  color: #fff;
+  border: solid 1px #8bcf7b;
+  background: #8bcf7b;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.green:hover {
+  background-color: #64bf4e;
+}
+.green:active {
+  color: #e8e8e8;
+}
+.red {
+  color: #fff;
+  border: solid 1px #e36f5f;
+  background: #e36f5f;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.red:hover {
+  background-color: #da402b;
+}
+.red:active {
+  color: #e8e8e8;
+}
+.tss-panel {
+  position: absolute;
+  vertical-align: top;
+  box-sizing: border-box;
+  border: 1px solid #049cdb;
+  background-color: #fff;
+  box-shadow: #555 0px 0px 80px;
+  border-radius: 0 0 5px 5px;
+}
+.tss-panel-max {
+  top: 0;
+  left: 0;
+}
+.tss-panel-min {
+  height: 20px;
+  overflow: hidden;
+}
+.tss-panel > .content {
+  height: 96%;
+}
+.tss-panel > .title {
+  position: relative;
+  background-color: #049cdb;
+}
+.tss-panel > .title h2 {
+  text-align: left;
+  text-indent: 3px;
+  font-size: 1.1em;
+  height: 21px;
+  line-height: 20px;
+  cursor: move;
+  color: #fff;
+}
+.tss-panel > .title div {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  height: 19px;
+}
+.tss-panel > .title div span {
+  display: inline-block;
+  float: left;
+  width: 21px;
+  height: 19px;
+  margin-left: 5px;
+  cursor: pointer;
+  background: url(../img/panel.png) no-repeat;
+}
+.tss-panel > .title div span.min {
+  background-position: -29px 0;
+}
+.tss-panel > .title div span.min:hover {
+  background-position: -29px -29px;
+}
+.tss-panel > .title div span.max {
+  background-position: -60px 0;
+}
+.tss-panel > .title div span.max:hover {
+  background-position: -60px -29px;
+}
+.tss-panel > .title div span.revert {
+  background-position: -149px 0;
+  display: none;
+}
+.tss-panel > .title div span.revert:hover {
+  background-position: -149px -29px;
+}
+.tss-panel > .title div span.close {
+  background-position: -89px 0;
+}
+.tss-panel > .title div span.close:hover {
+  background-position: -89px -29px;
+}
+.leftbar {
+  box-sizing: content-box;
+  position: fixed;
+  bottom: 20%;
+  z-index: 100;
+  width: 30px;
+  height: 200px;
+  background-color: lightgrey;
+  border-right: 2px solid #ffc40d;
+  border-radius: 3px;
+  -moz-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+.leftbar-open {
+  left: 0;
+  border-right: 1px solid transparent;
+}
+.leftbar-hidden {
+  left: -30px;
+}
+.leftbar .leftbar-menu {
+  width: 27px;
+  height: 110px;
+  padding: 90px 0 0 4px;
+  border-radius: 3px;
+  opacity: .5;
+}
+.leftbar .leftbar-menu:hover {
+  background-color: #f89406;
+  opacity: 1;
+  cursor: pointer;
+}
+.leftbar .leftbar-menu span,
+.leftbar .leftbar-menu span:before,
+.leftbar .leftbar-menu span:after {
+  position: absolute;
+  border-radius: 1px;
+  height: 5px;
+  width: 20px;
+  background: #000;
+  display: block;
+  content: '';
+}
+.leftbar .leftbar-menu span:before {
+  top: -10px;
+}
+.leftbar .leftbar-menu span:after {
+  bottom: -10px;
 }
 /* = message
 -----------------------------------------------------------------------------*/
@@ -57,11 +265,14 @@
   font-size: 13px;
   color: #555;
   background-color: #fff;
+  box-shadow: #555 0px 0px 20px;
+  border-radius: 0 0 5px 5px;
 }
 #alert_box .title {
-  padding-left: 8px;
+  padding-left: 4px;
   font-weight: bold;
   font-size: 13px;
+  letter-spacing: 1px;
   line-height: 22px;
   color: #fff;
   background-color: #049cdb;
@@ -69,13 +280,31 @@
 }
 #alert_box .ok,
 #alert_box .cancel {
-  width: 58px;
-  height: 24px;
-  margin-right: 10px;
-  background: url(../img/alert/btn.gif) no-repeat;
-  border: none;
+  color: #fff;
+  border: solid 1px #049cdb;
+  background: #049cdb;
   cursor: pointer;
-  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  font-size: 11px;
+  padding: .2em .8em .2em;
+  margin-left: 1em;
+}
+#alert_box .ok:hover,
+#alert_box .cancel:hover {
+  background-color: #03719f;
+}
+#alert_box .ok:active,
+#alert_box .cancel:active {
+  color: #e8e8e8;
+}
+#alert_box .ok:hover,
+#alert_box .cancel:hover {
+  text-decoration: none;
+}
+#alert_box .ok:active,
+#alert_box .cancel:active {
+  position: relative;
+  top: 1px;
 }
 #alert_box .close {
   position: absolute;
@@ -168,36 +397,33 @@
 #relogin_box {
   width: 300px;
   border: solid 1px #95B8E7;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   background-color: #fff;
   font-size: 14px;
 }
 #relogin_box h1 {
-  line-height: 30px;
+  line-height: 25px;
   padding: 0px 10px;
-  background-color: #0064cd;
+  background-color: #049cdb;
   color: #fff;
 }
 #relogin_box span {
   display: block;
   height: 30px;
-  margin: 15px 0px;
+  margin: 14px 0px;
   padding: 0px 10px;
 }
 #relogin_box span input {
   margin-left: 10px;
-  height: 25px;
+  height: 28px;
 }
 #relogin_box #loginName,
 #relogin_box #password {
   width: 250px;
 }
-#relogin_box .bottonBox input {
+#relogin_box .bottonBox button {
   width: 112px;
-  background-color: #049cdb;
-  color: #fff;
-  cursor: pointer;
-}
-#relogin_box .bottonBox input:hover {
-  background-color: #0064cd;
+  height: 24px;
+  font-size: 14px;
+  margin-left: 10px;
 }

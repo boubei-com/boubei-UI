@@ -43,17 +43,18 @@ Grid {
 /* grid列表标题栏 */
 #gridTitle { 
 	position:relative;
-	height: 23px; padding-left: 8px;
+	height: 22px; padding-left: 8px;
 	font-weight: bold; 
-	background-color: @barColor; 
+	background-color: @blueLight; 
 	color: @textColor;
+	border-bottom: 1px solid @borderColor;
 
 	& .icon { 
 		display: inline-block; width: 8px; height: 8px; margin-right: 5px; 
 		background-image: url(../img/minus.gif); 
 	}
 	& .buttonBox { 
-		position: absolute; top: 1px; right: 0; 
+		position: absolute; top: 2px; right: 0; 
 
 		& .button  { 
 			display: inline-block; width: 16px; height: 15px; margin: 2px; 
@@ -66,6 +67,6 @@ Grid {
 		& .next    { background-image: url(../img/page/next.gif); }
 		& .last    { background-image: url(../img/page/last.gif); }
 		
-		& select { position: relative; top: -4px; right: 1px; font-size: 10px; }
+		& select { position: relative; top: -6px; right: 1px; font-size: 10px; }
 	}
 }

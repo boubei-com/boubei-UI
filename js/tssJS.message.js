@@ -227,8 +227,8 @@
             boxHtml[boxHtml.length] = "<span> <input type='text' id='loginName' placeholder='请输入您的账号'/> </span>";
             boxHtml[boxHtml.length] = "<span> <input type='password' id='password' placeholder='请输入您的密码' /> </span>";
             boxHtml[boxHtml.length] = "<span class='bottonBox'>";
-            boxHtml[boxHtml.length] = "  <input type='button' id='bt_login'  value='确  定'/>&nbsp;&nbsp;";
-            boxHtml[boxHtml.length] = "  <input type='button' id='bt_cancel' value='取  消'/>";
+            boxHtml[boxHtml.length] = "  <button class='tssbutton blue small' id='bt_login'>确  定</button> &nbsp;&nbsp;";
+            boxHtml[boxHtml.length] = "  <button class='tssbutton blue small' id='bt_cancel'>取  消</button>";
             boxHtml[boxHtml.length] = "</span>";
 
             reloginBox = $.createElement("div", "popupBox", "relogin_box");    

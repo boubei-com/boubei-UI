@@ -1,3 +1,5 @@
+/* =Mixins
+-----------------------------------------------------------------------------*/
 .text2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -18,12 +20,10 @@
 .tssbutton {
   display: inline-block;
   outline: none;
-  cursor: pointer;
   text-align: center;
   text-decoration: none;
   font: 16px/100% Arial, Helvetica, '微软雅黑', sans-serif;
   padding: .5em 2em .5em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   letter-spacing: 1px;
 }
@@ -51,6 +51,8 @@
   color: #fff;
   border: solid 1px #f89406;
   background: #f89406;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .orange:hover {
   background-color: #bc7005;
@@ -62,6 +64,8 @@
   color: #fff;
   border: solid 1px #049cdb;
   background: #049cdb;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .blue:hover {
   background-color: #03719f;
@@ -73,6 +77,8 @@
   color: #fff;
   border: solid 1px #8bcf7b;
   background: #8bcf7b;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .green:hover {
   background-color: #64bf4e;
@@ -84,6 +90,8 @@
   color: #fff;
   border: solid 1px #e36f5f;
   background: #e36f5f;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 .red:hover {
   background-color: #da402b;
@@ -97,6 +105,8 @@
   box-sizing: border-box;
   border: 1px solid #049cdb;
   background-color: #fff;
+  box-shadow: #555 0px 0px 80px;
+  border-radius: 0 0 5px 5px;
 }
 .tss-panel-max {
   top: 0;
