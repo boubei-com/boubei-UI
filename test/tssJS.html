@@ -16,6 +16,11 @@
 
 	 $(function() {
  		$.assertEquals("1.2.0", this.version, "get tssJS.version error.");
+
+ 		console.log("IE: " + $.isIE);
+ 		console.log("Chrome: " + $.isChrome);
+ 		console.log("Firefox: " + $.isFirefox);
+ 		console.log("isWebKit: " + $.isWebKit);
 	 });
 
 

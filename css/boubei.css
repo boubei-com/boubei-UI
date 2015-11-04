@@ -204,6 +204,7 @@ select {
 .tssForm input,
 .tssForm select {
   height: 20px;
+  min-width: 50px;
 }
 .tssForm input[type='button'] {
   border: 0;
@@ -247,7 +248,7 @@ select {
 Tree {
   display: block;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 5px;
 }
 Tree li {
@@ -349,7 +350,8 @@ Grid {
   width: 100%;
   height: 100%;
   overflow: auto;
-  padding-top: 0px;
+  padding-top: 0;
+  border-top: 1px solid #95B8E7;
   /* & div { position: relative; left: 0; top: 0; } */
 }
 Grid table {
@@ -404,7 +406,6 @@ Grid .sorting {
   font-weight: bold;
   background-color: #E0ECFF;
   color: #555;
-  border-bottom: 1px solid #95B8E7;
 }
 #gridTitle .icon {
   display: inline-block;
@@ -446,7 +447,8 @@ Grid .sorting {
   position: relative;
   top: -6px;
   right: 1px;
-  font-size: 10px;
+  width: 40px;
+  font-size: 11px;
 }
 /* =Calendar
 -----------------------------------------------------------------------------*/
@@ -658,12 +660,15 @@ WorkSpace\:Box {
   overflow: hidden;
   vertical-align: top;
   box-sizing: content-box;
+  background-color: #fff;
+  /* tab/title/bar 等默认高度为23px */
 }
 WorkSpace\:Box WorkSpace\:TabBox {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: 23px;
+  height: 22px;
+  max-height: 22px;
   padding-left: 3px;
 }
 WorkSpace\:Box WorkSpace\:TabBox.hasTab {
@@ -673,8 +678,8 @@ WorkSpace\:Box WorkSpace\:TabBox.hasTab {
 WorkSpace\:Box WorkSpace\:TabBox WorkSpace\:Tab {
   position: relative;
   display: inline-block;
-  height: 20px;
-  line-height: 18px;
+  height: 19px;
+  line-height: 16px;
   color: #555;
   cursor: pointer;
   margin: 2px 4px -1px 0;
@@ -739,7 +744,8 @@ WorkSpace\:Box WorkSpace\:PhaseBox WorkSpace\:Phase.active {
 WorkSpace\:Box WorkSpace\:Page {
   height: 100%;
   overflow: hidden;
-  padding: 20px;
+  padding: 15px 15px 23px 15px;
+  /* 底部内边距23px，冲抵掉tab的23px，因page的height为: ws.height的100% */
   margin-right: 0;
   background-color: #fff;
   border: 1px solid #95B8E7;
@@ -819,8 +825,8 @@ WorkSpace\:Box WorkSpace\:PageStep {
   background: #049cdb;
   cursor: pointer;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  font-size: 11px;
-  padding: .2em .8em .2em;
+  font-size: 1em;
+  padding: .15em .8em .2em;
   margin-left: 1em;
 }
 #alert_box .ok:hover,
@@ -930,6 +936,7 @@ WorkSpace\:Box WorkSpace\:PageStep {
 /* relogin相关 */
 #relogin_box {
   width: 300px;
+  box-sizing: border-box;
   border: solid 1px #95B8E7;
   border-radius: 0 0 5px 5px;
   background-color: #fff;
@@ -968,7 +975,7 @@ WorkSpace\:Box WorkSpace\:PageStep {
   outline: none;
   text-align: center;
   text-decoration: none;
-  font: 16px/100% Arial, Helvetica, '微软雅黑', sans-serif;
+  font: 1.4em/100% Arial, Helvetica, '微软雅黑', sans-serif;
   padding: .5em 2em .5em;
   border-radius: 3px;
   letter-spacing: 1px;
@@ -986,12 +993,12 @@ WorkSpace\:Box WorkSpace\:PageStep {
   border-radius: 2em;
 }
 .medium {
-  font-size: 12px;
+  font-size: 1.2em;
   padding: .4em 1em .4em;
 }
 .small {
-  font-size: 11px;
-  padding: .2em .8em .2em;
+  font-size: 1em;
+  padding: .15em .8em .2em;
 }
 .orange {
   color: #fff;

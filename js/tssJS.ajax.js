@@ -398,6 +398,10 @@
         try {
             this.xmlValueDom = $.parseXML(responseText);
         } catch (e) {
+            // 尝试以JSON解析，如能解析，则不是异常，是发起ajax请求时没有填写type: "json"
+            try { if( $.parseJSON(responseText) ) return; } 
+            catch (e) { }
+            
             console.log(e);
             this.result.dataType = _HTTP_RESPONSE_DATA_TYPE_EXCEPTION;
             this.result.source = this.source;

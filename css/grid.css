@@ -1,3 +1,5 @@
+/* =Mixins
+-----------------------------------------------------------------------------*/
 .text2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -21,7 +23,8 @@ Grid {
   width: 100%;
   height: 100%;
   overflow: auto;
-  padding-top: 0px;
+  padding-top: 0;
+  border-top: 1px solid #95B8E7;
   /* & div { position: relative; left: 0; top: 0; } */
 }
 Grid table {
@@ -76,7 +79,6 @@ Grid .sorting {
   font-weight: bold;
   background-color: #E0ECFF;
   color: #555;
-  border-bottom: 1px solid #95B8E7;
 }
 #gridTitle .icon {
   display: inline-block;
@@ -118,5 +120,6 @@ Grid .sorting {
   position: relative;
   top: -6px;
   right: 1px;
-  font-size: 10px;
+  width: 40px;
+  font-size: 11px;
 }

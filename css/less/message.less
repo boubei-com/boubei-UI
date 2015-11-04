@@ -47,7 +47,7 @@
 	}
 	& .ok, .cancel { 
 		.create-btn(@white, @blue);
-		font-size: 11px; padding: .2em .8em .2em; margin-left: 1em; 
+		font-size: 1em; padding: .15em .8em .2em; margin-left: 1em; 
 		
 		&:hover { text-decoration: none; }
   		&:active { position: relative; top: 1px;}
@@ -98,6 +98,7 @@
 /* relogin相关 */
 #relogin_box { 
 	width: 300px; 
+	box-sizing: border-box;
 	border: solid 1px @borderColor; border-radius: 0 0 5px 5px; 
 	background-color: @white; 	
 	font-size: 14px; 

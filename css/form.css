@@ -1,3 +1,20 @@
+/* =Mixins
+-----------------------------------------------------------------------------*/
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.text3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 /* =tssForm
 -----------------------------------------------------------------------------*/
 /* 输入框基本样式 */
@@ -52,6 +69,7 @@ select {
 .tssForm input,
 .tssForm select {
   height: 20px;
+  min-width: 50px;
 }
 .tssForm input[type='button'] {
   border: 0;

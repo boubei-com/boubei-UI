@@ -7,7 +7,8 @@ Grid {
 	position: relative; 
 	display: inline-block; 
 	width: 100%; height: 100%; overflow: auto;  
-	padding-top: 0px; 
+	padding-top: 0; 
+	border-top: 1px solid @borderColor;
 
 	/* & div { position: relative; left: 0; top: 0; } */
 	& table {
@@ -47,7 +48,6 @@ Grid {
 	font-weight: bold; 
 	background-color: @blueLight; 
 	color: @textColor;
-	border-bottom: 1px solid @borderColor;
 
 	& .icon { 
 		display: inline-block; width: 8px; height: 8px; margin-right: 5px; 
@@ -67,6 +67,6 @@ Grid {
 		& .next    { background-image: url(../img/page/next.gif); }
 		& .last    { background-image: url(../img/page/last.gif); }
 		
-		& select { position: relative; top: -6px; right: 1px; font-size: 10px; }
+		& select { position: relative; top: -6px; right: 1px; width: 40px; font-size: 11px; }
 	}
 }

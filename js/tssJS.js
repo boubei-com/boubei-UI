@@ -374,6 +374,7 @@
 
             isIE: mc(/.net/),
             isChrome: mc(/\bchrome\b/),
+            isFirefox: mc(/\bfirefox\b/),
             isWebKit: mc(/webkit/),
             supportCanvas: !!document.createElement('canvas').getContext,
             isMobile: mc(/ipod|ipad|iphone|android/gi),
