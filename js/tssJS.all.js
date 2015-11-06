@@ -6145,6 +6145,26 @@
  */
 ;(function($){
 
+    $.openIframePanel = function(panelId, title, width, height, src, hideMaxMin) {
+        var $panel = $("#" + panelId);
+        if( !$panel.length ) {
+            var panel = $.createElement("div", "panel", panelId);
+            document.body.appendChild(panel);
+            
+            $panel = $(panel);
+            $panel.css("width", width + "px").css("height", height + "px").center();
+            $panel.panel(title, '<iframe frameborder="0"></iframe>', false);
+
+            if(hideMaxMin) {
+                $panel.find(".max").hide();
+                $panel.find(".min").hide();
+            }       
+        }
+
+        $panel.find("iframe").attr("src", src);
+        $panel.show();
+    }
+
     $.fn.extend({
         panel: function(title, contentHtml, resizable, moveable) {
             if(this.length > 0) {

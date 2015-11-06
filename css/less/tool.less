@@ -55,55 +55,58 @@
   position: absolute; 
   vertical-align: top; 
   box-sizing: border-box; 
-  border: 1px solid @blue; 
+  border: 1px solid @borderColor; 
   background-color: @white; 
   box-shadow: @gray 0px 0px 80px;
-  border-radius: 0 0 5px 5px;
+
+  &>.content { 
+    height: 100%; padding-bottom: 21px; /* 冲抵掉title的21px */
+
+    & iframe { width:100%; height: 100%; }
+  }
+  &>.title { 
+    position: relative; 
+    background-color: @blue; 
+
+    & h2 {
+      text-align: left; text-indent: 3px; font-size: 1.1em; 
+      height: 21px; line-height: 20px;
+      cursor:move; 
+      color: @white;
+    }
+    & div {
+      position:absolute; top:1px; right:1px;
+      height:19px; 
+    
+      & span { 
+        display: inline-block; float: left; 
+        width: 21px; height: 19px; margin-left: 5px; 
+        cursor: pointer;
+        background:url(../img/panel.png) no-repeat;
+
+        &.min { 
+          background-position: -29px 0; 
+          &:hover { background-position: -29px -29px; }
+        }
+        &.max { 
+          background-position: -60px 0;
+          &:hover { background-position: -60px  -29px; }
+        }
+        &.revert { 
+          background-position: -149px 0; 
+          display: none;
+          &:hover { background-position: -149px -29px; }
+        }
+        &.close { 
+          background-position: -89px 0; 
+          &:hover { background-position: -89px -29px; }
+        }
+      } 
+    }
+  }
 }
 .tss-panel-max { top: 0; left: 0; }
 .tss-panel-min { height: 20px; overflow: hidden; }
-
-.tss-panel>.content { height: 96%; }
-.tss-panel>.title { 
-  position: relative; 
-  background-color: @blue; 
-
-  & h2 {
-    text-align: left; text-indent: 3px; font-size: 1.1em; 
-    height: 21px; line-height: 20px;
-    cursor:move; 
-    color: @white;
-  }
-  & div {
-    position:absolute; top:1px; right:1px;
-    height:19px; 
-  
-    & span { 
-      display: inline-block; float: left; 
-      width: 21px; height: 19px; margin-left: 5px; 
-      cursor: pointer;
-      background:url(../img/panel.png) no-repeat;
-
-      &.min { 
-        background-position: -29px 0; 
-        &:hover { background-position: -29px -29px; }
-      }
-      &.max { 
-        background-position: -60px 0;
-        &:hover { background-position: -60px  -29px; }
-      }
-      &.revert { 
-        background-position: -149px 0; 
-        display: none;
-        &:hover { background-position: -149px -29px; }
-      }
-      &.close { 
-        background-position: -89px 0; 
-        &:hover { background-position: -89px -29px; }
-      }
-    } 
-  }
-}
 
 
 .leftbar {
