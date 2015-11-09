@@ -10,7 +10,7 @@
 	color: @textColor; background: @white;
     border: 1px solid @borderColor; 
 
-  &.is-hidden{ display: none; }
+  	&.is-hidden{ display: none; }
 	&.is-bound { position: absolute; box-shadow: 0 5px 15px -5px rgba(0,0,0,.5); }
 
 	& .pika-title { 
@@ -38,11 +38,11 @@
 			display: block;  position: relative; width: 20px; height: 30px; 
 			text-indent: 20px; white-space: nowrap; 
 			opacity: .5;
-	    background-color: transparent;
-	    background-position: center center;
-	    background-repeat: no-repeat;
-	    background-size: 75% 75%;
-	    cursor:pointer;
+		    background-color: transparent;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		    background-size: 75% 75%;
+		    cursor:pointer;
 		}
 		& .pika-prev:hover, .pika-next:hover { opacity: 1; }
 		& .pika-prev.is-disabled, .pika-next.is-disabled { opacity: .2; }
@@ -52,7 +52,7 @@
 		width: 100%; 
 
 		& th, td { width: 14.285714285714286%; }
-		& th { color: @disabled; font-size: 12.5px; font-weight: bold; line-height: 25px; text-align: center; }
+		& th { color: @textColor; font-size: 14px; font-weight: bold; line-height: 25px; text-align: center; }
 		& td {
 			& .pika-button { 				
 				width: 100%; padding: 5px; font-size: 14px; line-height: 15px; text-align: right; 
@@ -63,7 +63,7 @@
 			}
 			&.is-today .pika-button { color: @blue }
 			&.is-selected .pika-button { color: @white; background: @blue; border-radius: 3px; }
-		  &.is-disabled .pika-button { pointer-events: none; cursor: default; color: @disabled; opacity: .3; }
+		  	&.is-disabled .pika-button { pointer-events: none; cursor: default; color: @disabled; opacity: .3; }
 		}
 	}
 

@@ -532,8 +532,8 @@ Grid .sorting {
   width: 14.285714285714286%;
 }
 .pika-single .pika-table th {
-  color: #A6A6A6;
-  font-size: 12.5px;
+  color: #555;
+  font-size: 14px;
   font-weight: bold;
   line-height: 25px;
   text-align: center;
