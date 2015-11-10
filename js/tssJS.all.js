@@ -4631,14 +4631,30 @@
 
         // 添加Grid事件处理
         addGridEvent: function() {          
-            var oThis = this;
+            var oThis = this, deltaY = 10;
 
             this.gridBox.onscroll = function() {
-                 // 判断是否到达底部 
-                 if(this.scrollHeight - this.scrollTop <= this.clientHeight) {
+                 /* 
+                  * 判断是否到达底部，需满足: scrollTop + clientHeight == scrollHeight 
+                  * scrollTop：滚动条在Y轴上的滚动距离。
+                  * clientHeight：内容可视区域的高度。
+                  * scrollHeight：内容可视区域的高度加上溢出（滚动）的距离。
+                  * 前提条件：是在向下滚动。
+                  */
+                var scrollDown = false;
+                if(this.scrollTop > deltaY)  { // down
+                    deltaY = this.scrollTop; 
+                    scrollDown = true;
+                } 
+                if(this.scrollTop == deltaY) { } // 横向运动, scrollLeft在变
+                if(this.scrollTop < deltaY)  { // up
+                    deltaY = this.scrollTop; 
+                }
+
+                if( scrollDown && (this.scrollHeight - this.scrollTop <= this.clientHeight) ) {
                     var eventFirer = new $.EventFirer(oThis.el, "onScrollToBottom");
                     eventFirer.fire();
-                 }
+                }
             };
 
             this.gridBox.onmousewheel = function() {
