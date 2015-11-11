@@ -371,8 +371,13 @@
                             }
                         });
                     }
+                    $(cell).html(value);
                     
-                    $(cell).html(value).title(value);                          
+                    var showTitle = column.getAttribute("showTitle");
+                    if(showTitle != 'false') {
+                        $(cell).title(value);  
+                    }
+                                            
                     break;
             }                           
         },

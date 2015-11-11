@@ -507,7 +507,7 @@ Grid .sorting {
   position: relative;
   width: 20px;
   height: 30px;
-  text-indent: 20px;
+  text-indent: -2000px;
   white-space: nowrap;
   opacity: .5;
   background-color: transparent;
