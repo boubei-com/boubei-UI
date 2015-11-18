@@ -878,6 +878,7 @@ WorkSpace\:Box WorkSpace\:PageStep {
 }
 #alert_box .message {
   max-height: 150px;
+  overflow: auto;
   padding-left: 50px;
   padding-bottom: 10px;
 }
