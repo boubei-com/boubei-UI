@@ -47,13 +47,7 @@ var Field = function(info) {
 			case "date":
 			case "datetime":
 				this.width = "200px";
-				var defaultValue = this.defaultValue;
-				if( defaultValue && (/today[\s]*-/gi).test(defaultValue) ) {
-					var deltaDays = parseInt(defaultValue.split("-")[1]);
-					var today = new Date();
-					today.setDate(today.getDate() - deltaDays);
-					this.defaultValue = today.format('yyyy-MM-dd') + (this.mode == "datetime" ? " 00:00:00" : "");
-				} 
+				this.defaultValue = $.transDay(this.defaultValue, this.mode);
 				break;
 		}
 	};
@@ -246,6 +240,28 @@ var Field = function(info) {
 		$.each(from, function(name, value) {
 			to[name] = value;
 		});
+	}
+
+	// 将today-x or today+x转换成具体日期
+	$.transDay = function(day, mode) {
+		if( !day) return day;
+
+		var result, today = new Date();
+
+		if( (/today[\s]*-/gi).test(day) ) {
+			var delta = parseInt( day.split("-")[1] );
+			today.setDate(today.getDate() - delta);
+		} 
+		else if( (/today[\s]*\+/gi).test(day) ) {
+			var delta = parseInt( day.split("+")[1] );
+			today.setDate(today.getDate() + delta);
+		} 
+		else {
+			return day;
+		}
+
+		var result = today.format('yyyy-MM-dd') + (mode == "datetime" ? " 00:00:00" : "");
+		return result;
 	}
 
 }) (tssJS);

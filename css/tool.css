@@ -190,6 +190,9 @@
   -moz-transition: all linear 0.3s;
   transition: all linear 0.3s;
 }
+.leftbar:hover {
+  left: 0px;
+}
 .leftbar-open {
   left: 0;
   border-right: 1px solid transparent;
