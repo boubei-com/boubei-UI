@@ -890,7 +890,7 @@ WorkSpace\:Box WorkSpace\:PageStep {
   text-indent: 3px;
 }
 #tssTip {
-  position: absolute;
+  position: fixed;
   right: 1px;
   bottom: 1px;
   display: none;

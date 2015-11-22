@@ -493,7 +493,7 @@
              * 这样再次点击菜单（需redirect.html跳转的菜单）时还是会要求重新登录。 */
             $.Cookie.del("token", "");
             $.Cookie.del("token", "/");
-            $.Cookie.del("token", "/" + FROMEWORK_CODE.toLowerCase());
+            $.Cookie.del("token", "/tss");
             $.Cookie.del("token", "/" + CONTEXTPATH);
 
             if($.relogin) {
