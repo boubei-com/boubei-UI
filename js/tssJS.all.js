@@ -1681,7 +1681,7 @@
              * 这样再次点击菜单（需redirect.html跳转的菜单）时还是会要求重新登录。 */
             $.Cookie.del("token", "");
             $.Cookie.del("token", "/");
-            $.Cookie.del("token", "/" + FROMEWORK_CODE.toLowerCase());
+            $.Cookie.del("token", "/tss");
             $.Cookie.del("token", "/" + CONTEXTPATH);
 
             if($.relogin) {
@@ -1932,7 +1932,7 @@
         if(!$tipEL.length) {
             var el = $.createElement("div", null, "tssTip");
             var html = [];
-            html.push('<div class="title">' + (title || '消息提醒') + '<span class="close" onclick="$.tssTip()">×</span></div>');
+            html.push('<div class="title"><b>' + (title || '消息提醒') + '</b><span class="close" onclick="$.tssTip()">×</span></div>');
             html.push('<div class="content">' + content + '</div>');
             $tipEL = $(el);
             $tipEL.html(html.join("\n"));
@@ -1941,8 +1941,11 @@
             $(document.body).appendChild(el);
         }
 
+        title && $tipEL.find("div.title>b").html(title);
+        content && $tipEL.find("div.content").html(content);
+
         var popH = parseInt($tipEL[0].style.height);
-        if (popH == 0) {
+        if (popH == 0 || content) {
             $tipEL.show(true);
             show = setInterval( function() { setHeight($tipEL[0], 'up'); }, 20);
         } else {
