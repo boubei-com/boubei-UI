@@ -25,7 +25,9 @@
   padding: 6px;
   color: #555;
   background: #fff;
-  border: 1px solid #95B8E7;
+  border: 1px solid #eee;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
 }
 .pika-single.is-hidden {
   display: none;
@@ -52,7 +54,7 @@
   overflow: hidden;
   padding: 5px 10px;
   line-height: 20px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
 }
 .pika-single .pika-title .pika-select {
@@ -109,17 +111,17 @@
   font-size: 14px;
   line-height: 15px;
   text-align: right;
-  background: #E0ECFF;
-  color: #555;
+  color: #999;
   cursor: pointer;
 }
 .pika-single .pika-table td .pika-button:hover {
   color: #fff;
-  background: #f89406;
+  background-color: #f89406;
   border-radius: 3px;
 }
 .pika-single .pika-table td.is-today .pika-button {
   color: #049cdb;
+  font-weight: bold;
 }
 .pika-single .pika-table td.is-selected .pika-button {
   color: #fff;

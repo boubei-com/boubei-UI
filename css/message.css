@@ -269,7 +269,6 @@
   z-index: 99999;
   width: 380px;
   min-width: 360px;
-  border: solid 1px #95B8E7;
   font-size: 13px;
   color: #555;
   background-color: #fff;
@@ -277,7 +276,7 @@
   border-radius: 0 0 5px 5px;
 }
 #alert_box .title {
-  padding-left: 4px;
+  padding-left: 10px;
   font-weight: bold;
   font-size: 13px;
   letter-spacing: 1px;

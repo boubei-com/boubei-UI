@@ -8,7 +8,9 @@
 	z-index: 9999; 
 	position: relative; width: 202px; padding: 6px; 
 	color: @textColor; background: @white;
-    border: 1px solid @borderColor; 
+    border: 1px solid @grayLighter; 
+    border-top: none;
+	border-radius: 0 0 5px 5px;
 
   	&.is-hidden{ display: none; }
 	&.is-bound { position: absolute; box-shadow: 0 5px 15px -5px rgba(0,0,0,.5); }
@@ -21,7 +23,7 @@
 			position: relative; 
 			overflow: hidden; 
 			padding: 5px 10px; line-height: 20px; 
-			font-size: 15px; font-weight: bold; 
+			font-size: 14px; font-weight: bold;
 		}
 
 		& .pika-select { display: inline-block; }
@@ -56,12 +58,12 @@
 		& td {
 			& .pika-button { 				
 				width: 100%; padding: 5px; font-size: 14px; line-height: 15px; text-align: right; 
-				background: @blueLight; color: @textColor; 
+				color: @grayLight; 
 				cursor: pointer; 
 
-				&:hover { color: @white; background: @orange; border-radius: 3px;}
+				&:hover { color: @white; background-color: @orange; border-radius: 3px;}
 			}
-			&.is-today .pika-button { color: @blue }
+			&.is-today .pika-button { color: @blue; font-weight: bold; }
 			&.is-selected .pika-button { color: @white; background: @blue; border-radius: 3px; }
 		  	&.is-disabled .pika-button { pointer-events: none; cursor: default; color: @disabled; opacity: .3; }
 		}

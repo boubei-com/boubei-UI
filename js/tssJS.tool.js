@@ -40,7 +40,7 @@
         this.$el = $(el);
         this.$el.html(
             '<div class="title">' + 
-                '<h2>' +title+ '</h2>' + 
+                '<h2> - ' +title+ '</h2>' + 
                 '<div>' + 
                     '<span class="min" title="最小化"></span>' + 
                     '<span class="max" title="最大化"></span>' + 

@@ -460,7 +460,9 @@ Grid .sorting {
   padding: 6px;
   color: #555;
   background: #fff;
-  border: 1px solid #95B8E7;
+  border: 1px solid #eee;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
 }
 .pika-single.is-hidden {
   display: none;
@@ -487,7 +489,7 @@ Grid .sorting {
   overflow: hidden;
   padding: 5px 10px;
   line-height: 20px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
 }
 .pika-single .pika-title .pika-select {
@@ -544,17 +546,17 @@ Grid .sorting {
   font-size: 14px;
   line-height: 15px;
   text-align: right;
-  background: #E0ECFF;
-  color: #555;
+  color: #999;
   cursor: pointer;
 }
 .pika-single .pika-table td .pika-button:hover {
   color: #fff;
-  background: #f89406;
+  background-color: #f89406;
   border-radius: 3px;
 }
 .pika-single .pika-table td.is-today .pika-button {
   color: #049cdb;
+  font-weight: bold;
 }
 .pika-single .pika-table td.is-selected .pika-button {
   color: #fff;
@@ -761,6 +763,9 @@ WorkSpace\:Box WorkSpace\:PageStep {
   padding: 5px 0;
   text-align: center;
 }
+WorkSpace\:Box WorkSpace\:PageStep .tssbutton {
+  margin-right: 5px;
+}
 /* = message
 -----------------------------------------------------------------------------*/
 .tssJS-bubble {
@@ -801,7 +806,6 @@ WorkSpace\:Box WorkSpace\:PageStep {
   z-index: 99999;
   width: 380px;
   min-width: 360px;
-  border: solid 1px #95B8E7;
   font-size: 13px;
   color: #555;
   background-color: #fff;
@@ -809,7 +813,7 @@ WorkSpace\:Box WorkSpace\:PageStep {
   border-radius: 0 0 5px 5px;
 }
 #alert_box .title {
-  padding-left: 4px;
+  padding-left: 10px;
   font-weight: bold;
   font-size: 13px;
   letter-spacing: 1px;

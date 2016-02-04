@@ -125,3 +125,6 @@ WorkSpace\:Box WorkSpace\:PageStep {
   padding: 5px 0;
   text-align: center;
 }
+WorkSpace\:Box WorkSpace\:PageStep .tssbutton {
+  margin-right: 5px;
+}

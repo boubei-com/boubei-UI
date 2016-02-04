@@ -800,12 +800,14 @@
 
         /* 动态创建脚本 */
         createScript: function(script) {
-            var head = document.head || document.getElementsByTagName('head')[0];
-            if( head ) {
-                var scriptNode = $.createElement("script");
-                $.XML.setText(scriptNode, script);
-                head.appendChild(scriptNode);
-            }
+            var scriptNode = $.createElement("script");
+            $.XML.setText(scriptNode, script);
+            $('head').appendChild(scriptNode);
+        },
+        createScriptJS: function(jsFile) {
+            var scriptNode = $.createElement("script");
+            scriptNode.src = jsFile;
+            $('head').appendChild(scriptNode);
         },
 
         /* 设置透明度 */

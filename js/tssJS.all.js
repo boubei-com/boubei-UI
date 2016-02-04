@@ -800,12 +800,14 @@
 
         /* 动态创建脚本 */
         createScript: function(script) {
-            var head = document.head || document.getElementsByTagName('head')[0];
-            if( head ) {
-                var scriptNode = $.createElement("script");
-                $.XML.setText(scriptNode, script);
-                head.appendChild(scriptNode);
-            }
+            var scriptNode = $.createElement("script");
+            $.XML.setText(scriptNode, script);
+            $('head').appendChild(scriptNode);
+        },
+        createScriptJS: function(jsFile) {
+            var scriptNode = $.createElement("script");
+            scriptNode.src = jsFile;
+            $('head').appendChild(scriptNode);
         },
 
         /* 设置透明度 */
@@ -5399,21 +5401,19 @@
             return activeNode
         },
 
-        getActiveTreeNodeId: function(key) {
+        getActiveTreeNodeId: function() {
             var activeNode = this.getActiveTreeNode();
              return activeNode ? activeNode.id : "";
         }, 
 
-        getActiveTreeNodeName: function(key) {
+        getActiveTreeNodeName: function() {
             var activeNode = this.getActiveTreeNode();
             return activeNode ? activeNode.name : "";
         }, 
 
         getActiveTreeNodeAttr: function(key) {
             var activeNode = this.getActiveTreeNode();
-            if(activeNode) {
-                return activeNode.attrs[key];
-            }
+            return activeNode ? activeNode.attrs[key] : "";
         }, 
 
         // 如果找不到指定的treeNode，或id为空，则清空原active节点
@@ -5586,13 +5586,13 @@
     var Searcher = function(tree) {
         var findedNodes, currentIndex, lastSearchStr;
 
-        this.search = function(searchStr) {
+        this.search = function(searchStr, showTip) {
             if($.isNullOrEmpty(searchStr)) {
                 return $.alert("查询条件不能为空！");
             }
 
             if(lastSearchStr == searchStr) {
-                this.next();
+                this.next(showTip);
                 return; 
             }
 
@@ -5605,16 +5605,16 @@
                 findedNodes.push(aNode.parentNode.node);
             });
 
-            this.next();
+            this.next(showTip);
         }
 
-        this.next = function() {
+        this.next = function(showTip) {
             var node;
             if(findedNodes.length) {
                 node = findedNodes[++ currentIndex % findedNodes.length];
             }
             else {
-                $.alert("没有找到名称含有【" + lastSearchStr + "】的树节点。");
+                showTip && $.alert("没有找到名称含有【" + lastSearchStr + "】的树节点。");
             }
             tree.setActiveTreeNode(node);
         }
@@ -6204,7 +6204,7 @@
         this.$el = $(el);
         this.$el.html(
             '<div class="title">' + 
-                '<h2>' +title+ '</h2>' + 
+                '<h2> - ' +title+ '</h2>' + 
                 '<div>' + 
                     '<span class="min" title="最小化"></span>' + 
                     '<span class="max" title="最大化"></span>' + 
