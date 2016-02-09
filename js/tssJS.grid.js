@@ -128,10 +128,10 @@
 
                     var columnIndex = this._colIndex;
                     rows.sort(function(row1, row2) {
-                        var x = row1.cells[columnIndex].innerText || row1.cells[columnIndex].textContent;
-                        var y = row2.cells[columnIndex].innerText || row2.cells[columnIndex].textContent;
+                        var x = $.XML.getText(row1.cells[columnIndex]);
+                        var y = $.XML.getText(row2.cells[columnIndex]);
                         var compareValue;
-                        if( isNaN(x) ) {
+                        if( !x || isNaN(x) ) {
                             compareValue = x.localeCompare(y);
                         }
                         else {
@@ -294,6 +294,9 @@
            
             bindAdjustTHHandler(table);
             bindSortHandler(table);
+
+            var onLoad = $(this.el).attr("onLoad");
+            onLoad && $.execCommand(onLoad);
         }, 
 
         /* 处理数据行,将值解析成下拉列表值、图片、选择框等 */

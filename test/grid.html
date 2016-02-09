@@ -116,6 +116,10 @@ html, body {
 		alert($.G("grid").getColumnValues("id").join(" | "));
 		console.log($.G("grid").getColumnValue("id"));
 	}
+
+	function afterLoad() {
+		$("#grid table tr:nth-child(4n)").css("background-color", "#E0ECFF") ;
+	}
 	
 	window.onload = init;
    
@@ -132,7 +136,7 @@ html, body {
   </tr>
   <tr>
 	<td>
-		<Grid id="grid" style="height:100%;overflow:auto; max-width:900px;"></Grid>
+		<Grid id="grid" style="height:100%;overflow:auto; max-width:900px;" onLoad="afterLoad()"></Grid>
 	</td>
   </tr>
 </table>			
