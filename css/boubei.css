@@ -1061,7 +1061,6 @@ WorkSpace\:Box WorkSpace\:PageStep .tssbutton {
   position: absolute;
   vertical-align: top;
   box-sizing: border-box;
-  border: 1px solid #95B8E7;
   background-color: #fff;
   box-shadow: #555 0px 0px 80px;
 }
