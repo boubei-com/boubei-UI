@@ -670,6 +670,9 @@
                 if (arguments.length == 1) {
                     return el.getAttribute(name);
                 }
+                if (arguments.length == 2 && value == null) {
+                    return el.removeAttribute(name);
+                }
                 el.setAttribute(name, value);
             }
             return this;

@@ -147,6 +147,12 @@
 			} 			
 		);
 
+		$.assertEquals("JK", $("#div1").attr("data-x") );
+		$("#div1").attr("data-x", "Jane");
+		$.assertEquals("Jane", $("#div1").attr("data-x") );
+		$("#div1").attr("data-x", null);
+		$.assertEquals(null, $("#div1").attr("data-x") );
+
 		var newElement = $.createElement("div", "cc");
 		$(newElement).html("<br/>new Div<br/>123456").css("backgroundColor", "#396656");
 		document.body.appendChild(newElement);
@@ -261,7 +267,7 @@
 <body>
 
 
-	<div id='div1' class="c1">
+	<div id='div1' class="c1" data-x="JK">
 		<input id='d1' class="c2"> </input> <input type='button' name='B1' value='B1' class='btClass'></input>
 	</div>
  
