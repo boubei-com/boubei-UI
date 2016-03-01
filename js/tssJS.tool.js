@@ -139,11 +139,14 @@
  
     $.leftbar = function(fn1, fn2) {
 
-        var closeLeftbar = function() {
+        var t,
+            closeLeftbar = function() {
                 $(".leftbar").removeClass("leftbar-open").addClass("leftbar-hidden");
+                clearTimeout( t );
             },
             showLeftbar = function() {
                 $(".leftbar").removeClass("leftbar-hidden").addClass("leftbar-open");
+                t = setTimeout( closeLeftbar, 3000);
             };
 
         var barWidth = 30, f = 0;
