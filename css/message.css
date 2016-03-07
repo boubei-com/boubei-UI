@@ -103,7 +103,6 @@
   position: absolute;
   vertical-align: top;
   box-sizing: border-box;
-  border: 1px solid #95B8E7;
   background-color: #fff;
   box-shadow: #555 0px 0px 80px;
 }
@@ -361,6 +360,7 @@
   right: 1px;
   bottom: 1px;
   display: none;
+  z-index: 10001;
   width: 200px;
   overflow: hidden;
   border: 1px solid #95B8E7;
