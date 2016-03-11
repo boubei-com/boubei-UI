@@ -275,6 +275,11 @@
             }
 
             this.requestBody = $.XML.toXml(contentXml);
+            /* 对参数条件进行加密 */
+            this.headers.encodeKey = this.headers.encodeKey || 12;
+            if( this.headers.encodeKey ) {
+                this.requestBody = $.encode( this.requestBody, this.headers.encodeKey );
+            }            
         },
 
         /* 自定义请求头信息 */
