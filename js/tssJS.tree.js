@@ -683,10 +683,16 @@
             currentIndex = -1;
             lastSearchStr = searchStr;
 
-            var aNodeList = tree.el.querySelectorAll("li>a[title*='" + searchStr + "']");
-            $.each(aNodeList, function(i, aNode) {
-                findedNodes.push(aNode.parentNode.node);
-            });
+            if( searchStr.charAt(0) == "@" ) { // 按ID来搜索
+                var liNode = tree.getTreeNodeById( searchStr.replace("@", "") );
+                liNode && findedNodes.push( liNode );
+            }
+            else {
+                var aNodeList = tree.el.querySelectorAll("li>a[title*='" + searchStr + "']");
+                $.each(aNodeList, function(i, aNode) {
+                    findedNodes.push(aNode.parentNode.node);
+                });
+            }           
 
             this.next(showTip);
         }

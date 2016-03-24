@@ -670,6 +670,9 @@
                 if (arguments.length == 1) {
                     return el.getAttribute(name);
                 }
+                if (arguments.length == 2 && value == null) {
+                    return el.removeAttribute(name);
+                }
                 el.setAttribute(name, value);
             }
             return this;
@@ -1257,7 +1260,7 @@
     _HTTP_RESPONSE_STATUS_LOCAL_OK  = 0,    // 本地OK
     _HTTP_RESPONSE_STATUS_REMOTE_OK = 200,  // 远程OK
 
-    /* HTTP超时(1分钟) */
+    /* HTTP超时(3分钟) */
     _HTTP_TIMEOUT = 3*60*1000,
 
     popupMessage = function (msg) {
@@ -1465,6 +1468,11 @@
             }
 
             this.requestBody = $.XML.toXml(contentXml);
+            /* 对参数条件进行加密 */
+            this.headers.encodeKey = this.headers.encodeKey || 12;
+            if( this.headers.encodeKey ) {
+                this.requestBody = $.encode( this.requestBody, this.headers.encodeKey );
+            }            
         },
 
         /* 自定义请求头信息 */
@@ -5603,10 +5611,16 @@
             currentIndex = -1;
             lastSearchStr = searchStr;
 
-            var aNodeList = tree.el.querySelectorAll("li>a[title*='" + searchStr + "']");
-            $.each(aNodeList, function(i, aNode) {
-                findedNodes.push(aNode.parentNode.node);
-            });
+            if( searchStr.charAt(0) == "@" ) { // 按ID来搜索
+                var liNode = tree.getTreeNodeById( searchStr.replace("@", "") );
+                liNode && findedNodes.push( liNode );
+            }
+            else {
+                var aNodeList = tree.el.querySelectorAll("li>a[title*='" + searchStr + "']");
+                $.each(aNodeList, function(i, aNode) {
+                    findedNodes.push(aNode.parentNode.node);
+                });
+            }           
 
             this.next(showTip);
         }
