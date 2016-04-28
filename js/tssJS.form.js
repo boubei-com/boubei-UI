@@ -445,6 +445,12 @@
             return field.getAttribute(attrName);
         },
 
+        /* 示例：动态更新下拉树：
+            form.updateField("center2", [
+                        {"name": "mode", "value": "combotree"},
+                        {"name": "texts", "value": texts.join('|')},
+                        {"name": "values", "value": values.join('|')}
+                     ]);) */
         updateField: function(name, attrs) {
             var field = this.template.fieldsMap[name];
             if(!field) {
