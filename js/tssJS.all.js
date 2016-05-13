@@ -6202,6 +6202,7 @@
             }       
         }
 
+        $panel.find(".title>h2").html(title);
         $panel.find("iframe").attr("src", src);
         $panel.show();
     }
