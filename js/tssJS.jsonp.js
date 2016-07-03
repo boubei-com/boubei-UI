@@ -23,7 +23,7 @@
                 }
             }
 
-            // 加个时间戳，防止被缓存
+            // 加个时间戳，防止url被浏览器缓存
             ret += "&_time=" + $.now();
 
             return ret.substr(1);
@@ -62,7 +62,7 @@
                 $.removeNode($("#" + name)[0]);
                 
                 // 执行传入的的函数
-                func(json);
+                func(json, params);
             };
         }
     }
