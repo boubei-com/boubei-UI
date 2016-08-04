@@ -1246,6 +1246,32 @@
 
     $.Ajax = $.AJAX = $.ajax;
 
+    $.getJson = $.getJSON = function(url, params, callback) {
+        $.ajax({
+            url : url,
+            method : "GET",
+            type : "json",
+            params  : params, 
+            ondata : function() { 
+                var data = this.getResponseJSON();
+                callback(data);
+            }
+        });
+    };
+
+    $.getXml = $.getXML = function(url, params, callback) {
+        $.ajax({
+            url : url,
+            method : "GET",
+            type : "xml",
+            params  : params, 
+            ondata : function() { 
+                var data = this.getResponseXML();
+                callback(data);
+            }
+        });
+    };
+
 })(tssJS, function ($) {
 
     'use strict';

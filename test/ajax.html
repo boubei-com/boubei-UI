@@ -46,6 +46,12 @@ CONTEXTPATH = 'tss';
 			}
 		});
 
+		$.getXml('data/operation.xml', {}, function(data) {
+			var operationNode = data.querySelectorAll("Operation")[0];
+			console.log( $.XML.getText(operationNode) );
+			$.assertEquals("p1,p2,1,2,3,4,5,6,7,8", $.XML.getText(operationNode) );
+		});
+
 		$.ajax({
 			url : 'data/tree.xml',
 			method : "GET",
@@ -67,8 +73,13 @@ CONTEXTPATH = 'tss';
 			type : "json",
 			method : "GET",
 			ondata : function() { 
-				// alert(this.getResponseText());
+				// alert(this.getResponseJSON());
 			}
+		});
+
+		$.getJson('data/1.json', null, function(data) {
+			console.log( data );
+			$.assertEquals( 12, data.length );
 		});
 	} );
  
