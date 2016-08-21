@@ -1246,12 +1246,12 @@
 
     $.Ajax = $.AJAX = $.ajax;
 
-    $.getJson = $.getJSON = function(url, params, callback) {
+        $.getJson = $.getJSON = function(url, params, callback, method) {
         $.ajax({
             url : url,
-            method : "GET",
             type : "json",
-            params  : params, 
+            method : method || "POST",
+            params : params, 
             ondata : function() { 
                 var data = this.getResponseJSON();
                 callback(data);
@@ -1259,12 +1259,12 @@
         });
     };
 
-    $.getXml = $.getXML = function(url, params, callback) {
+    $.getXml = $.getXML = function(url, params, callback, method) {
         $.ajax({
             url : url,
-            method : "GET",
             type : "xml",
-            params  : params, 
+            method : method || "POST",
+            params : params, 
             ondata : function() { 
                 var data = this.getResponseXML();
                 callback(data);
