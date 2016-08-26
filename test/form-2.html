@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<HTML XMLNS:Tree>
+<head>
+<meta charset="UTF-8"/>
+<title>tssForm from json test</title>
+
+<link href="../css/boubei.css" rel="stylesheet">
+
+<script src="../js/tssJS.js"></script>
+<script src="../js/tssJS.ajax.js"></script>
+<script src="../js/tssJS.message.js"></script>
+<script src="../js/tssJS.calendar.js"></script>
+<script src="../js/tssJS.tool.js"></script>
+<script src="../js/tssJS.form.js"></script>
+<script src="../js/tssJS.json2Form.js"></script>
+<script src="../js/tssJS.tree.js"></script>
+
+<script type="text/javascript">
+ 
+    function init() {
+		$("#btQuery").click(function() {
+			query();
+		});
+ 
+ 		var tl = [ 
+ 			{"label":"其它2", "width": "200"}
+ 		]
+		var queryForm = $.json2Form( "queryForm", tl );
+		$.cache.XmlDatas["queryFormXML"] = queryForm.template.sourceXML;
+
+    }
+
+    function query() {
+        var queryForm = $.F("queryForm");
+        if(  !queryForm.checkForm() ) {
+            return;
+        }
+ 
+		var dataXML = $.cache.XmlDatas["queryFormXML"];
+		var dataNode = dataXML.querySelector("data");
+        if(dataNode) {
+            window.alert("成功提交" + $.XML.toXml(dataNode));
+        }
+    }
+
+    window.onload = init;
+
+</script>
+
+</head>
+
+<body>
+    
+	<div style="background-color:white; padding:10px; width:400px; margin:10px; border:1px solid #ABAAAF;">
+		<div id="queryForm" editable="true">
+			<div class="loading"></div>
+		</div>
+		<div style="padding:10px 20px 0 180px;">
+			<input id="btQuery" type="button" class="tssbutton orange small" value="查询"/>
+		</div>
+	</div>
+	 
+</body>
+</html>

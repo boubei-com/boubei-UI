@@ -3516,7 +3516,7 @@
 
         toHTML: function() {
             var htmls = [], oThis = this;
-            htmls.push("<form class='tssForm' method='post'>");
+            htmls.push("<form class='tssForm' method='post' onkeydown='if(event.keyCode==13){ return false; }'>");
             htmls.push('<table>');
 
             // 添加隐藏字段           
