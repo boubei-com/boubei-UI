@@ -478,10 +478,11 @@
         if( info.type != "0" ) {
             
             !request.headers.noAlert && popupMessage(info.msg);
+            $("#alert_box").addClass("ajax_msg_box");
 
             // 3秒后自动自动隐藏成功提示信息
             setTimeout(function() {
-                $("#alert_box").hide();
+                $("div.ajax_msg_box").hide();
             }, 3000);
         }
 

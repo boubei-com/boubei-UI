@@ -1680,10 +1680,11 @@
         if( info.type != "0" ) {
             
             !request.headers.noAlert && popupMessage(info.msg);
+            $("#alert_box").addClass("ajax_msg_box");
 
             // 3秒后自动自动隐藏成功提示信息
             setTimeout(function() {
-                $("#alert_box").hide();
+                $("div.ajax_msg_box").hide();
             }, 3000);
         }
 
@@ -3516,7 +3517,7 @@
 
         toHTML: function() {
             var htmls = [], oThis = this;
-            htmls.push("<form class='tssForm' method='post' onkeydown='if(event.keyCode==13){ return false; }'>");
+            htmls.push("<form class='tssForm' method='post' onsubmit='return false;''>");
             htmls.push('<table>');
 
             // 添加隐藏字段           
