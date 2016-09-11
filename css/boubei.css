@@ -290,6 +290,7 @@ Tree li > span.checkbox {
   width: 13px;
   height: 13px;
   margin-right: 3px;
+  margin-bottom: 3px;
   background: url("../img/tree/checkbox.png") no-repeat;
 }
 Tree li > span.checkstate_0_0 {
@@ -329,6 +330,7 @@ Tree li > div.selfIcon {
   width: 15px;
   height: 15px;
   margin-right: 3px;
+  margin-bottom: 5px;
   vertical-align: middle;
 }
 Tree li > div.folder {
@@ -898,6 +900,7 @@ WorkSpace\:Box WorkSpace\:PageStep .tssbutton {
   right: 1px;
   bottom: 1px;
   display: none;
+  z-index: 10001;
   width: 200px;
   overflow: hidden;
   border: 1px solid #95B8E7;
