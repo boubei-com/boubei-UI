@@ -16,16 +16,16 @@
 <script src="../js/tssJS.tree.js"></script>
 
 <script type="text/javascript">
- 
+ var queryForm;
     function init() {
 		$("#btQuery").click(function() {
 			query();
 		});
  
  		var tl = [ 
- 			{"label":"其它2", "width": "200"}
+ 			{"label":"其它2", "width": "200"} 
  		]
-		var queryForm = $.json2Form( "queryForm", tl );
+		queryForm = $.json2Form( "queryForm", tl );
 		$.cache.XmlDatas["queryFormXML"] = queryForm.template.sourceXML;
 
     }

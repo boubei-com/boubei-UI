@@ -80,6 +80,7 @@
   				<birthday><![CDATA[1983-06-06]]></birthday>
           <season2><![CDATA[2]]></season2>
           <season3><![CDATA[3,4]]></season3>
+          <x1><![CDATA[x1]]></x1>
   			</row>
   		</data>
         <script>

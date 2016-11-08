@@ -44,12 +44,13 @@
 
     $.Ajax = $.AJAX = $.ajax;
 
-        $.getJson = $.getJSON = function(url, params, callback, method) {
+    $.getJson = $.getJSON = function(url, params, callback, method, waiting) {
         $.ajax({
             url : url,
             type : "json",
             method : method || "POST",
-            params : params, 
+            params : params,
+            waiting : waiting || false, 
             ondata : function() { 
                 var data = this.getResponseJSON();
                 callback(data);
@@ -57,12 +58,13 @@
         });
     };
 
-    $.getXml = $.getXML = function(url, params, callback, method) {
+    $.getXml = $.getXML = function(url, params, callback, method, waiting) {
         $.ajax({
             url : url,
             type : "xml",
             method : method || "POST",
             params : params, 
+            waiting : waiting || false, 
             ondata : function() { 
                 var data = this.getResponseXML();
                 callback(data);

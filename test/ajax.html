@@ -80,7 +80,7 @@ CONTEXTPATH = 'tss';
 		$.getJson('data/1.json', null, function(data) {
 			console.log( data );
 			$.assertEquals( 12, data.length );
-		});
+		}, "GET", true);
 	} );
  
 </SCRIPT>

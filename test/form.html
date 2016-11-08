@@ -16,6 +16,17 @@
 
 <script type="text/javascript">
 
+/*
+ * XForm控件的data数据绑定在<input type="hidden" name="xml" id="xml”/>上，
+一个页面存在多个XForm将会出现冲突 （比如同时存在查询Form 和 录入Form）
+ *
+    常用方法：
+    var xform = $.F("#userForm");
+    xform.setFieldEditable("address", "false");
+    xform.updateDataExternal(code, value); xform.updateData( $1(code) );
+    xform.getData("address");
+*/
+
 URL_XFORM_DEMO = "data/form.xml";
 URL_SAVE_USER  = "data/_success.xml";
 
