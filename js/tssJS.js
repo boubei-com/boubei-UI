@@ -706,7 +706,7 @@
 
         radioValue: function(name) {
             var value;
-            $("input[name='" + name + "'").each(function(i, item) {
+            $("input[name='" + name + "']").each(function(i, item) {
                 if(item.checked) {
                     value = item.value;
                 }

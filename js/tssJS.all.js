@@ -706,7 +706,7 @@
 
         radioValue: function(name) {
             var value;
-            $("input[name='" + name + "'").each(function(i, item) {
+            $("input[name='" + name + "']").each(function(i, item) {
                 if(item.checked) {
                     value = item.value;
                 }
@@ -4179,7 +4179,9 @@
     return Form;
 });
 
-/* Grid组件 */
+/* Grid组件 
+ * 事件： onLoad, Grid更新加载完成后触发 $("#grid").attr("onLoad", "f1()");
+ */
 ;(function ($, factory) {
 
     $.Grid = factory($);

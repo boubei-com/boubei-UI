@@ -1,6 +1,8 @@
 
 
-/* Grid组件 */
+/* Grid组件 
+ * 事件： onLoad, Grid更新加载完成后触发 $("#grid").attr("onLoad", "f1()");
+ */
 ;(function ($, factory) {
 
     $.Grid = factory($);
