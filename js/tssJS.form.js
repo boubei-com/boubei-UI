@@ -450,7 +450,7 @@
                         {"name": "mode", "value": "combotree"},
                         {"name": "texts", "value": texts.join('|')},
                         {"name": "values", "value": values.join('|')}
-                     ]);) */
+                     ]) */
         updateField: function(name, attrs) {
             var field = this.template.fieldsMap[name];
             if(!field) {

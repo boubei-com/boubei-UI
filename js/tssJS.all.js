@@ -180,7 +180,6 @@
 
             // 获取对象的类型
             type: function(obj) {
-                // class2type[ "[object " + name + "]" ] = name.toLowerCase();
                 return obj == null ? String(obj) : class2type[toString.call(obj)] || "object";
             },
 
@@ -617,21 +616,6 @@
             return this;
         },
 
-        //设置显示
-        show: function(block) {
-            for (var i = 0; i < this.length; i++) {
-                this[i].style.display = block ? 'block' : '';
-            }
-            return this;
-        },
-
-        focus: function() {
-            if ( this.length > 0 ) {
-                this[0].focus();
-            }
-            return this;
-        },
-
         blur: function(fn) {
             this.removeEvent('blur', fn).addEvent('blur', fn);
             return this;
@@ -647,6 +631,21 @@
         removeEvent: function(eventName, fn, capture) {
             for (var i = 0; i < this.length; i++) {
                 $.Event.removeEvent(this[i], eventName, fn, capture);
+            }
+            return this;
+        },
+
+        focus: function() {
+            if ( this.length > 0 ) {
+                this[0].focus();
+            }
+            return this;
+        },
+
+        //设置显示
+        show: function(block) {
+            for (var i = 0; i < this.length; i++) {
+                this[i].style.display = block ? 'block' : '';
             }
             return this;
         },
@@ -810,12 +809,13 @@
             }
         },
 
-        /* 动态创建脚本 */
+        /* 动态添加脚本 */
         createScript: function(script) {
             var scriptNode = $.createElement("script");
             $.XML.setText(scriptNode, script);
             $('head').appendChild(scriptNode);
         },
+        /* 动态添加外挂js文件 */
         createScriptJS: function(jsFile) {
             var scriptNode = $.createElement("script");
             scriptNode.src = jsFile;
@@ -1110,8 +1110,13 @@
                 return $.parseXML(xml).documentElement;
             },
 
-            toString: function(element) {
-                return $.XML.toXml(element);
+            toXml: function(node) { // xml node、xml doc
+                var xmlSerializer = new XMLSerializer();
+                return xmlSerializer.serializeToString(node.documentElement || node);
+            },
+
+            toString: function(node) {
+                return $.XML.toXml(node);
             },
 
             getText: function(node) {
@@ -1191,11 +1196,6 @@
                     return errorNodes[0].innerHTML;
                 }
                 return "";
-            },
-
-            toXml: function(xml) {
-                var xmlSerializer = new XMLSerializer();
-                return xmlSerializer.serializeToString(xml.documentElement || xml);
             }
         }
     });
@@ -1887,15 +1887,15 @@
 
     $.Bubble = $.Balloon = factory($);
 
-    $.notice = function(targetEl, msg) {
+    $.notice = function(targetEl, msg, delay) {
         var balloon = new $.Bubble(msg);
-        balloon.dockTo(targetEl);
+        balloon.dockTo(targetEl, delay);
     };
 
     $.fn.extend({
         notice: function(msg, delay) {
             if(this.length > 0) {
-                $.notice(this[0], msg);
+                $.notice(this[0], msg, delay);
             }
         }
     });
@@ -2041,7 +2041,7 @@
     };
 
     // content：内容，title：对话框标题  
-    $.tip = function(content, title, callback) {
+    $.tip = function(content, title) {
         var boxEl = popupBox(title || '消息提醒');
         $(".content", boxEl).addClass("tip");
         $(".btbox", boxEl).hide();
@@ -3800,7 +3800,7 @@
                         {"name": "mode", "value": "combotree"},
                         {"name": "texts", "value": texts.join('|')},
                         {"name": "values", "value": values.join('|')}
-                     ]);) */
+                     ]) */
         updateField: function(name, attrs) {
             var field = this.template.fieldsMap[name];
             if(!field) {
@@ -4567,7 +4567,7 @@
         },
 
         /*
-         * 根据页面上的行数，获取相应的Row对象
+         * 根据页面上的行序号，获取相应的Row对象
          * 参数：  index   行序号
          * 返回值： Row对象
          */

@@ -180,7 +180,6 @@
 
             // 获取对象的类型
             type: function(obj) {
-                // class2type[ "[object " + name + "]" ] = name.toLowerCase();
                 return obj == null ? String(obj) : class2type[toString.call(obj)] || "object";
             },
 
@@ -617,21 +616,6 @@
             return this;
         },
 
-        //设置显示
-        show: function(block) {
-            for (var i = 0; i < this.length; i++) {
-                this[i].style.display = block ? 'block' : '';
-            }
-            return this;
-        },
-
-        focus: function() {
-            if ( this.length > 0 ) {
-                this[0].focus();
-            }
-            return this;
-        },
-
         blur: function(fn) {
             this.removeEvent('blur', fn).addEvent('blur', fn);
             return this;
@@ -647,6 +631,21 @@
         removeEvent: function(eventName, fn, capture) {
             for (var i = 0; i < this.length; i++) {
                 $.Event.removeEvent(this[i], eventName, fn, capture);
+            }
+            return this;
+        },
+
+        focus: function() {
+            if ( this.length > 0 ) {
+                this[0].focus();
+            }
+            return this;
+        },
+
+        //设置显示
+        show: function(block) {
+            for (var i = 0; i < this.length; i++) {
+                this[i].style.display = block ? 'block' : '';
             }
             return this;
         },
@@ -810,12 +809,13 @@
             }
         },
 
-        /* 动态创建脚本 */
+        /* 动态添加脚本 */
         createScript: function(script) {
             var scriptNode = $.createElement("script");
             $.XML.setText(scriptNode, script);
             $('head').appendChild(scriptNode);
         },
+        /* 动态添加外挂js文件 */
         createScriptJS: function(jsFile) {
             var scriptNode = $.createElement("script");
             scriptNode.src = jsFile;
@@ -1110,8 +1110,13 @@
                 return $.parseXML(xml).documentElement;
             },
 
-            toString: function(element) {
-                return $.XML.toXml(element);
+            toXml: function(node) { // xml node、xml doc
+                var xmlSerializer = new XMLSerializer();
+                return xmlSerializer.serializeToString(node.documentElement || node);
+            },
+
+            toString: function(node) {
+                return $.XML.toXml(node);
             },
 
             getText: function(node) {
@@ -1191,11 +1196,6 @@
                     return errorNodes[0].innerHTML;
                 }
                 return "";
-            },
-
-            toXml: function(xml) {
-                var xmlSerializer = new XMLSerializer();
-                return xmlSerializer.serializeToString(xml.documentElement || xml);
             }
         }
     });

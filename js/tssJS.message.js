@@ -4,15 +4,15 @@
 
     $.Bubble = $.Balloon = factory($);
 
-    $.notice = function(targetEl, msg) {
+    $.notice = function(targetEl, msg, delay) {
         var balloon = new $.Bubble(msg);
-        balloon.dockTo(targetEl);
+        balloon.dockTo(targetEl, delay);
     };
 
     $.fn.extend({
         notice: function(msg, delay) {
             if(this.length > 0) {
-                $.notice(this[0], msg);
+                $.notice(this[0], msg, delay);
             }
         }
     });
@@ -158,7 +158,7 @@
     };
 
     // content：内容，title：对话框标题  
-    $.tip = function(content, title, callback) {
+    $.tip = function(content, title) {
         var boxEl = popupBox(title || '消息提醒');
         $(".content", boxEl).addClass("tip");
         $(".btbox", boxEl).hide();
