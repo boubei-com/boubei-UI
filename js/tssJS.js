@@ -505,6 +505,20 @@
             return this;
         },
 
+        height: function(height) {
+            height = /^\+?[1-9][0-9]*$/.test(height) ? height + "px" : height;  // 300/300px/30%
+            return this.css("height", height);
+        },
+
+        width: function(width) {
+            width = /^\+?[1-9][0-9]*$/.test(width) ? width + "px" : width;  // 300/300px/30%
+            return this.css("width", width);
+        },
+
+        is: function(selector) {
+            return $.is(this[0], selector);
+        },
+
         hasClass: function(className) {
             if(this.length == 0) {
                 return false;
@@ -716,6 +730,10 @@
         hasClass: function(el, cn) {
             var reg = new RegExp('(\\s|^)' + cn + '(\\s|$)');
             return (' ' + el.className + ' ').match(reg);
+        },
+
+        is: function(el, selector) {
+            return el.tagName.toLowerCase() == selector.toLowerCase();
         },
 
         // 获取视口大小

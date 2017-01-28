@@ -144,6 +144,10 @@
 					.css("height", "150px")
 					.center(); 
 				console.log( $.absPosition($("#d4")[0]) );
+
+				setTimeout( function() { 
+					$("#d4").height(300).width("40%");  // 300/300px/30%
+				}, 1000 ); 
 			} 			
 		);
 
