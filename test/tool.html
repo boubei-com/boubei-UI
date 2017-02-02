@@ -9,6 +9,8 @@
 
 <script src="../js/tssJS.js"></script>
 <script src="../js/tssJS.tool.js"></script>
+<script src="../js/tssJS.message.js"></script>
+
 
 <style type="text/css">
 
@@ -18,15 +20,6 @@
     #div2 h2 { width:100%; height:25px; margin:0;font-size:14px; background:#CC9900; color:#fff; text-indent:15px; cursor:move; }
     #div2 p { padding:10px; line-height:24px; font-size:13px; text-indent:24px; color:#996600; }
     .demo{ width: 860px; margin:3px auto 0 auto; height:50px;}
-
-
-.tx-editor-wrapper { position: relative; width: 464px; height: 100px; }
-.tx-editor-wrapper .tx-editor { height: 70px; }
-.tx-editor-wrapper .tx-editor.expanded { position: fixed; top: 0; left: 0; width: 80%; height: 80%; z-index: 500; }
-.tx-editor-wrapper .tx-editor .tx-icon { position: absolute; right: 5px; top: 5px; width: 18px; height: 16px;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABV0RVh0Q3JlYXRpb24gVGltZQA4LzE2LzEzspl6ugAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAB7SURBVDiN7ZOxCsAgDESvxXyhi5P/Fif/0i6NGJH2KIUufVOUJB45s6lqw0DOGQylFHfeqSqCYEGMESJCF6aUAAC1Vt9IRPolixtDG1DVxjLnhtVL8yAvlZy8Nuy/0T1L19g1cY3Mavupd9bPWL5T9ERJV2SBrcfn238A3whjoYEPESwAAAAASUVORK5CYII=');
-  cursor: pointer; z-index: 3; }
-
 
 </style>
 
@@ -58,7 +51,7 @@
         <button class="tssbutton orange">Button Tag</button>
     </div>
 
-    <div class="demo">
+    <div class="demo fullscreenable">
         <a href="#" class="tssbutton green">绿色</a> 
         <a href="#" class="tssbutton green bigrounded">Rounded</a> 
         <a href="#" class="tssbutton green medium">Medium</a> 
@@ -73,10 +66,9 @@
     <div id="panel2" style="width:50%;position:absolute;top:400px;left:40%;"></div>
 
     <div>
-        <textarea id="tt1" class="fullscreenable"></textarea>
-    </div> 
-    <div>
-        <textarea id="tt2" class="fullscreenable"></textarea>
+        <textarea class="fullscreenable" cols="50"></textarea>
+        <hr style="background-color: red;">
+        <textarea class="fullscreenable" rows="10"></textarea>
     </div>    
     <script>
     

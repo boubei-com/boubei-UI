@@ -505,6 +505,20 @@
             return this;
         },
 
+        height: function(height) {
+            height = /^\+?[1-9][0-9]*$/.test(height) ? height + "px" : height;  // 300/300px/30%
+            return this.css("height", height);
+        },
+
+        width: function(width) {
+            width = /^\+?[1-9][0-9]*$/.test(width) ? width + "px" : width;  // 300/300px/30%
+            return this.css("width", width);
+        },
+
+        is: function(selector) {
+            return $.is(this[0], selector);
+        },
+
         hasClass: function(className) {
             if(this.length == 0) {
                 return false;
@@ -716,6 +730,10 @@
         hasClass: function(el, cn) {
             var reg = new RegExp('(\\s|^)' + cn + '(\\s|$)');
             return (' ' + el.className + ' ').match(reg);
+        },
+
+        is: function(el, selector) {
+            return el.tagName.toLowerCase() == selector.toLowerCase();
         },
 
         // 获取视口大小
@@ -3652,6 +3670,10 @@
             if(form) {
                 $.Event.addEvent(form, "submit", this.checkForm);
             }   
+
+            $(".fullscreenable", form).each(function(i, el){
+                $(el).fullscreen();
+            })
         },
  
         attachEditor: function() {
@@ -3850,7 +3872,7 @@
             this.el.editable = status || $(this.el).attr("editable");
 
             var disabled = (this.el.editable == "false");
-            this.el.className = disabled ? "field_disabled" : "string";
+            $(this.el).addClass( disabled ? "field_disabled" : "string" );
 
             if(this.el.tagName == "textarea") {
                 this.el.readOnly = disabled;  // textarea 禁止状态无法滚动显示所有内容，所以改为只读
@@ -6429,7 +6451,7 @@
 
 
 /*
- *  drag / resize
+ *  drag / resize / fullscreen
  */
 tssJS(function() {
     // 钩子
@@ -6439,7 +6461,11 @@ tssJS(function() {
 
     $(".resizable").each(function(i, el){
         $(el).resize().resize("col").resize("row");
-    })
+    });
+
+    $(".fullscreenable").each(function(i, el){
+        $(el).fullscreen();
+    });
 });
 
 tssJS.fn.extend({
@@ -6562,5 +6588,47 @@ tssJS.fn.extend({
         };
 
         return this;
+    },
+
+    /* Fullscreen text editor plugin */
+    fullscreen: function() {
+        var isFullscreen = false, 
+            $el = this, el = this[0], $ttDiv, $icon;
+
+        if ( !$el.is('textarea') ) {
+            return $el.notice('It can only work on textarea element.');
+        }
+
+        var tt = $.createElement("div", "tss-textarea");
+        el.parentNode.insertBefore(tt, el);
+        $(tt).html('<div style="height:100%;"><a href="#"></a></div>');
+        $ttDiv = $(tt).find('div');
+        $icon  = $ttDiv.find('div>a');
+        $ttDiv.appendChild(el);
+
+        // 设置tt的高、宽为原始textarea的高、宽
+        $(tt).width(el.offsetWidth).height(el.offsetHeight);
+        $el.width('100%').height('100%').css('resize', 'none');
+
+        var expand = function() {
+                $ttDiv.addClass('expanded');
+                $el.focus();
+                isFullscreen = true;
+            },
+            minimize = function() {
+                $ttDiv.removeClass('expanded'); 
+                isFullscreen = false;
+            };
+
+        $.Event.addEvent(window, "keyup", function(e) {
+            if (e.keyCode == 27) {
+                isFullscreen && minimize();
+            }
+        });
+
+        $icon.click(function(ev) {
+            $.Event.cancel(ev);
+            isFullscreen ? minimize(): expand();
+        });
     }
 });

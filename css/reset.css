@@ -1,3 +1,20 @@
+/* =Mixins
+-----------------------------------------------------------------------------*/
+.text2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.text3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
 /* =Reset
 -----------------------------------------------------------------------------*/
 html {
@@ -99,7 +116,7 @@ hr {
   box-sizing: content-box;
   height: 1px;
   border: 0;
-  border-top: 1px solid @hrColor;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 video,
 audio,

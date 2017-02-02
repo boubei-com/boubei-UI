@@ -302,6 +302,10 @@
             if(form) {
                 $.Event.addEvent(form, "submit", this.checkForm);
             }   
+
+            $(".fullscreenable", form).each(function(i, el){
+                $(el).fullscreen();
+            })
         },
  
         attachEditor: function() {
@@ -500,7 +504,7 @@
             this.el.editable = status || $(this.el).attr("editable");
 
             var disabled = (this.el.editable == "false");
-            this.el.className = disabled ? "field_disabled" : "string";
+            $(this.el).addClass( disabled ? "field_disabled" : "string" );
 
             if(this.el.tagName == "textarea") {
                 this.el.readOnly = disabled;  // textarea 禁止状态无法滚动显示所有内容，所以改为只读

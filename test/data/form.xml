@@ -52,7 +52,7 @@
               <TD><input binding="postCode"/></TD>              
               <TD><label binding="jianjie"/></TD>
               <TD>
-			           <textarea binding="jianjie" style="width:300px;height:100px"/>
+			           <textarea binding="jianjie" style="width:300px;height:100px" class="fullscreenable"/>
               </TD>
           </TR>
           <TR>

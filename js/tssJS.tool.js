@@ -212,11 +212,11 @@ tssJS(function() {
 
     $(".resizable").each(function(i, el){
         $(el).resize().resize("col").resize("row");
-    })
+    });
 
     $(".fullscreenable").each(function(i, el){
         $(el).fullscreen();
-    })
+    });
 });
 
 tssJS.fn.extend({
@@ -344,58 +344,42 @@ tssJS.fn.extend({
     /* Fullscreen text editor plugin */
     fullscreen: function() {
         var isFullscreen = false, 
-            $el = this, $pEl = $($el[0].parentNode),
-            $wrapper, $editor, $icon;
-        
-        $el.css('width', '100%').css('height', '100%').css('resize', 'none');
+            $el = this, el = this[0], $ttDiv, $icon;
 
         if ( !$el.is('textarea') ) {
-            return $el.notice('It can only work on <textarea> element.');
+            return $el.notice('It can only work on textarea element.');
         }
 
-        var content = '<div class="tx-editor-wrapper">'+
-                        '<div class="tx-editor">'+
-                        '   <a href="#" class="tx-icon"></a>'+ $pEl.html() + 
-                        '</div>'+
-                      '</div>';
-        $pEl.html(content);
+        var tt = $.createElement("div", "tss-textarea");
+        el.parentNode.insertBefore(tt, el);
+        $(tt).html('<div style="height:100%;"><a href="#"></a></div>');
+        $ttDiv = $(tt).find('div');
+        $icon  = $ttDiv.find('div>a');
+        $ttDiv.appendChild(el);
 
-        $editor = $pEl.find('.tx-editor');
-        $icon   = $editor.find('.tx-icon');
-
-        var transitions = function () {
-            $editor.css("top", "10%").css("left", "10%");
-            $el.focus();
-
-            !isFullscreen && $editor.css('opacity', 1);
-            isFullscreen = !isFullscreen;
-        };
+        // 设置tt的高、宽为原始textarea的高、宽
+        $(tt).width(el.offsetWidth).height(el.offsetHeight);
+        $el.width('100%').height('100%').css('resize', 'none');
 
         var expand = function() {
-                $editor.addClass('expanded');
-                transitions();
+                $ttDiv.addClass('expanded');
+                $el.focus();
+                isFullscreen = true;
             },
-
             minimize = function() {
-                $editor.removeClass('expanded'); 
-                transitions();
+                $ttDiv.removeClass('expanded'); 
+                isFullscreen = false;
             };
 
-        // ESC = closes the fullscreen mode
         $.Event.addEvent(window, "keyup", function(e) {
             if (e.keyCode == 27) {
                 isFullscreen && minimize();
             }
         });
 
-        // fullscreen icon click event
-        $icon.click(function(e) {
-            e.preventDefault();
-            if(isFullscreen) {
-                minimize();
-            } else {
-                expand();
-            }
+        $icon.click(function(ev) {
+            $.Event.cancel(ev);
+            isFullscreen ? minimize(): expand();
         });
     }
 });
