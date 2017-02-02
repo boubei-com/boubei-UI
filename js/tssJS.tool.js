@@ -202,7 +202,7 @@
 
 
 /*
- *  drag / resize
+ *  drag / resize / fullscreen
  */
 tssJS(function() {
     // 钩子
@@ -212,6 +212,10 @@ tssJS(function() {
 
     $(".resizable").each(function(i, el){
         $(el).resize().resize("col").resize("row");
+    })
+
+    $(".fullscreenable").each(function(i, el){
+        $(el).fullscreen();
     })
 });
 
@@ -335,133 +339,63 @@ tssJS.fn.extend({
         };
 
         return this;
-    }
-});
+    },
 
+    /* Fullscreen text editor plugin */
+    fullscreen: function() {
+        var isFullscreen = false, 
+            $el = this, $pEl = $($el[0].parentNode),
+            $wrapper, $editor, $icon;
+        
+        $el.css('width', '100%').css('height', '100%').css('resize', 'none');
 
-/* Fullscreen text editor plugin */
-(function($) {
-
-    var isFullscreen = false,
-        $el,
-        $wrapper,
-        $editor,
-        $icon,
-        $overlay,
-        settings = {
-            overlay: true,
-            maxWidth: '',
-            maxHeight: ''
-        };
-    var methods = {
-
-        init: function(opts) {
-            for (var name in opts) {
-                settings[name] = opts[name];
-            }
-
-            $el = $(this);
-            if (!$el.is('textarea')) {
-                return $el.notice('It can only work on <textarea> element.');
-            }
-            var content = '<div class="tx-editor-wrapper">'+
-                            '<div class="tx-editor">'+
-                            '   <a href="#" class="tx-icon"></a>'+
-                            '</div>'+
-                          '</div>';
-            var $wrapper = $(content).insertAfter(this);
-            $editor = $wrapper.find('.tx-editor');
-            $icon   = $editor.find('.tx-icon');
-            $editor.append($el);
-
-            $el.css('width', '100%').css('height', '100%').css('resize', 'none');
-
-            // ESC = closes the fullscreen mode
-            $(window).addEvent("keyup", function(e) {
-                if (e.keyCode == 27) {
-                    isFullscreen && methods.minimize();
-                }
-            });
-
-            // fullscreen icon click event
-            $icon.click(function(e) {
-                e.preventDefault();
-                methods[isFullscreen ? "minimize" : "expand"]();
-            });
-            return this;
-        },
-
-        showOverlay: function() {
-            $('<div class="tx-editor-overlay" />').appendTo('body')
-                .fadeTo(0, 1)
-                .click(function() {
-                    methods.minimize();
-                });
-            return this;
-        },
-
-        removeOverlay: function() {
-            var $overlay = $('.tx-editor-overlay');
-            if ($overlay.length) {
-                $overlay.fadeTo(0, 0, function() {
-                    $(this).remove();
-                });
-            }
-            return this;
-        },
-
-        expand: function() {
-            settings.maxWidth ? $editor.css('max-width', settings.maxWidth) : '';
-            settings.maxHeight ? $editor.css('max-height', settings.maxHeight) : '';
-            if (settings.overlay) {
-                methods.showOverlay();
-            }
-
-            $(window).on('resize.txeditor', function() {
-                relocate($editor);
-            });
-
-            $editor.addClass('expanded');
-            transitions();
-
-            return this;
-        },
-
-        minimize: function() {
-
-            $(window).off('resize.txeditor', relocate($editor))
-            $editor.removeClass('expanded')
-                .css({
-                    'max-width': 'none',
-                    'max-height': 'none'
-                });
-            if (settings.overlay) {
-                methods.removeOverlay();
-            }
-            transitions();
-
-            return this;
+        if ( !$el.is('textarea') ) {
+            return $el.notice('It can only work on <textarea> element.');
         }
-    };
 
-    var transitions = function () {
-            relocate($editor);
+        var content = '<div class="tx-editor-wrapper">'+
+                        '<div class="tx-editor">'+
+                        '   <a href="#" class="tx-icon"></a>'+ $pEl.html() + 
+                        '</div>'+
+                      '</div>';
+        $pEl.html(content);
+
+        $editor = $pEl.find('.tx-editor');
+        $icon   = $editor.find('.tx-icon');
+
+        var transitions = function () {
+            $editor.css("top", "10%").css("left", "10%");
             $el.focus();
 
-            if (!isFullscreen) {
-                $editor.css('opacity', 1);
-            }
-
+            !isFullscreen && $editor.css('opacity', 1);
             isFullscreen = !isFullscreen;
-            return;
-    };
+        };
 
-    function relocate($el) {
-        $el.css("top", "30px").css("left": "30px");
+        var expand = function() {
+                $editor.addClass('expanded');
+                transitions();
+            },
+
+            minimize = function() {
+                $editor.removeClass('expanded'); 
+                transitions();
+            };
+
+        // ESC = closes the fullscreen mode
+        $.Event.addEvent(window, "keyup", function(e) {
+            if (e.keyCode == 27) {
+                isFullscreen && minimize();
+            }
+        });
+
+        // fullscreen icon click event
+        $icon.click(function(e) {
+            e.preventDefault();
+            if(isFullscreen) {
+                minimize();
+            } else {
+                expand();
+            }
+        });
     }
-
-    $.fn.textareafullscreen = function(method) {
-        return methods.init.apply(this, arguments);
-    };
-
-})(tssJS);
+});
