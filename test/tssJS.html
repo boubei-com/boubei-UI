@@ -224,9 +224,9 @@
 	var str = [];
     str[str.length] = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
     str[str.length] = "<book id=\"1\">";
-	str[str.length] = "	<title>TSS Framework</title>";
+	str[str.length] = "	<title>TSS Framework\nnew ling</title>";
 	str[str.length] = "	<author>Jon.King</author>";
-	str[str.length] = "	<year>2005</year>";
+	str[str.length] = "	<year x=\"1\n2\">2005</year>";
 	str[str.length] = "</book>";
 
 	var dataXml = str.join("\r\n");
@@ -235,7 +235,10 @@
 	var cdateNodeXML = "<![CDATA[ 1 > 2 ]]>";
 	$.assertEquals(cdateNodeXML, cdateNodeXML.convertCDATA().revertCDATA());
 
-	var xml = $.parseXML(dataXml);
+	var xml = $.parseXML(dataXml);	
+	console.log( xml.querySelector("title") ); // title节点text里的换行符还在
+	console.log( xml.querySelector("year") );  // year.x值的换行符每一列了，所以有换行符，不宜放属性里
+
 	var xmlNode = $.XML.toNode(dataXml);
 	console.log($.XML.toString(xmlNode));
 
