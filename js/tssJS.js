@@ -950,6 +950,7 @@
     $.extend({
         Cookie: {
             setValue: function(name, value, expires, path) {
+                value = value||"";
                 if (expires == null) {
                     var exp = new Date();
                     exp.setTime(exp.getTime() + 365 * 24 * 60 * 60 * 1000);

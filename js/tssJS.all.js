@@ -950,6 +950,7 @@
     $.extend({
         Cookie: {
             setValue: function(name, value, expires, path) {
+                value = value||"";
                 if (expires == null) {
                     var exp = new Date();
                     exp.setTime(exp.getTime() + 365 * 24 * 60 * 60 * 1000);
@@ -1271,6 +1272,20 @@
             method : method || "POST",
             params : params,
             waiting : waiting || false, 
+            ondata : function() { 
+                var data = this.getResponseJSON();
+                callback(data);
+            }
+        });
+    };
+
+    $.post = function(url, params, callback) {
+        $.ajax({
+            url : url,
+            type : "json",
+            method : "POST",
+            params : params,
+            waiting : true, 
             ondata : function() { 
                 var data = this.getResponseJSON();
                 callback(data);
