@@ -17,7 +17,7 @@ var Field = function(info) {
 		this.defaultValue = info.defaultValue;
 
 		if(this.defaultValue) {
-            var dv = this.defaultValue.trim();
+            var dv = (this.defaultValue+"").trim();
             if( dv.indexOf("#") == 0 ) {
                 var _dvs = (dv+"||").split("||");  // #_day1||today-1  或 #_day1
                 dv = $.Cookie.getValue(_dvs[0].substring(1)) || _dvs[1]; // 通用查询条件写在cookie里

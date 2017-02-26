@@ -2062,7 +2062,7 @@
         $("h1", boxEl).html(title).addClass("text2");
         $(".content .message", boxEl).addClass("text1");
 
-        $(boxEl).center(360, 300);   
+        $(boxEl).center();   
         callback && $.showWaitingLayer();
 
         return $box[0];
@@ -2087,6 +2087,7 @@
         var boxEl = popupBox(title || '提示', callback);
         $(".content", boxEl).addClass("alert");
         $(".content .message", boxEl).html(content);
+        $(boxEl).center(); 
 
         function ok() {
             closeBox();
@@ -2101,6 +2102,7 @@
         $(".content", boxEl).addClass("confirm");
         $(".content .message", boxEl).html(content || '你确认此操作吗?');
         $(".btbox", boxEl).html($(".btbox", boxEl).html() + '<input type="button" value="取 消" class="cancel">');
+        $(boxEl).center(); 
 
         function ok(result) {
             closeBox();
@@ -2120,7 +2122,8 @@
         $(".content", boxEl).addClass("prompt");
         $(".content .message", boxEl).html( (content || "请输入：") + ':<br><input type="text">' );
         $(".content .message input", boxEl).value(deinput || '');
-        $(".btbox", boxEl).html($(".btbox", boxEl).html() + '<input type="button" value="取 消" class="cancel">');       
+        $(".btbox", boxEl).html($(".btbox", boxEl).html() + '<input type="button" value="取 消" class="cancel">');  
+        $(boxEl).center();      
 
         function ok() {
             var value = $(".content .message input", boxEl).value();

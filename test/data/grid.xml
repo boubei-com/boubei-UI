@@ -10,7 +10,7 @@
             <column caption="姓名" name="userName" mode="string" width="80px"/>
             <column caption="性别" name="sex" mode="string" values="0|1" texts="女|男"  width="50px"/>
             <column caption="出生年月" name="birthday" mode="date" width="100px" sortable="true"/>
-            <column caption="电子邮件" name="mail" mode="string" width="120px" showTitle="false"/>
+            <column caption="电子邮件" name="mail" mode="string" width="120px" showTitle="false" align="right"/>
             <column caption="电话" name="telephone" mode="number" width="80px" sortable="true"/>
             <column caption="所在组名称" name="groupName" mode="string" width="100px"/>
             <column caption="所在组ID" name="groupId" mode="string" display="none"/>
