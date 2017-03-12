@@ -1,0 +1,180 @@
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+// Btn
+.make-btn(@main-color, @hover-light: 5) {
+
+	color: rgba(255, 255, 255, .9);
+	background: @main-color;
+
+	&:hover {
+		color: rgba(255, 255, 255, .7);
+		.background-color-light(@main-color, @hover-light);
+	}
+	&[disabled] {
+
+		&:hover {
+			color: rgba(255, 255, 255, .9);
+			background: @main-color;
+		}
+	}
+	&[outline] {
+		background: none;
+		color: @main-color;
+		border-color: @main-color;
+
+		&:hover {
+			background: @main-color;
+			border-color: @main-color;
+			color: rgba(255, 255, 255, .9);
+		}
+		&[disabled] {
+
+			&:hover {
+				background: none;
+				border-color: @main-color;
+				color: @main-color;
+			}
+		}
+	}
+
+}
+
+/* =Buttons
+-----------------------------------------------------------------------------*/
+.btn,
+button {
+	display: inline-block;
+	vertical-align: top;
+
+	font-family: @font-family-base;
+	font-size: @font-size-btn-normal;
+	font-weight: normal;	
+
+	margin: 0;
+	padding: @padding-btn;
+	height: @input-height;
+	line-height: @input-height;
+
+    text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+
+	outline: none;
+	border: none;
+	border-radius: @global-radius;
+	box-shadow: none;
+	cursor: pointer;
+	color: rgba(0, 0, 0, 1);
+	background: @color-default;
+
+	&:hover {
+		.background-color-light(@color-default, 3);
+		color: rgba(0, 0, 0, .6);
+		text-decoration: none;
+	}
+	&[disabled] {
+		cursor: default;
+		box-shadow: none;
+		opacity: 0.4;
+
+		&:hover {
+			background: @color-default;
+			color: rgba(0, 0, 0, 1);
+			text-decoration: none;
+		}
+	}
+	&[outline] {
+		padding: @padding-btn-outline;
+		background: none;
+		border: 1px solid rgba(0, 0, 0, .25);
+		color: rgba(0, 0, 0, .6);
+
+		&:hover {
+			border-color: rgba(0, 0, 0, 1);
+			color: rgba(0, 0, 0, 1);
+			text-decoration: none;
+		}
+		&[disabled] {
+			cursor: default;
+			box-shadow: none;
+			opacity: 0.4;
+
+			&:hover {
+				border: 1px solid rgba(0, 0, 0, .25);
+				background: none;
+				color: rgba(0, 0, 0, .7);
+				text-decoration: none;
+			}
+		}
+	}
+	&[round] {
+		border-radius: 50px;
+	}
+	&[small] {
+		font-size: @font-size-btn-small;
+		padding: @padding-btn-small;
+		height: @input-height-small;
+		line-height: @input-height-small;
+		&[outline] {
+			padding: @padding-btn-small-outline;
+		}
+	}
+	&[big] {
+		font-size: @font-size-btn-big;
+		padding: @padding-btn-big;
+		height: @input-height-big;
+		line-height: @input-height-big;
+		&[outline] {
+			padding: @padding-btn-big-outline;
+		}
+	}
+	
+	&[type="black"] {
+		.make-btn(#000, 20);
+	}
+	&[type="primary"] {
+		.make-btn(@color-primary, 10);
+	}
+	&[type="white"] {
+		background: #fff;
+
+		&:hover {
+			opacity: 0.85;
+		}
+		&[outline] {
+			background: none;
+			color: #fff;
+			border-color: rgba(255, 255, 255, .9);
+
+			&:hover {
+				opacity: 1;
+				color: #000;
+				border-color: rgba(255, 255, 255, 1);
+				background: #fff;
+			}
+		}
+	}
+}
+
+.btn-group {
+
+	.clearfix;
+
+	display: inline-block;
+	vertical-align: bottom;
+
+	& .btn,
+	& button {
+		float: left;
+		margin-left: -1px; /* 前一个的右边框和后一个的左边框，共2px，去掉1px */
+		&:first-child {
+			border-radius: @global-radius 0 0 @global-radius;
+		}
+		&:last-child {
+			border-radius: 0 @global-radius @global-radius 0;
+		}
+	}
+
+}

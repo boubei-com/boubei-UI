@@ -1,0 +1,121 @@
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+// Grid
+@grid-columns: 12;
+@grid-width: 1128; // pixels
+@grid-gutter: @base-line;
+@grid-gap: (unit(@grid-gutter)/(@grid-width/100))*1%;
+
+.row() {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-basis: 100%;
+
+	@media (max-width: @breakpoint-small) {
+		flex-direction: column;
+	}
+}
+
+.offset(@num) {
+	margin-left: calc((100%/@grid-columns*@num) + ((@grid-gutter/10)+0em)/2);
+}
+.col(@num) {
+	width: (100%/@grid-columns*@num) * 1%;
+}
+.col-fixed(@width) {
+	flex: 0 0 @width;
+	@media (max-width: @breakpoint-small) {
+		flex: 0;
+		width: 100%;
+	}
+}
+
+/* =Grid
+-----------------------------------------------------------------------------*/
+row {
+
+	.row;
+
+	margin-bottom: @base-line;
+
+	& column {
+		margin: 0; padding: 0;
+		margin-right: @grid-gutter;
+
+		&:last-child { margin-right: 0; }
+	}
+	&[end] {
+		margin-bottom: 0;
+	}
+	&[split] {
+		column { margin-right: 0; }
+	}
+	&[centered] {
+		justify-content: center;
+	}
+}
+
+column {
+	&[cols="1"] { .col(1); }
+	&[cols="2"] { .col(2); }
+	&[cols="3"] { .col(3); }
+	&[cols="4"] { .col(4); }
+	&[cols="5"] { .col(5); }
+	&[cols="6"] { .col(6); }
+	&[cols="7"] { .col(7); }
+	&[cols="8"] { .col(8); }
+	&[cols="9"] { .col(9); }
+	&[cols="10"] { .col(10); }
+	&[cols="11"] { .col(11); }
+	&[cols="12"] { width: 100%; }
+
+	&[offset="1"] { .offset(1); }
+	&[offset="2"] { .offset(2); }
+	&[offset="3"] { .offset(3); }
+	&[offset="4"] { .offset(4); }
+	&[offset="5"] { .offset(5); }
+	&[offset="6"] { .offset(6); }
+	&[offset="7"] { .offset(7); }
+	&[offset="8"] { .offset(8); }
+	&[offset="9"] { .offset(9); }
+	&[offset="10"] { .offset(10); }
+	&[offset="11"] { .offset(11); }
+}
+
+.width-1 { .col(1); }
+.width-2 { .col(2); }
+.width-3 { .col(3);; }
+.width-4 { .col(4); }
+.width-5 { .col(5); }
+.width-6 { .col(6); }
+.width-7 { .col(7); }
+.width-8 { .col(8); }
+.width-9 { .col(9); }
+.width-10 { .col(10); }
+.width-11 { .col(11); }
+.width-12 { width: 100%; }
+
+@media (max-width: @breakpoint-small) {
+
+	row {
+		margin-bottom: 0;
+
+		& [offset] {
+			margin-left: 0;
+		}
+		& column[cols] {
+			margin-right: 0;
+			width: 100%;
+			margin-bottom: @base-line;
+		}
+
+		& row column:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.width-1, .width-2, .width-3, .width-4, .width-5, .width-6,
+	.width-7, .width-8, .width-9, .width-10, .width-11, .width-12 { width: 100%; }
+}

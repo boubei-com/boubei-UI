@@ -1,0 +1,99 @@
+/* =Mixins
+-----------------------------------------------------------------------------*/
+.color-light(@color, @light: 5) {
+	@h: hue(@color);
+	@s: saturation(@color);
+	@l: lightness(@color) + @light;
+
+	color: hsl(@h,@s,@l);
+}
+.color-dark(@color, @dark: 5) {
+	@h: hue(@color);
+	@s: saturation(@color);
+	@l: lightness(@color) - @dark;
+
+	color: hsl(@h,@s,@l);
+}
+
+.background-color-light(@color, @light: 5) {
+	@h: hue(@color);
+	@s: saturation(@color);
+	@l: lightness(@color) + @light;
+
+	background-color: hsl(@h,@s,@l);
+}
+.background-color-dark(@color, @dark: 5) {
+	@h: hue(@color);
+	@s: saturation(@color);
+	@l: lightness(@color) - @dark;
+
+	background-color: hsl(@h,@s,@l);
+}
+
+.border-color-light(@color, @light: 5) {
+	@h: hue(@color);
+	@s: saturation(@color);
+	@l: lightness(@color) + @light;
+
+	border-color: hsl(@h,@s,@l);
+}
+.border-color-dark(@color, @dark: 5) {
+	@h: hue(@color);
+	@s: saturation(@color);
+	@l: lightness(@color) - @dark;
+
+	border-color: hsl(@h,@s,@l);
+}
+
+.box-sizing(@box-model) {
+	-webkit-box-sizing: @box-model;
+	-moz-box-sizing: @box-model;
+	box-sizing: @box-model;
+}
+.vertical-align() {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+
+.transition(@transition: all linear .3s) {
+	-moz-transition: @transition;
+	transition: @transition;
+}
+.blur(@radius) {
+	-webkit-filter: blur(@radius);
+	-moz-filter: blur(@radius);
+	-ms-filter: blur(@radius);
+	filter: blur(@radius);
+}
+.rotate(@deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+    transform: rotate(@deg);
+}
+
+.text2 { overflow: hidden; text-overflow: ellipsis; }
+.text1 { .text2; word-break: break-all; }
+.text3 { .text1; white-space: nowrap; }
+
+
+.clearfix {
+  display: table;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+}

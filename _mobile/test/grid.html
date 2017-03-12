@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BI UI -- Grid</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" href="../css/btrbi.css" />
+
+<style type="text/css">
+	body { padding: 20px; }
+
+	row { background-color: #eee; }
+	column { border: 1px solid red; }
+
+	.fixed-col {
+	    flex: 0 0 200px;
+	}
+
+	@media (max-width: 768px) {
+		.fixed-col {
+			flex: 0;
+			width: 100%;
+		}
+	}
+
+    .container>div {
+        border: 1px solid red;
+    }
+
+    .vertical-container {
+        background-color: #eee;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .vertical-container>div {
+        border: 1px solid red;
+    }
+
+</style>
+
+</head>
+<body>
+
+<row>
+    <column class="width-4">4</column>
+    <column class="width-8">8</column>
+</row>
+
+<row>
+    <column cols="4">4</column>
+    <column cols="8">8</column>
+</row>
+
+<row split>
+    <column cols="4">4</column>
+    <column cols="8">8</column>
+</row>
+
+<row centered>
+    <column cols="6">6</column>
+</row>
+
+<row centered>
+    <column cols="3">3</column>
+    <column cols="3">3</column>
+    <column cols="3">3</column>
+</row>
+
+<row>
+    <column cols="3" offset="6">3</column>
+    <column cols="3">3</column>
+</row>
+
+<row>
+    <column class="fixed-col">
+        Fixed Width
+    </column>
+    <column cols="12">12</column>
+</row>
+
+
+<div style="height: 40px; background-color: #eee; line-height: 40px;">
+	<a> <i style=" vertical-align: 5px;">123</i>456 </a>
+</div>
+
+<hr>
+<h3>使用 Flexbox 的牛逼布局</h3>
+<div class="container" style="display: flex;">
+    <div style="flex: initial; width: 200px; min-width: 100px;">
+        空间足够的时候，我的宽度是200px，如果空间不足，我会变窄到100px，但不会再窄了。
+    </div>
+    <div style="flex: none; width: 200px; ">无论窗口如何变化，我的宽度一直是200px。</div>
+    <div style="flex: 1;">我会占满剩余宽度的1/3。</div>
+    <div style="flex: 2;">我会占满剩余宽度的2/3。</div>
+</div>
+
+<div class="vertical-container">
+    <div>
+        CSS里总算是有了一种简单的垂直居中布局的方法了！
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+@import "variables.less";
+@import "mixins.less";
+
+/* =Reset
+-----------------------------------------------------------------------------*/
+html {
+	box-sizing: border-box;
+}
+
+body { 
+	font-family: @font-family-base;
+	font-size: @fontSize;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+img {
+	box-sizing: content-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    background: transparent;
+}
+
+h1,h2,h3,h4,h5,h6 { font-size:100%; }
+ul,ol { list-style: none; }
+
+a { text-decoration: none; }
+a:active, a:hover { outline: 0; }
+a:hover { text-decoration: underline; cursor: pointer; }
+
+// Table reset
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption,
+th,
+td {
+	
+}
+
+button,
+input,
+select,
+textarea {
+	margin: 0;
+}
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	resize: vertical;
+}
+
+// Normalize buttons in IE
+button {
+	width: auto;
+	overflow: visible;
+}
+
+// Hand cursor on clickable controls
+input[type="reset"],
+input[type="submit"],
+input[type="file"],
+input[type="radio"],
+input[type="checkbox"],
+select,
+button {
+	cursor: pointer;
+}
+
+button:active,
+button:focus {
+	outline: none;
+}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+// Trick with vertical align for radio and checkbox
+input[type="radio"],
+input[type="checkbox"] {
+	font-size: 110%;
+	position: relative;
+	margin-right: 3px;
+	padding: 0;
+}
+
+// Normalize horizontal line
+hr {
+	display: block;
+	box-sizing: content-box;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, .1);
+}

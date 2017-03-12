@@ -1,0 +1,26 @@
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+.bitable {
+	width: 100%;
+	height: auto;
+	table-layout: fixed;
+
+	& tr { height: 25px; }
+	& td {
+		text-align: center; 
+		border: 1px solid @grayLight2; 
+		border-width: 0 1px 1px 0;
+		padding: 0 2px;
+	}
+
+	& thead {
+		background: linear-gradient(rgb(249, 249, 249) 0px, rgb(239, 239, 239) 100%) repeat-x;
+		& td { width: 50px; }
+	}
+	& tbody {
+		background-color: @white;
+		& td { .text3; }
+	}
+}

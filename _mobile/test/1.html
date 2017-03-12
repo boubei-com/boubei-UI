@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> 北极星 </title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" href="../css/mobile.css" />
+
+	<style type="text/css">
+
+body {
+	text-align: center;
+	box-sizing: border-box;
+}
+header {
+	height: 120px;
+	margin: 5px 0;
+}
+header>div {
+	width: 50%;
+	height: 120px;
+	display: inline-block;
+}
+header>div:nth-child(1){
+	border-right: 1px #049cdb solid;
+}
+header>div b {
+	display: inline-block;
+	margin-top: 15px;
+	font-size: 3.5em;
+}
+header>div p {
+	font-size: .6em;
+}
+
+.btn-group { margin: 0 auto; width: 80%; }
+.btn-group button {
+	text-align: center;
+	height: 30px; line-height: 30px;  width: 25%; display: inline-block;
+}
+
+#canvasDiv { margin-bottom: 12px; }
+
+#t1 { margin-top: 10px; }
+#t1 td { width: 25%; font-size: 90%; }
+#t1 tbody>tr:nth-child(even) {
+	background-color: #E0ECFF;
+}
+
+#h6 {
+	margin-top: 12px;
+}
+
+@media screen and (max-width: 480px) {
+    .btn-group button {
+		padding: 0;
+	}
+}
+
+	</style>
+</head>
+<body>
+
+	<header>
+		<div>
+			<h3>录 单 货 量</h3>
+			<div>
+				<b>301</b><i>吨</i>
+			</div>
+			<p> 
+				今日零点 ==> 今日23:59 
+			</p>
+		</div><div>
+			<h3>实扫入网货量</h3>
+			<div>
+				<b>108</b><i>吨</i>
+			</div>
+			<p> 
+				今日03:00 ==> 次日02:59
+			</p>
+		</div>
+	</header>
+
+	<div id="canvasDiv" style="height:180px;background-color:#fff"></div>
+
+	<span class="btn-group">
+	    <button type="primary" data-v="第一集团">第一集团</button>
+	    <button type="primary" data-v="第二集团" outline="">第二集团</button>
+	    <button type="primary" data-v="第三集团" outline="">第三集团</button>
+	    <button type="primary" data-v="第四集团" outline="">第四集团</button>
+	</span>
+
+	<table id="t1" class="bitable">
+		<thead>
+			<tr>
+				<td>分公司</td>
+				<td>录单货量</td>
+				<td>入网货量</td>
+				<td>入网货量排名</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td>广东分公司</td><td>38.622</td><td>21.737</td><td>1</td></tr>
+			<tr><td>江苏分公司</td><td>38.095</td><td>18.524</td><td>2</td></tr>
+			<tr><td>上海分公司</td><td>21.463</td><td>9.619</td><td>3</td></tr>
+			<tr><td>浙江分公司</td><td>25.938</td><td>9.1</td><td>4</td></tr>
+			<tr><td>山东分公司</td><td>24.656</td><td>3.706</td><td>5</td></tr>
+		</tbody>
+	</table>
+
+	<h6 id="h6">数据最后更新于: <time>2016-03-25 12:13:30</time></h6>
+
+</body>
+</html>
