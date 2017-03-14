@@ -635,7 +635,7 @@
 
             if( !checkedIds ) return;
 
-            checkedIds = checkedIds.length ? checkedIds : checkedIds.split(',');
+            checkedIds = $.isArray(checkedIds) ? checkedIds : checkedIds.split(',');
             for(var i = 0; i < checkedIds.length; i++) {
                 var li = this.el.querySelector("li[nodeId='" + checkedIds[i] + "']");
                 if(li) {
