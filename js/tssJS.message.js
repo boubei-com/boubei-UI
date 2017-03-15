@@ -201,10 +201,11 @@
     };
 
     // content：内容，deinput：输入框的默认值，title：对话框标题，callback：回调函数
-    $.prompt = function(content, title, callback, deinput){
+    $.prompt = function(content, title, callback, deinput, isPasswd){
+        var type = isPasswd ? "password" : "type";
         var boxEl = popupBox(title || '输入框', callback);
         $(".content", boxEl).addClass("prompt");
-        $(".content .message", boxEl).html( (content || "请输入：") + ':<br><input type="text">' );
+        $(".content .message", boxEl).html( (content || "请输入：") + ':<br><input type="' +type+ '">' );
         $(".content .message input", boxEl).value(deinput || '');
         $(".btbox", boxEl).html($(".btbox", boxEl).html() + '<input type="button" value="取 消" class="cancel">');  
         $(boxEl).center();      

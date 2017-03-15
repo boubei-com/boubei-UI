@@ -50,6 +50,7 @@
         <a href="#" class="tssbutton blue normal">test alert</a> 
         <a href="#" class="tssbutton blue bigrounded">test confirm</a> 
         <a href="#" class="tssbutton blue medium">test prompt</a> 
+        <a href="#" class="tssbutton blue" id="a4">prompt passwd</a> 
         <input type="button" class="tssbutton black" value="test气泡" onclick="test()"/>
     </div>
 
@@ -77,6 +78,13 @@
                 $.alert("your input keyword: " + result);
             }, "123456");
         });
+
+        $("#a4").click(function(){
+            $.prompt("请输入你的新密码", "输入密码", function(result) {
+                $.alert("your input keyword: " + result);
+            }, "123456", true);
+        });
+ 
  
     </script>  
 
