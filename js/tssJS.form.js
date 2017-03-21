@@ -1,5 +1,3 @@
-
-
 /* Form组件 */
 ;(function ($, factory) {
 
@@ -48,14 +46,19 @@
     },
 
     validate = function() {
+        var name     = this.el.getAttribute("id");
         var empty    = this.el.getAttribute("empty");
-        var caption  = this.el.getAttribute("caption").replace(/\s/g, "");
+        var caption  = (this.el.getAttribute("caption")||"").replace(/\s/g, "");
         var checkReg = this.el.getAttribute("checkReg") || this.el.getAttribute("inputReg");
         
-        var errorMsg;
-        var value = this.el.value;
-        if(value == "" && empty == "false") {
-            errorMsg = "[" + caption.replace(/\s/g, "") + "] 不允许为空。";
+        var errorMsg = "";
+        var value = this.form ? this.form.getData(name) : this.el.value;
+        if(!value && this.el.value && this.tree) {
+            errorMsg = "[" + caption + "]手输无效，要求必须选中不少于一个下拉节点。";
+        }
+
+        if( !value && empty == "false") {
+            errorMsg += "[" + caption + "] 不允许为空。";
         }
         else if(checkReg && value && !(new RegExp(checkReg)).test(value)) {
             errorMsg = this.el.getAttribute("errorMsg");
@@ -666,6 +669,7 @@
     };
 
     var ComboTreeField = function($el, form) {
+        this.form = form;
         this.el = $el[0];
         this.multiple = $el.attr("multiple") != null;
         
