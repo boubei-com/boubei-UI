@@ -169,7 +169,7 @@
 
         toHTML: function() {
             var htmls = [], oThis = this;
-            htmls.push("<form class='tssForm' method='post' onsubmit='return false;''>");
+            htmls.push("<form class='tssForm' method='post' onsubmit='return false;' autocomplete='off'>");
             htmls.push('<table>');
 
             // 添加隐藏字段           

@@ -3556,7 +3556,7 @@
 
         toHTML: function() {
             var htmls = [], oThis = this;
-            htmls.push("<form class='tssForm' method='post' onsubmit='return false;''>");
+            htmls.push("<form class='tssForm' method='post' onsubmit='return false;' autocomplete='off'>");
             htmls.push('<table>');
 
             // 添加隐藏字段           
@@ -6280,7 +6280,7 @@
             document.body.appendChild(panel);
             
             $panel = $(panel);
-            $panel.css("width", width + "px").css("height", height + "px").center();
+            $panel.css("width", width + "px").css("height", height + "px").center().css("position", "fixed");
             $panel.panel(title, '<iframe frameborder="0"></iframe>', false);
 
             if(hideMaxMin) {
