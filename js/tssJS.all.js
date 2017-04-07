@@ -3975,8 +3975,8 @@
         this.multiple = $el.attr("multiple") != null;
         this.required = $el.attr('empty') == "false";
 
-        var valueList = ($el.attr("values") || "");
-        var textList  = ($el.attr("texts")  || "");   
+        var valueList = ($el.attr("values") || "").trim();
+        var textList  = ($el.attr("texts")  || "").trim();   
         
         var valueNode = this.el.attributes["value"];
         this.el._value = valueNode ? valueNode.value : "";
@@ -3988,8 +3988,8 @@
             valueList = ("|" + valueList);
             textList = ("|" + textList);
         }
-        valueList = valueList.split('|');
-        textList  = textList.split('|');
+        valueList = valueList.length > 1 ? valueList.split('|') : [];
+        textList  = textList.length > 1 ? textList.split('|') : [];
         this.el.options.length = 0; // 先清空
         for(var i=0; i < valueList.length; i++) {
             var value = valueList[i];
@@ -4009,7 +4009,7 @@
             var oldVal = this.el._value; 
 
             // 原值为空，或当前的下拉列表已经不包含原值，则重新设值
-            if( !oldVal || !valueList.contains(oldVal) ) {
+            if( !oldVal || (valueList.length && !valueList.contains(oldVal)) ) {
                 this.setValue(valueList[0]);
                 form.setFieldValue(this.el.id, valueList[0]);
             }            
