@@ -54,10 +54,14 @@
             var graph = $(".progressBar")[0];
             if(graph == null) {
                 graph = $.createElement("div", "progressBar");
-                $(graph).center(500, 50).css("width", "600px").css("color", "#fff").css("fontSize", "16px").css("fontWeight", "bold");
+                $(graph).center(500, 50)
+                    .css("width", "600px")
+                    .css("color", "#fff").css("backgroundColor", "#fff")
+                    .css("fontSize", "20px").css("fontWeight", "bold")
+                    .css("box-shadow", "1px 3px 19px 5px #a6a6a6");
 
                 var bar = $.createElement("div", "bar");
-                $(bar).css("backgroundColor", "#e0f6c8").css("border", "1px solid #F8B3D0") ;  
+                $(bar).css("backgroundColor", "#e0f6c8");  
 
                 var passBar = $.createElement("div", "passBar");
                 $(passBar).css("backgroundColor", "#009966").html("1212").css("textAlign", "center");    
@@ -66,10 +70,10 @@
                 bar.appendChild(passBar);  
 
                 var info = $.createElement("span", "info");
-                $(info).html("剩余时间: <span>1</span>秒").css("padding", "5px 0 0 120px").css("color", "grey").css("fontSize", "14px");
+                $(info).html("剩余时间: <span>1</span> 秒").css("padding", "5px 0 0 120px").css("color", "#666").css("fontSize", "14px");
 
                 var cancel = $.createElement("span");
-                $(cancel).html("<a href='#'>取 消</a>").css("padding", "5px 0 0 80px").css("fontSize", "14px")
+                $(cancel).html("<a href='#'>取 消</a>").css("padding", "5px 0 0 100px").css("fontSize", "14px")
                     .click(function() { pThis.stop(); });
 
                 graph.appendChild(info);
