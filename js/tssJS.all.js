@@ -1288,7 +1288,7 @@
             waiting : true, 
             ondata : function() { 
                 var data = this.getResponseJSON();
-                callback(data);
+                callback && callback(data);
             }
         });
     };
