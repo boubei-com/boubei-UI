@@ -507,7 +507,11 @@
             this.el.editable = status || $(this.el).attr("editable");
 
             var disabled = (this.el.editable == "false");
-            $(this.el).addClass( disabled ? "field_disabled" : "string" );
+            if(disabled) {
+                $(this.el).addClass("field_disabled").removeClass("string");
+            } else {
+                $(this.el).removeClass("field_disabled").addClass("string");
+            }
 
             if(this.el.tagName == "textarea") {
                 this.el.readOnly = disabled;  // textarea 禁止状态无法滚动显示所有内容，所以改为只读
