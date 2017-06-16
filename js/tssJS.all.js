@@ -1300,7 +1300,7 @@
             method : method || "POST",
             params : params, 
             waiting : waiting || false, 
-            ondata : function() { 
+            onresult : function() { 
                 var data = this.getResponseXML();
                 callback(data);
             }

@@ -50,7 +50,7 @@
             type : "json",
             method : method || "POST",
             params : params,
-            waiting : waiting || false, 
+            waiting : waiting || true, 
             ondata : function() { 
                 var data = this.getResponseJSON();
                 callback(data);
@@ -79,7 +79,7 @@
             method : method || "POST",
             params : params, 
             waiting : waiting || false, 
-            ondata : function() { 
+            onresult : function() { 
                 var data = this.getResponseXML();
                 callback(data);
             }
