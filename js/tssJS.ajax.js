@@ -1,4 +1,4 @@
-
+CONTEXTPATH = "tss";
 
 /*  AJAX相关封装
     $.ajax({
@@ -7,6 +7,7 @@
         headers : {},
         params  : {}, 
         formNode : formNode,
+        exEmpty: true,
         ondata : function() { },
         onresult : function() { },
         onexception : function() { },
@@ -27,6 +28,7 @@
 
         request.params  = arg.params  || {};
         request.headers = arg.headers || {};
+        request.exEmpty = arg.exEmpty || true;
 
         if(arg.formNode) {
             request.setFormContent(arg.formNode);
@@ -37,6 +39,7 @@
         request.onsuccess = arg.onsuccess || request.onsuccess;
         request.onexception = arg.onexception || function(errorMsg) {
             errorMsg.description && console.log(errorMsg.description); // 遇到异常却看不到任何信息，可尝试放开这里的注释
+            errorMsg.msg && console.log(errorMsg.msg);
         };
 
         request.send();
@@ -136,6 +139,7 @@
         this.params = {};
         this.headers = {};
         this.waiting = false;
+        this.exEmpty = true;
 
         this.responseText;
         this.responseXML;
@@ -307,7 +311,7 @@
          
             for(var name in this.params) {
                 var value = this.params[name];
-                if( !$.isNullOrEmpty(value) ) {
+                if( !$.isNullOrEmpty(value) || !this.exEmpty ) {
                     var paramNode = $.XML.createNode(_XML_NODE_REQUEST_PARAM);
                     paramNode.appendChild($.XML.appendCDATA(_XML_NODE_REQUEST_NAME, name));
                     paramNode.appendChild($.XML.appendCDATA(_XML_NODE_REQUEST_VALUE, value));
