@@ -48,6 +48,10 @@ var Field = function(info) {
 				this.checkReg = this.checkReg || "^(-?\\d+)(\\.\\d+)?$"; // 浮点数
 				this.errorMsg = this.errorMsg || "请输入数字";
 				break;
+			case "int":
+				this.checkReg = this.checkReg || "^(-?\\d+)$"; // 整数
+				this.errorMsg = this.errorMsg || "请输入整数";
+				break;
 			case "string":
 			case "combo":
 			case "combotree":
@@ -240,8 +244,8 @@ var Field = function(info) {
 
 	$.vt = function(item, text, value) {
 		var result = {};
-		result.value = item[value] || item.id   || item.pk   || item.value || item[0] || item.name || '';
-		result.text  = item[text] || item.name || item.text || item.value || item[2] || item[1] || item[0] || '';
+		result.value = item[value] || item.value || item.name || item.id    || item[0] || '';
+		result.text  = item[text]  || item.name  || item.text || item.value || item[2] || item[1] || item[0] || '';
 		return result;
 	};
 

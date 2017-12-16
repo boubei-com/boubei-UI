@@ -41,6 +41,7 @@
 
         switch(column.getAttribute("mode")) {
             case "number":
+            case "int":
                 return "right";
             case "boolean":
             case "date":
@@ -349,7 +350,8 @@
 
             var mode  = column.getAttribute("mode") || "string";
             switch( mode ) {
-                case "number":  
+                case "number": 
+                case "int":  
                 case "date":
                     cell.title = value;
                     break;         
