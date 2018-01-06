@@ -1,7 +1,9 @@
 
 
 /* Grid组件 
- * 事件： onLoad, Grid更新加载完成后触发 $("#grid").attr("onLoad", "f1()");
+ * 事件: onLoad, Grid更新加载完成后触发 $("#grid").attr("onLoad", "f1()");
+ * TODO:
+ *  !. Grid控件表头增加求和功能
  */
 ;(function ($, factory) {
 
