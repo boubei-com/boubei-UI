@@ -1281,11 +1281,18 @@
     $.Ajax = $.AJAX = $.ajax;
 
     $.getJson = $.getJSON = function(url, params, callback, method, waiting) {
+        var _params = params;
+        if (tssJS.isFunction(params)) { // no params
+            _params = {};
+            waiting = method;
+            method = callback;
+            callback = params;
+        }
         $.ajax({
             url : url,
             type : "json",
             method : method || "POST",
-            params : params,
+            params : _params,
             waiting : waiting || true, 
             ondata : function() { 
                 var data = this.getResponseJSON();
@@ -1306,6 +1313,10 @@
                 callback && callback(data);
             }
         });
+    };
+
+    $.delete = function(url, params, callback) {
+        $.post(url, params, callback, "DELETE");
     };
 
     $.getXml = $.getXML = function(url, params, callback, method, waiting) {
@@ -4732,6 +4743,7 @@
         deleteSelectedRow: function() {
             var rowIndex = this.gridBox.selectRowIndex;
             this.deleteRowByIndex(rowIndex);
+            delete this.gridBox.selectRowIndex;
         },
             
         // 更新单行记录的某个属性值

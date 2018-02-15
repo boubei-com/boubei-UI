@@ -478,6 +478,7 @@
         deleteSelectedRow: function() {
             var rowIndex = this.gridBox.selectRowIndex;
             this.deleteRowByIndex(rowIndex);
+            delete this.gridBox.selectRowIndex;
         },
             
         // 更新单行记录的某个属性值
