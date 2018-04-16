@@ -88,6 +88,9 @@ var Field = function(info) {
 			if(this.height) {
 				column += " height='" + this.height + "' ";
 			}
+			if(this.mode == 'int' || this.mode == 'number') {
+				column += " maxLength='16' ";
+			}
 
 			// 如果下拉列表需要后续生成，可先填入任意值，默认初始化成为codes和names都为空
 			if(this.options && this.options.codes == undefined) {

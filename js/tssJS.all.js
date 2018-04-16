@@ -382,7 +382,7 @@
 
             _close: function() {
                 if ( $.isFirefox || $.isChrome) {
-                    window.location.href = "about:blank";
+                    // window.location.href = "about:blank";
                 } else {
                     window.opener = null;
                     window.open(" ", "_self");
@@ -712,11 +712,14 @@
 
         value: function() {
             if ( this.length > 0 ) {
-                var el = this[0];
                 if (arguments.length == 0) {
-                    return el.value;
+                    return this[0].value;
                 }
-                el.value = arguments[0];
+                else {
+                    for (var i = 0; i < this.length; i++) {
+                        this[i].value = arguments[0];
+                    }
+                }
             }
             return this;
         }
@@ -3960,8 +3963,8 @@
                         field: $1(this.el.id),
                         firstDay: 1,
                         minDate: new Date('2000-01-01'),
-                        maxDate: new Date('2030-12-31'),
-                        yearRange: [2000,2030],
+                        maxDate: new Date('2050-12-31'),
+                        yearRange: [2000,2050],
                         format: 'yyyy-MM-dd',
                         careTime: isDatetime
                     });

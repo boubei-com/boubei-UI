@@ -382,7 +382,7 @@
 
             _close: function() {
                 if ( $.isFirefox || $.isChrome) {
-                    window.location.href = "about:blank";
+                    // window.location.href = "about:blank";
                 } else {
                     window.opener = null;
                     window.open(" ", "_self");

@@ -536,8 +536,8 @@
                         field: $1(this.el.id),
                         firstDay: 1,
                         minDate: new Date('2000-01-01'),
-                        maxDate: new Date('2030-12-31'),
-                        yearRange: [2000,2030],
+                        maxDate: new Date('2050-12-31'),
+                        yearRange: [2000,2050],
                         format: 'yyyy-MM-dd',
                         careTime: isDatetime
                     });
