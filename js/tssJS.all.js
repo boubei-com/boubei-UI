@@ -4925,6 +4925,7 @@
             var curPage = pageBar.getCurrentPage();
 
             var str = [];
+            str[str.length] = '<span>共 ' +pageBar.getTotalrecords()+ ' 行 ' +totalpages+ ' 页</span>';
             str[str.length] = '<span class="button refresh" id="GridBtRefresh" title="刷新"></span>';
             str[str.length] = '<span class="button first"   id="GridBtFirst"   title="第一页"></span>';
             str[str.length] = '<span class="button prev"    id="GridBtPrev"    title="上一页"></span>';
@@ -4981,6 +4982,10 @@
         pageBar.getTotalPages = function() {
             var totalpages = pageInfo.getAttribute("totalpages");
             return totalpages ? parseInt(totalpages) : 1;
+        }
+        pageBar.getTotalrecords = function() {
+            var totalrecords = pageInfo.getAttribute("totalrecords");
+            return totalrecords ? parseInt(totalrecords) : 0;
         }
         
         pageBar.gotoPage = function(page) {

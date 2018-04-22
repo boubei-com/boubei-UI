@@ -57,17 +57,19 @@ Grid {
 	& .buttonBox { 
 		position: absolute; top: 2px; right: 0; 
 
+		& span { vertical-align: middle; }
 		& .button  { 
 			display: inline-block; width: 16px; height: 15px; margin: 2px; 
 			background-repeat: no-repeat; background-position: center; 
 			cursor: pointer; 
+
 		}
-		& .refresh { background-image: url(../img/icon_refresh.gif); }
+		& .refresh { background-image: url(../img/icon_refresh.gif); margin-left: 8px; }
 		& .first   { background-image: url(../img/page/first.gif); }
 		& .prev    { background-image: url(../img/page/prev.gif); }
 		& .next    { background-image: url(../img/page/next.gif); }
 		& .last    { background-image: url(../img/page/last.gif); }
 		
-		& select { position: relative; top: -6px; right: 1px; width: 50px; font-size: 11px; }
+		& select { position: relative; /* top: -6px; */ right: 1px; width: 50px; font-size: 11px; vertical-align: middle; }
 	}
 }

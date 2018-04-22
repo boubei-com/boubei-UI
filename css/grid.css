@@ -93,6 +93,9 @@ Grid .sorting {
   top: 2px;
   right: 0;
 }
+#gridTitle .buttonBox span {
+  vertical-align: middle;
+}
 #gridTitle .buttonBox .button {
   display: inline-block;
   width: 16px;
@@ -104,6 +107,7 @@ Grid .sorting {
 }
 #gridTitle .buttonBox .refresh {
   background-image: url(../img/icon_refresh.gif);
+  margin-left: 8px;
 }
 #gridTitle .buttonBox .first {
   background-image: url(../img/page/first.gif);
@@ -119,8 +123,9 @@ Grid .sorting {
 }
 #gridTitle .buttonBox select {
   position: relative;
-  top: -6px;
+  /* top: -6px; */
   right: 1px;
   width: 50px;
   font-size: 11px;
+  vertical-align: middle;
 }
