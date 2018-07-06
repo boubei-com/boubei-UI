@@ -452,7 +452,7 @@
             return field.getAttribute(attrName);
         },
 
-        /* 示例：动态更新下拉树：
+        /* 示例：动态更新下拉树（注：录入表已经全部使用combotree，不在用combo）：
             form.updateField("center2", [
                         {"name": "mode", "value": "combotree"},
                         {"name": "texts", "value": texts.join('|')},
@@ -694,7 +694,7 @@
         this.load = function() {
             var valueList = ($el.attr("values") || "").split('|');
             var textList  = ($el.attr("texts")  || "").split('|');
-            this.height = Math.max(3, Math.min(valueList.length, 10)) * 18 + "px";
+            this.height = Math.max(4, Math.min(valueList.length, 10)) * 18 + "px";
 
             this.nodesData = [];
             for(var i=0; i < valueList.length; i++) {

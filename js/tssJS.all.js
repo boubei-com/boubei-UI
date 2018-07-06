@@ -1116,7 +1116,7 @@
         return this.replace(/\&/g, "&amp;").replace(/\"/g, "&quot;").replace(/\</g, "&lt;").replace(/\>/g, "&gt;");
     }
 
-    String.prototype.revertEntity = function() {
+    String.prototype.revertEntry = function() {
         return this.replace(/&quot;/g, "\"").replace(/&lt;/g, "\<").replace(/&gt;/g, "\>").replace(/&amp;/g, "\&");
     }
 
@@ -1140,7 +1140,7 @@
 
             /* 将字符串转化成xml节点对象 */
             toNode: function(xml) {
-                xml = xml.revertEntity();
+                xml = xml.revertEntry();
                 return $.parseXML(xml).documentElement;
             },
 
@@ -1243,7 +1243,7 @@
         headers : {},
         params  : {}, 
         formNode : formNode,
-        exEmpty: true,
+        exEmpty: false,
         ondata : function() { },
         onresult : function() { },
         onexception : function() { },
@@ -1260,14 +1260,26 @@
         request.type = arg.type;
         request.method = arg.method || "POST";
         request.waiting = arg.waiting || false;
-        request.async = arg.async || true;
+        request.async = arg.async != false;
 
         request.params  = arg.params  || {};
         request.headers = arg.headers || {};
-        request.exEmpty = arg.exEmpty || true;
+        request.exEmpty = arg.exEmpty != false;
 
         if(arg.formNode) {
             request.setFormContent(arg.formNode);
+        }
+
+        if( (request.method||"").toUpperCase() == 'GET') { // 将params里参数拼到url
+            $.each(request.params, function(key, val) {
+                if(request.url.indexOf("?") < 0) {
+                    request.url += '?';
+                } else {
+                    request.url += '&';
+                }
+                request.url += key+ "=" + val;
+            });
+            request.url = encodeURI( request.url );
         }
 
         request.ondata = arg.ondata || request.ondata;
@@ -4121,7 +4133,7 @@
         this.load = function() {
             var valueList = ($el.attr("values") || "").split('|');
             var textList  = ($el.attr("texts")  || "").split('|');
-            this.height = Math.max(3, Math.min(valueList.length, 10)) * 18 + "px";
+            this.height = Math.max(4, Math.min(valueList.length, 10)) * 18 + "px";
 
             this.nodesData = [];
             for(var i=0; i < valueList.length; i++) {
@@ -5457,8 +5469,8 @@
                     var nodeId = dt.getData("text");
                     var dragEL = $("li[nodeId='" + nodeId + "']")[0];
 
-                    // 平级拖动，用以排序.暂不支持跨级拖动
-                    if( this.node.parent == dragEL.node.parent ) {
+                    // 平级拖动，用以排序.暂不支持跨级拖动（根节点不允许拖动）
+                    if( this.node.parent == dragEL.node.parent && this.node.id != '_root' ) {
                         // 触发自定义事件
                         var eObj = $.Event.createEventObject();
                         eObj.dragNode = dragEL.node;

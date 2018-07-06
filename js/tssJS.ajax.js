@@ -5,7 +5,7 @@ CONTEXTPATH = "tss";
         url : url,
         method : "GET",
         headers : {},
-        params  : {}, 
+        headers : { "noAlert": true },
         formNode : formNode,
         exEmpty: true,
         ondata : function() { },
@@ -24,14 +24,26 @@ CONTEXTPATH = "tss";
         request.type = arg.type;
         request.method = arg.method || "POST";
         request.waiting = arg.waiting || false;
-        request.async = arg.async || true;
+        request.async = arg.async != false;
 
         request.params  = arg.params  || {};
         request.headers = arg.headers || {};
-        request.exEmpty = arg.exEmpty || true;
+        request.exEmpty = arg.exEmpty != false;
 
         if(arg.formNode) {
             request.setFormContent(arg.formNode);
+        }
+
+        if( (request.method||"").toUpperCase() == 'GET') { // 将params里参数拼到url
+            $.each(request.params, function(key, val) {
+                if(request.url.indexOf("?") < 0) {
+                    request.url += '?';
+                } else {
+                    request.url += '&';
+                }
+                request.url += key+ "=" + val;
+            });
+            request.url = encodeURI( request.url );
         }
 
         request.ondata = arg.ondata || request.ondata;

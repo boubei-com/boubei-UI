@@ -1116,7 +1116,7 @@
         return this.replace(/\&/g, "&amp;").replace(/\"/g, "&quot;").replace(/\</g, "&lt;").replace(/\>/g, "&gt;");
     }
 
-    String.prototype.revertEntity = function() {
+    String.prototype.revertEntry = function() {
         return this.replace(/&quot;/g, "\"").replace(/&lt;/g, "\<").replace(/&gt;/g, "\>").replace(/&amp;/g, "\&");
     }
 
@@ -1140,7 +1140,7 @@
 
             /* 将字符串转化成xml节点对象 */
             toNode: function(xml) {
-                xml = xml.revertEntity();
+                xml = xml.revertEntry();
                 return $.parseXML(xml).documentElement;
             },
 

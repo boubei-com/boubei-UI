@@ -384,8 +384,8 @@
                     var nodeId = dt.getData("text");
                     var dragEL = $("li[nodeId='" + nodeId + "']")[0];
 
-                    // 平级拖动，用以排序.暂不支持跨级拖动
-                    if( this.node.parent == dragEL.node.parent ) {
+                    // 平级拖动，用以排序.暂不支持跨级拖动（根节点不允许拖动）
+                    if( this.node.parent == dragEL.node.parent && this.node.id != '_root' ) {
                         // 触发自定义事件
                         var eObj = $.Event.createEventObject();
                         eObj.dragNode = dragEL.node;
