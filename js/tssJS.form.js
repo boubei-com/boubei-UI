@@ -618,7 +618,7 @@
         }
 
         if(this.multiple && $el.attr("height") == null) {
-            $el.css("height", Math.min(Math.max(valueList.length, 4), 4) * 18 + "px");
+            $el.css("height", Math.min(Math.max(valueList.length, 4), 4) * 25 + "px");
         }   
 
         // 当empty = false(表示不允许为空)时，下拉列表的默认值自动取第一项值
@@ -694,7 +694,7 @@
         this.load = function() {
             var valueList = ($el.attr("values") || "").split('|');
             var textList  = ($el.attr("texts")  || "").split('|');
-            this.height = Math.max(4, Math.min(valueList.length, 10)) * 18 + "px";
+            this.height = Math.max(4, Math.min(valueList.length, 10)) * 25 + "px";
 
             this.nodesData = [];
             for(var i=0; i < valueList.length; i++) {

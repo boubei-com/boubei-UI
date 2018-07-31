@@ -8,6 +8,7 @@ var Field = function(info) {
 		this.label = info.label;
 		this.type  = info.type || "string";
 		this.nullable = (info.nullable == null ? "true" : info.nullable);
+		this.readonly = (info.readonly == "true") || false;
 		this.checkReg = info.checkReg;
 		this.errorMsg = info.errorMsg;
 		this.options  = info.options;
@@ -84,6 +85,9 @@ var Field = function(info) {
 			}
 			if(this.multiple) {
 				column += " multiple='multiple' ";
+			}
+			if(this.readonly ) {
+				column += " editable='false' ";
 			}
 			if(this.onchange) {
 				column += " onchange='" + this.onchange + "' ";

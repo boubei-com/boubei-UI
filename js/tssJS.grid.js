@@ -380,6 +380,7 @@
                             }
                         });
                     }
+                    value = value.replace(/\^/gi, "\""); // @see GridNode 104行
                     $(cell).html(value);
                     
                     var showTitle = column.getAttribute("showTitle");

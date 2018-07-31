@@ -97,6 +97,8 @@ select {
 }
 .tssForm .field_disabled {
   background-color: #eee;
+  border: 0;
+  padding: 1px 2px;
 }
 .comboTree {
   padding: 1px;

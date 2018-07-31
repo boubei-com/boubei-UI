@@ -500,6 +500,13 @@
             }
         },
 
+        closeAllTabs: function() {
+            for(var item in this.tabs) {
+                var curTab = this.tabs[item];
+                curTab.close();
+            }
+        },
+
         /* 低亮所有标签 */
         inactiveAllTabs: function() {
             for(var item in this.tabs) {
