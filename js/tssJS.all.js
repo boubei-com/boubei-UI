@@ -1241,9 +1241,9 @@
         url : url,
         method : "GET",
         headers : {},
-        params  : {}, 
+        headers : { "noAlert": true },
         formNode : formNode,
-        exEmpty: false,
+        exEmpty: true,
         ondata : function() { },
         onresult : function() { },
         onexception : function() { },
@@ -3891,7 +3891,7 @@
             return field.getAttribute(attrName);
         },
 
-        /* 示例：动态更新下拉树：
+        /* 示例：动态更新下拉树（注：录入表已经全部使用combotree，不在用combo）：
             form.updateField("center2", [
                         {"name": "mode", "value": "combotree"},
                         {"name": "texts", "value": texts.join('|')},
@@ -4057,7 +4057,7 @@
         }
 
         if(this.multiple && $el.attr("height") == null) {
-            $el.css("height", Math.min(Math.max(valueList.length, 4), 4) * 18 + "px");
+            $el.css("height", Math.min(Math.max(valueList.length, 4), 4) * 25 + "px");
         }   
 
         // 当empty = false(表示不允许为空)时，下拉列表的默认值自动取第一项值
@@ -4133,7 +4133,7 @@
         this.load = function() {
             var valueList = ($el.attr("values") || "").split('|');
             var textList  = ($el.attr("texts")  || "").split('|');
-            this.height = Math.max(4, Math.min(valueList.length, 10)) * 18 + "px";
+            this.height = Math.max(4, Math.min(valueList.length, 10)) * 25 + "px";
 
             this.nodesData = [];
             for(var i=0; i < valueList.length; i++) {
@@ -4660,6 +4660,7 @@
                             }
                         });
                     }
+                    value = value.replace(/\^/gi, "\""); // @see GridNode 104行
                     $(cell).html(value);
                     
                     var showTitle = column.getAttribute("showTitle");

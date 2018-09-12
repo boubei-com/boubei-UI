@@ -291,7 +291,17 @@ var Field = function(info) {
 		else if( (/today[\s]*\+/gi).test(day) ) {
 			var delta = parseInt( day.split("+")[1] );
 			today.setDate(today.getDate() + delta);
-		} 
+		}
+		else if( 'cur_year_01' == day ){
+			today = new Date( today.getYear() + 1900 , 0 , 1)
+		}
+		else if( 'cur_month_01' == day ){
+			today = new Date( today.getYear() + 1900 , today.getMonth() , 1 )
+		}
+		else if( 'cur_week_01' == day ){
+			var weekday = today.getDay()||7; //获取星期几,getDay()返回值是 0（周日） 到 6（周六） 之间的一个整数。0||7为7，即weekday的值为1-7
+	    	today.setDate(today.getDate()-weekday+1)
+		}
 		else {
 			return day;
 		}
