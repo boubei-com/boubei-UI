@@ -1316,6 +1316,10 @@
         });
     };
 
+    $.get = function(url, params, callback, waiting) {
+        $.getJSON(url, params, callback, "GET", waiting);
+    };
+
     $.post = function(url, params, callback, method) {
         $.ajax({
             url : url,
@@ -1586,10 +1590,12 @@
 
             this.requestBody = $.XML.toXml(contentXml);
             /* 对参数条件进行加密 */
-            this.headers.encodeKey = this.headers.encodeKey || 12;
-            if( this.headers.encodeKey ) {
-                this.requestBody = $.encode( this.requestBody, this.headers.encodeKey );
-            }            
+            if(location.hostname != "localhost" && location.hostname != "127.0.0.1") {
+                this.headers.encodeKey = this.headers.encodeKey || 12;
+                if( this.headers.encodeKey ) {
+                    this.requestBody = $.encode( this.requestBody, this.headers.encodeKey );
+                } 
+            }          
         },
 
         /* 自定义请求头信息 */
