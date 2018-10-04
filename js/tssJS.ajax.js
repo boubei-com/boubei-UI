@@ -4,9 +4,8 @@ CONTEXTPATH = "tss";
     $.ajax({
         url : url,
         method : "GET",
-        headers : {},
         headers : { "noAlert": true },
-        formNode : formNode,
+        params : {......},
         exEmpty: true,
         ondata : function() { },
         onresult : function() { },

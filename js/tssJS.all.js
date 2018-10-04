@@ -1240,9 +1240,8 @@
     $.ajax({
         url : url,
         method : "GET",
-        headers : {},
         headers : { "noAlert": true },
-        formNode : formNode,
+        params : {......},
         exEmpty: true,
         ondata : function() { },
         onresult : function() { },
@@ -1595,7 +1594,7 @@
                 if( this.headers.encodeKey ) {
                     this.requestBody = $.encode( this.requestBody, this.headers.encodeKey );
                 } 
-            }          
+            }           
         },
 
         /* 自定义请求头信息 */
@@ -4287,7 +4286,10 @@
 });
 
 /* Grid组件 
- * 事件: onLoad, Grid更新加载完成后触发 $("#grid").attr("onLoad", "f1()");
+ * 事件: 
+ * 1、onLoad:   Grid更新加载完成后触发 $("#grid").attr("onLoad", "f1"); 注意此时Grid对象还没有完全生成
+ * 2、onFinish: Grid生成后触发 $("#grid").attr("onFinish", "f2"); 
+ * 
  * TODO:
  *  !. Grid控件表头增加求和功能
  */
@@ -4303,6 +4305,9 @@
             grid = new $.Grid($1(id), data);
             GridCache[grid.id] = grid;  
         }
+
+        var onFinish = $("#" + id).attr("onFinish");
+        onFinish && $.execCommand( onFinish + "()" );
         
         return grid;
     };
@@ -4586,8 +4591,9 @@
             bindAdjustTHHandler(table);
             bindSortHandler(table);
 
+            // Grid更新加载完成后触发
             var onLoad = $(this.el).attr("onLoad");
-            onLoad && $.execCommand(onLoad);
+            onLoad && $.execCommand( onLoad + "()" );
         }, 
 
         /* 处理数据行,将值解析成下拉列表值、图片、选择框等 */

@@ -181,23 +181,22 @@ var Field = function(info) {
 
 			field.jsonUrl = decodeURI(field.jsonUrl); // 从浏览器复制过来已经带了encode
 			function loadList() {
-				$.getJSON(field.jsonUrl, 
-					function(result) { 
-						var values = [], texts = [];
-						result.each(function(i, item){
-							values.push( $.vt(item).value );
-							texts.push( $.vt(item).text );
-						});
-						tssForm.updateField(field.name, [
-							{"name": "texts", "value": texts.join('|')},
-						 	{"name": "values", "value": values.join('|')}
-						 ]);
+				function setList(result) { 
+					var values = [], texts = [];
+					result.each(function(i, item){
+						values.push( $.vt(item).value );
+						texts.push( $.vt(item).text );
+					});
+					tssForm.updateField(field.name, [
+						{"name": "texts", "value": texts.join('|')},
+					 	{"name": "values", "value": values.join('|')}
+					 ]);
 
-						// 列表数据加载后刷新下显示值（form生成时，因列表数据还没取到，没法显示下拉控件的值）
-						field.defaultValue && tssForm.updateDataExternal(field.name, field.defaultValue); 
-					}, 
-					"GET"
-				);
+					// 列表数据加载后刷新下显示值（form生成时，因列表数据还没取到，没法显示下拉控件的值）
+					field.defaultValue && tssForm.updateDataExternal(field.name, field.defaultValue); 
+				}
+
+				$.get(field.jsonUrl, {}, setList);
 			}
 
 			loadList();
@@ -238,7 +237,7 @@ var Field = function(info) {
 					 	{"name": "values", "value": values.join('|')}
 					 ]);
 				}				
-			}
+			}, 'GET'
 		);
 	};
 
