@@ -1005,8 +1005,11 @@
                     var curName = cookie.substring(0, index).replace(/^ /gi, "");
                     $.Cookie.del(curName, path);
                 }
-            }
+            },
 
+            decode: function(name) {
+                return $.parseJSON($.decode( $.Cookie.getValue(name), 12 ));
+            }
         }
     });
 })(tssJS);
