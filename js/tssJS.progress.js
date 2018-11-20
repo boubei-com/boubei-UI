@@ -17,6 +17,10 @@
     Progress.prototype = {
         /* 更新数据 */
         refreshData: function(data) {
+            if( data == 'not found') {
+                this.percent = "100";
+                return this.hide();
+            }
             this.percent      = $.XML.getText(data.querySelector("percent"));
             this.delay        = $.XML.getText(data.querySelector("delay"));
             this.estimateTime = $.XML.getText(data.querySelector("estimateTime"));
@@ -30,6 +34,8 @@
 
         /* 开始执行  */
         start: function() {
+            if( parseInt(this.percent) >= 100 ) return;  // 已完成
+
             this.show();
             this.next();
         },
@@ -64,7 +70,7 @@
                 $(bar).css("backgroundColor", "#e0f6c8");  
 
                 var passBar = $.createElement("div", "passBar");
-                $(passBar).css("backgroundColor", "#009966").html("1212").css("textAlign", "center");    
+                $(passBar).css("backgroundColor", "#009966").html("1212").css("textAlign", "center").css("line-height", "25px");    
                 
                 graph.appendChild(bar);
                 bar.appendChild(passBar);  
