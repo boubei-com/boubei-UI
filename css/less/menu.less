@@ -5,36 +5,37 @@
 -----------------------------------------------------------------------------*/
 .rmenu { 
 	position: absolute; 
-	width: 135px; 
-	padding: 1px; 
-	border: 1px solid @borderColor; 
-	background: @white url(../img/menu_bg.gif) repeat-y;
+	width: 150px; 
+	background-color: rgb(240, 240, 240);
 	box-shadow: @gray 0px 0px 20px;
 	border-radius: 5px;
+	font-size: 1.1em;
 
 	& div {
 		position: relative;
-		width: 104px; height: 22px; overflow: hidden;
+		height: 22px; overflow: hidden;
 		padding: 5px 0px 0px 30px; 
-		line-height: 12px; 
+		line-height: 15px; 
 
 		&.separator { 
-			width: 103px; height: 1px; overflow: hidden; 
+			width: 112px; height: 1px; overflow: hidden; 
 			padding: 0; margin: 1px 0px 1px 30px; 
 			background-color: @borderColor;
 		}  
-		& img { position: absolute; left: 2px; top: 2px; width: 16px; height: 16px; }
+		& img, span.icon { 
+			position: absolute; left: 5px; top: 5px; width: 16px; height: 16px; 
+			&:before { 
+				font-size: 16px;
+			}
+		}
 		& .hasChild {			
-			position: absolute; right: -25px; top: 2px;
-			width: 16px; height: 16px;
-			background: url(../img/icon_has_child.gif) no-repeat left top;
+			position: absolute; top: 2px; right: 0; width: 16px; height: 16px;
 		}
 		&.active { 
-			background-color: @grayLighter; 
+			color: white; background-color: rgb(53, 142, 253);
 			cursor: pointer; 
 
 			& img { left: 1px; top: 1px; }
-			& .hasChild { top: 3px; }
 		}
 		&.disable {
 			color: @disabled;

@@ -106,6 +106,8 @@ var Field = function(info) {
 			if(this.options) {
 				// 如果只有Code列表
 				this.options.names = this.options.names || this.options.codes;
+				this.options.names = this.options.names.replace(/&/ig, ' '); // 替换&等符号
+				this.options.codes = this.options.codes.replace(/&/ig, ' ');
 
 				if (this.options.codes == "year") {
 					this.options.codes = '2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|2024';

@@ -4,7 +4,8 @@
 	<meta charset="UTF-8" />
 	<title>menu test</title>
 
-	<link href="../css/boubei.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/boubei.css">
+	<link rel="stylesheet" href="../fonts/icons.css">
 
 	<script src="../js/tssJS.js"></script>
 	<script src="../js/tssJS.menu.js"></script>
@@ -24,7 +25,7 @@
 	var item1 = {
 		label:"剪切",
 		callback:function() {alert("剪切")},
-		icon:"../img/icon_del.gif",
+		icon:"icon icon-x",
 		enable: function() { return true; },
 		visible: function() { return true; },
 		bold:true,
@@ -40,7 +41,7 @@
 	var item3 = {
 		label:"粘贴",
 		callback:function() {alert("粘贴")},
-		icon:"../img/icon_pen.gif",
+		icon:"icon icon-pencil",
 		enable: function() { return true; },
 		visible: function() { return true; }
 	}
@@ -65,7 +66,7 @@
 	var item10 = {
 		label:"测试",
 		callback:function() {alert("测试")},
-		icon:"../img/icon_next.gif",
+		icon:"icon icon-arrow-left",
 		enable: function() { return true; },
 		visible: function() { return true; }
 	}
@@ -103,6 +104,8 @@
 	<div style="position:absolute;top:10px;left:20px;">
 		<h2>右键菜单:在颜色区域内任意地方右键点击，查看效果</h2><br/>
 	</div>
+
+<div class="icon icon-arrow-up" style=" position:absolute; left: 400px; top: 200px; width:16px; height:16px; "></div>
 
 </body>
 </html>
