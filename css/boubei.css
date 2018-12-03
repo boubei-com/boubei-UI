@@ -652,10 +652,6 @@ Grid .sorting {
   background-color: #358efd;
   cursor: pointer;
 }
-.rmenu div.active img {
-  left: 1px;
-  top: 1px;
-}
 .rmenu div.disable {
   color: #A6A6A6;
 }
