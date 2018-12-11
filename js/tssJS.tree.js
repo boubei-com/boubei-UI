@@ -143,6 +143,7 @@
         var 
             _TREE_NODE = "treeNode",
             _TREE_NODE_ID = "id",
+            _TREE_NODE_CODE = "code",
             _TREE_NODE_NAME = "name",
             _TREE_ROOT_NODE_ID = "_root",  /* “全部”节点的ID值  */
             _TREE_NODE_STATE = "disabled",       // 停用、启用
@@ -237,6 +238,7 @@
         TreeNode = function(attrs, parent) {            
             this.id   = attrs[_TREE_NODE_ID];
             this.name = attrs[_TREE_NODE_NAME];
+            this.code = attrs[_TREE_NODE_CODE];
 
             this.opened = (attrs._open == "true");
             this.disabled = attrs[_TREE_NODE_STATE] || "0";  // 状态： 停用/启用  1/0
@@ -286,6 +288,7 @@
             toHTMLEl: function() {
                 var li = $.createElement("li");
                 li.setAttribute("nodeID", this.id);
+                this.code && li.setAttribute("code", this.code);
                 li.draggable = tThis.moveable;
                 li.node = this;
                 this.li = li;
@@ -686,6 +689,13 @@
             if( searchStr.charAt(0) == "@" ) { // 按ID来搜索
                 var liNode = tree.getTreeNodeById( searchStr.replace("@", "") );
                 liNode && findedNodes.push( liNode );
+            }
+            else if( searchStr.charAt(0) == "#" ) { // 按ID来搜索
+                var code = searchStr.replace("#", "");
+                var list = tree.el.querySelectorAll("li[code*='" + code + "']");
+                $.each(list, function(i, li) {
+                    findedNodes.push(li.node);
+                });
             }
             else {
                 var aNodeList = tree.el.querySelectorAll("li>a[title*='" + searchStr + "']");

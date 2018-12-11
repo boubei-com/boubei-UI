@@ -258,7 +258,8 @@
 
         var pointHeight = element.getAttribute("height");
         if( pointHeight == null || pointHeight == '0' ) {
-            pointHeight = element.clientHeight || element.parentNode.clientHeight|| parent.document.body.clientHeight-50; 
+            pointHeight = element.clientHeight || element.parentNode.clientHeight; 
+            pointHeight = Math.max(pointHeight, parent.document.body.clientHeight-50);
         }
         $(this.gridBox).css("height", pointHeight + "px"); // hack 固定住grid高度，以免在IE部分版本及FF里被撑开
         
