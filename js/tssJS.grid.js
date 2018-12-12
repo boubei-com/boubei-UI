@@ -200,7 +200,7 @@
                 thead.push('<td name="cellheader" style="width:20px"><input type="checkbox" class="checkAll"/></td>');
             }
             if(this.needSequence) {
-                thead.push('<td name="sequence" style="width:22px">序号</td>');
+                thead.push('<td name="sequence" style="min-width:22px">序号</td>');
             }
             $.each(this.columnsMap, function(name, column) {
                 var caption = column.getAttribute("caption");
