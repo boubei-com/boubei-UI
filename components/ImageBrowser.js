@@ -8,6 +8,8 @@
 
 const ImageBrowser = function () {
 
+  this.id = (new Date()).getTime()
+
   this.images = []
 
   this.current = 0
@@ -276,11 +278,17 @@ function scroll ({ dom, offset }) {
   dom.scrollLeft += offset
 }
 
-function init () {
-  const imageBrowser = new ImageBrowser()
+const init = function () {
+  let sharedInstance = null
+  return function () {
+    return sharedInstance || (sharedInstance = new ImageBrowser())
+  }
+}()
 
-  return imageBrowser
+function showOnClick (dom) {
+  init().showOnClick(dom)
 }
 
 exports.init = init
+exports.showOnClick = showOnClick
 })));
