@@ -33,6 +33,10 @@ ImageBrowser.prototype = {
   },
   
   showOnClick (dom) {
+    if (dom == void 0) {
+      return
+    }
+
     const tagAList = dom.getElementsByTagName('a')
     
     const images = []
@@ -68,28 +72,48 @@ ImageBrowser.prototype = {
       imageSwiper.scrollLeft = current * 600
 
       this.dom$imageName.innerText = this.images[current].text
-      this.dom$page.innerText = `${this.current + 1}/${this.images.length}`
+      this.dom$page.innerText = `${current + 1}/${this.images.length}`
+
+      if (current == 0) {
+        const btn = this._dom.getElementsByClassName('image-browser__btn_arrow_back')[0]
+        btn.classList.add('image-browser__btn_disable')
+      }
+
+      if (current == this.images.length - 1) {
+        const btn = this._dom.getElementsByClassName('image-browser__btn_arrow_forward')[0]
+        btn.classList.add('image-browser__btn_disable')
+      }
     }
 
     dom.addEventListener('click', clickHandler.bind(this), false)
   },
 
   toggleClose () {
+    const dom = this._dom
     if (this.show) {
       this.show = false
-      const imageSwiper = this._dom.getElementsByClassName('image-browser__image-swiper')[0]
+      const imageSwiper = dom.getElementsByClassName('image-browser__image-swiper')[0]
       imageSwiper.scrollLeft = 0
-      this._dom.classList.remove('image-browser__show')
+      const backBtn = dom.getElementsByClassName('image-browser__btn_arrow_back')[0]
+      backBtn.classList.remove('image-browser__btn_disable')
+      const forwardBtn = dom.getElementsByClassName('image-browser__btn_arrow_forward')[0]
+      forwardBtn.classList.remove('image-browser__btn_disable')
+
+      dom.classList.remove('image-browser__show')
       this.current = 0
     }
     else {
       this.show = true
-      this._dom.classList.add('image-browser__show')
+      dom.classList.add('image-browser__show')
     }
   },
 
   lazyLoadImage (index) {
-    const { url, dom } = this.images[index]
+    const image = this.images[index]
+    if (image == void 0) {
+      return
+    }
+    const { url, dom } = image
     if (dom.getAttribute('src') !== null) {
       return
     }
@@ -108,7 +132,9 @@ ImageBrowser.prototype = {
     this._dom = browserWrapper
 
     this.mount(document.body)
-    this.showOnClick(document.getElementsByClassName('ext')[0])
+
+    const ext = document.getElementsByClassName('ext')[0]
+    this.showOnClick(ext)
   },
 
   create (tag, className) {
@@ -126,9 +152,7 @@ ImageBrowser.prototype = {
     const rotateRightBtn = this.create('button', 'image-browser__btn image-browser__rotate-btn')
     rotateRightBtn.appendChild(document.createTextNode('向右旋转'))
 
-    const closeBtn = this.create('button', 'image-browser__btn image-browser__close-btn')
-    const closeBtnIcon = this.create('i', 'image-browser__btn-icon ion-ios-close-circle-outline')
-    closeBtn.appendChild(closeBtnIcon)
+    const closeBtn = this.create('button', 'image-browser__btn image-browser__close-btn ion-ios-close-circle-outline')
 
     toolbar.appendChild(rotateLeftBtn)
     toolbar.appendChild(rotateRightBtn)
@@ -166,10 +190,7 @@ ImageBrowser.prototype = {
     const imageSwiper = this.create('div', 'image-browser__image-swiper')
 
     const createNavigatorBtn = arrow => {
-      const btn = this.create('button', `image-browser__btn image-browser__${arrow}-btn`)
-      const btnIcon = this.create('i', `image-browser__btn-icon ion-ios-arrow-${arrow}`)
-      btn.appendChild(btnIcon)
-
+      const btn = this.create('button', `image-browser__btn image-browser__btn_arrow_${arrow} ion-ios-arrow-${arrow}`)
       return btn
     }
 
@@ -180,33 +201,42 @@ ImageBrowser.prototype = {
     imageNav.appendChild(imageSwiper)
     imageNav.appendChild(forwardBtn)
 
-    backBtn.onclick = function () {
+    backBtn.onclick = () => {
       if (this.current == 0) {
-        alert('没有图片了')
         return
       }
-      scroll({ dom: imageSwiper, offset: -600 })
-      const len = this.images.length
-      this.current = (this.current + len - 1) % len
-      this.lazyLoadImage((this.current + len - 1) % len)
 
+      forwardBtn.classList.remove('image-browser__btn_disable')
+
+      scroll({ dom: imageSwiper, offset: -600 })
+      this.current = this.current - 1
+      
       this.dom$imageName.innerText = this.images[this.current].text
       this.dom$page.innerText = `${this.current + 1}/${this.images.length}`
-    }.bind(this)
+      
+      this.lazyLoadImage(this.current - 1)
+
+      this.current == 0 && backBtn.classList.add('image-browser__btn_disable')
+    }
     
-    forwardBtn.onclick = function () {
+    forwardBtn.onclick = () => {
       const len = this.images.length
       if (this.current == len - 1) {
-        alert('没有图片了')
         return
       }
-      scroll({ dom: imageSwiper, offset: 600 })
-      this.current = (this.current + 1) % len
-      this.lazyLoadImage((this.current + 1) % len)
 
+      backBtn.classList.remove('image-browser__btn_disable')
+
+      scroll({ dom: imageSwiper, offset: 600 })
+      this.current = this.current + 1
+      
       this.dom$imageName.innerText = this.images[this.current].text
-      this.dom$page.innerText = `${this.current + 1}/${this.images.length}`
-    }.bind(this)
+      this.dom$page.innerText = `${this.current + 1}/${len}`
+
+      this.lazyLoadImage(this.current + 1)
+
+      this.current == len - 1 && forwardBtn.classList.add('image-browser__btn_disable')
+    }
 
     return imageNav
   },
