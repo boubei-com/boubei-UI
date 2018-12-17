@@ -1,1 +1,1 @@
-.abc{text-align:center}
+.fake-shadow-root{padding:10px;position:absolute;display:none}.b2-month-picker{width:176px;height:132px;padding:16px;background:#fff;border-radius:6px;box-shadow:0 0 8px rgba(0,0,0,.1);display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap}.b2-month-picker__item{margin:8px}.b2-month{width:28px;height:28px;text-align:center;cursor:pointer}.b2-month__text{line-height:28px;font-size:14px;font-weight:700}.b2-month_selected{border-radius:14px;background:rgba(29,29,255,.85);color:#fff;box-shadow:2px 2px 5px rgba(29,29,255,.35)}

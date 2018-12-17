@@ -5,12 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="../../dist/css/month-picker.css">
+  <style>
+    .month-picker {
+      font-size: 12px;
+    }
+  </style>
 </head>
 <body>
-  <month-picker class="month-picker">月份<input type="text"></month-picker>
+  <month-picker id="month-picker">月份<input class="input" type="text"></month-picker>
 </body>
 <script src="../../dist/js/MonthPicker.min.js"></script>
 <script>
-  
+  const input = document.getElementsByClassName('input')[0]
+  const monthPicker = MonthPicker.get('month-picker')
+  input.onfocus = () => {
+    monthPicker.open()
+  }
+  monthPicker.addEventListener('change', e => {
+    input.value = e.detail.value
+    monthPicker.close()
+  })
+  // document.getElementsByTagName('month-picker')[0].onchange = e => {
+  //   e.detail.value
+  // }
 </script>
 </html>

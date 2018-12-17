@@ -1,3 +1,39 @@
-.abc {
+$monthWidth: 28px;
+$monthPickerItemMargin: 8px;
+
+.fake-shadow-root {
+  padding: 10px;
+  position: absolute;
+  display: none;
+}
+
+.b2-month-picker {
+  width: ($monthWidth + $monthPickerItemMargin * 2) * 4; height: ($monthWidth + $monthPickerItemMargin * 2) * 3;
+  padding: 16px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.1);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  &__item {
+    margin: $monthPickerItemMargin;
+  }
+}
+
+.b2-month {
+  width: $monthWidth; height: $monthWidth;
   text-align: center;
+  cursor: pointer;
+  &__text {
+    line-height: $monthWidth;
+    font-size: 14px; font-weight: bold;
+  }
+  &_selected {
+    border-radius: $monthWidth / 2;
+    background: rgba($color: #1d1dff, $alpha: 0.85);
+    color: #fff;
+    box-shadow: 2px 2px 5px rgba($color: #1d1dff, $alpha: 0.35);
+  }
 }
