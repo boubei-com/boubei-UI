@@ -186,6 +186,7 @@ class MonthPicker {
     //   detail: {}
     // })
     changeHandler(this._ref, { month, year: this.opts.year })
+    this.close()
     // this._dom.dispatchEvent(changeEvent)
 
     event.stopPropagation()
@@ -225,6 +226,9 @@ const close = function () {
       event.stopPropagation()
     }, false)
   })
+  document.addEventListener('click', e => {
+    instance().close()
+  }, false)
 })()
   
 exports.setOptions = setOptions
