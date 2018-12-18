@@ -41,7 +41,7 @@ ImageBrowser.prototype = {
     while(imageSwiper.firstChild) imageSwiper.removeChild(imageSwiper.firstChild)
 
     const images = [...dom.getElementsByTagName('a')].map((link, i) => {
-      const url = link.getAttribute('href')
+      const url = link.dataset.url || link.getAttribute('href')
       const text = link.innerText
       link.setAttribute('href', 'javascript:void(0);')
       link.dataset.url = url
@@ -156,7 +156,7 @@ ImageBrowser.prototype = {
     this._titleDOM = $2.appendChild(title)
     
     const $3 = create('div', 'image-browser__toolbar-item image-browser__toolbar-item_right')
-    const downloadBtn = create('button', 'image-browser__btn')
+    const downloadBtn = create('button', 'image-browser__btn image-browser__download-btn')
     downloadBtn.textContent = '下载'
     downloadBtn.onclick = () => {
       const { text, url } = this.images[this.current]

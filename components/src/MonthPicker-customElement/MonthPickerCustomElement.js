@@ -1,8 +1,8 @@
 ;(function (global, factory) {
-
-  factory((global.MonthPicker = {}))
   
-}(window, function  (exports) { 'use strict';
+  factory((global.MonthPicker = {}))
+
+}(window, function (exports) { "use strict";
 
 const now = new Date()
 
@@ -13,23 +13,20 @@ const defaultOptions = {
   month: now.getMonth() + 1,
 }
 
-let changeHandler = () => {}
-
 const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-class MonthPicker {
-
-  constructor (opts) {
-
+class MonthPickerElement extends HTMLElement {
+  constructor () {
+    super()
     this.show = false
-
-    this._ref
-    
+    this._fakeShadowDOM
     this._cacheDOM = {}
+  }
+  
+  connectedCallback () {
+    this.opts = this.setProperties(defaultOptions, this.attributes)
 
-    this.opts = this._setProperties(defaultOptions, opts)
-
-    const monthPickerWrapper = create('div', 'b2-month-picker-wrapper')
+    const monthPickerWrapper = create('div', 'b2-month-picker')
     const yearPanel = this._createYearPanel()
     const monthPanel = this._createMonthPanel()
     monthPickerWrapper.appendChild(yearPanel)
@@ -39,24 +36,23 @@ class MonthPicker {
     
     const fakeShadowDOM = create('div', 'fake-shadow-dom')
     fakeShadowDOM.appendChild(monthPickerWrapper)
-
-    this._dom = fakeShadowDOM
-
-    this._dom.addEventListener('click', e => {
-      const event = e || window.event
-      event.stopPropagation()
-    }, false)
+    this._fakeShadowDOM = fakeShadowDOM
+  
+    // add listener
     monthPanel.addEventListener('click', this._clickHandler.bind(this))
   }
 
-  ref (dom) {
-    const { bottom, left } = dom.getBoundingClientRect()
-    this._dom.style.top = `${bottom}px`
-    this._dom.style.left = `${left}px`
+  attributeChangedCallback (attr) {
+    
+  }
 
-    this._ref = dom
-
-    return this
+  setProperties (opts, attrs) {
+    const userSetOpts = {}
+    for (let { name, value } of attrs) {
+      userSetOpts[name] = value
+    }
+    const currentOpts = Object.assign({}, opts, userSetOpts)
+    return currentOpts
   }
 
   open () {
@@ -64,21 +60,16 @@ class MonthPicker {
       return
     }
     this.show = true
-    document.body.appendChild(this._dom)
+    this.appendChild(this._fakeShadowDOM)
+    // this.getElementsByClassName('fake-shadow-dom')[0].style.display = 'block'
   }
 
   close () {
     if (this.show) {
       this.show = false
-      document.body.removeChild(this._dom)
+      this.removeChild(this._fakeShadowDOM)
+      // this.getElementsByClassName('fake-shadow-root')[0].style.display = 'none'
     }
-  }
-
-  _setProperties (dist, src) {
-    if (src === void 0) {
-      return Object.assign({}, dist)
-    }
-    return Object.assign({}, dist, src)
   }
 
   _selected (year, month) {
@@ -182,15 +173,15 @@ class MonthPicker {
       monthElement[month - 1].classList.add('b2-month_selected')
     }
 
-    // const changeEvent = new CustomEvent('change', {
-    //   detail: {}
-    // })
-    changeHandler(this._ref, { month, year: this.opts.year })
-    // this._dom.dispatchEvent(changeEvent)
+    const changeEvent = new CustomEvent('change', {
+      detail: { month, year: this.opts.year }
+    })
+    this.dispatchEvent(changeEvent)
 
     event.stopPropagation()
   }
 }
+customElements.define('month-picker', MonthPickerElement)
 
 function create (tag, className) {
   const dom = document.createElement(tag)
@@ -198,37 +189,26 @@ function create (tag, className) {
   return dom
 }
 
+const cache = new Map()
+
+
 function setOptions (opts) {
   Object.assign(defaultOptions, opts)
 }
 
-const instance = function () {
-  let sharedInstance
-  return function (opts) {
-    return sharedInstance || (sharedInstance = new MonthPicker(opts))
-  }
-}()
+function get (id) {
+  const dom = cache.get(id) || document.getElementById(id)
+  cache.set(id, dom)
 
-const onChange = function  (callback) {
-  changeHandler = callback
+  return dom
 }
 
-const close = function () {
-  instance().close()
-}
-
-;(function () {
-  [...document.getElementsByClassName('b2-month-picker')].forEach(input => {
-    input.addEventListener('click', e => {
-      instance().ref(input).open()
-      const event = e || window.event
-      event.stopPropagation()
-    }, false)
-  })
-})()
+function mixin (dom) {
   
+}
+
 exports.setOptions = setOptions
-// exports.instance = instance
-exports.onChange = onChange
-exports.close = close
+exports.get = get
+exports.mixin = mixin
 }));
+

@@ -10,7 +10,7 @@
   @include centerMiddle;
   width: 1200px; height: 700px;
   border-radius: 4px;
-  box-shadow: 0 0 12px rgba(0,0,0,.1);
+  box-shadow: 0 0 16px rgba(0,0,0,.5);
   background: #fff;
   display: none;
   z-index: 10003;
@@ -68,6 +68,11 @@
       background: #eee;
       color: #e2e2e2;
     }
+  }
+  &__download-btn {
+    background: rgba($color: #012cf7, $alpha: 0.8);
+    color: #fff;
+    padding-left: 1em; padding-right: 1em;
   }
   &__arrow-btn {
     box-shadow: 0 0 12px rgba(0,0,0,.1);

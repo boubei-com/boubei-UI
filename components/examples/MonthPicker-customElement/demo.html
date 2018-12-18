@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../dist/css/month-picker.css">
+  <script src="../../dist/js/MonthPicker.min.js"></script>
+  <script>
+    // 全局设置 Options 对页面内所有 month-picker tag 有效
+    MonthPicker.setOptions({
+      start: '2015',
+      end: '2022',
+      // month: 12,
+      // year: 2018
+    })
+    </script>
+</head>
+<body>
+  <div>demo 1</div>
+  <month-picker id="month-picker1">
+    <input class="input" type="text" data-month-picker-id="month-picker1">
+  </month-picker>
+  <div>2</div>
+  <!-- html attribute 局部设置 options 只对当前 month-picker tag 生效 -->
+  <month-picker id="month-picker2" start="2017" end="2019">
+    <input class="input" type="text" data-month-picker-id="month-picker2">
+  </month-picker>
+</body>
+<script>
+  const input = document.getElementsByClassName('input');
+  [...input].forEach(input => {
+    const { monthPickerId } = input.dataset
+    const monthPicker = MonthPicker.get(monthPickerId)
+    input.onfocus = () => monthPicker.open()
+    monthPicker.onchange = e => {
+      const { year, month } = e.detail
+      input.value = `${year}/${month}`
+      monthPicker.close()
+    }
+  })
+  // document.getElementsByTagName('month-picker')[0].onchange = e => {
+  //   e.detail.value
+  // }
+</script>
+</html>

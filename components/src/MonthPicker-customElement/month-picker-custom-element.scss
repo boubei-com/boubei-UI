@@ -3,6 +3,10 @@
 $monthWidth: 28px;
 $monthPickerItemMargin: 8px;
 
+month-picker {
+  position: relative;
+}
+
 .fake-shadow-dom {
   z-index: 1;
   padding: 10px;
@@ -12,12 +16,10 @@ $monthPickerItemMargin: 8px;
 
 .b2 {
   &-month-picker {
-    &-wrapper {
-      padding: 10px;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.1);
-    }
+    padding: 10px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.1);
     &__year-panel {
       height: 30px;
       font-size: 14px;
