@@ -1,39 +1,75 @@
+@import '../icon/icon.scss';
+
 $monthWidth: 28px;
 $monthPickerItemMargin: 8px;
 
-.fake-shadow-root {
+month-picker {
+  position: relative;
+}
+
+.fake-shadow-dom {
+  z-index: 1;
   padding: 10px;
   position: absolute;
-  display: none;
+  display: block;
 }
 
-.b2-month-picker {
-  width: ($monthWidth + $monthPickerItemMargin * 2) * 4; height: ($monthWidth + $monthPickerItemMargin * 2) * 3;
-  padding: 16px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.1);
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  &__item {
+.b2 {
+  &-month-picker {
+    padding: 10px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba($color: #000, $alpha: 0.1);
+    &__year-panel {
+      height: 30px;
+      font-size: 14px;
+      line-height: 30px;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+    }
+    &__month-panel {
+      width: ($monthWidth + $monthPickerItemMargin * 2) * 4; height: ($monthWidth + $monthPickerItemMargin * 2) * 3;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+  }
+  &-year-panel {
+    &__text {
+      font-weight: 500; color: #26252a;
+    }
+    &__btn {
+      border: 0;
+      background: #fff;
+      font-size: 14px; color: #adb7c4;
+      padding: 0 10px;
+      outline: none;
+      cursor: pointer;
+      &_disabled {
+        color: #fff;
+        cursor: default;
+      }
+    }
+  }
+  &-month-panel__item {
     margin: $monthPickerItemMargin;
   }
-}
-
-.b2-month {
-  width: $monthWidth; height: $monthWidth;
-  text-align: center;
-  cursor: pointer;
-  &__text {
-    line-height: $monthWidth;
-    font-size: 14px; font-weight: bold;
-  }
-  &_selected {
-    border-radius: $monthWidth / 2;
-    background: rgba($color: #1d1dff, $alpha: 0.85);
-    color: #fff;
-    box-shadow: 2px 2px 5px rgba($color: #1d1dff, $alpha: 0.35);
+  &-month {
+    width: $monthWidth; height: $monthWidth;
+    font-size: 14px; color: #26252a;
+    text-align: center;
+    cursor: pointer;
+    &__text {
+      line-height: $monthWidth;
+    }
+    &_selected {
+      border-radius: $monthWidth / 2;
+      background: rgba($color: #012cf7, $alpha: 0.85);
+      color: #fff;
+      box-shadow: 2px 2px 5px rgba($color: #012cf7, $alpha: 0.35);
+    }
   }
 }

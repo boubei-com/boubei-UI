@@ -1,4 +1,4 @@
-  @font-face{font-family:"Ionicons";src:url("https://unpkg.com/ionicons@4.2.2/dist/fonts/ionicons.ttf?v=4.2.1") format("truetype");font-weight:normal;font-style:normal}.ion,.ionicons,.ion-ios-arrow-back:before,.ion-ios-arrow-forward:before,.ion-ios-close-circle-outline:before{display:inline-block;font-family:"Ionicons";speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;text-rendering:auto;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.ion-ios-arrow-back:before{content:"\f3cf"}.ion-ios-arrow-forward:before{content:"\f3d1"}.ion-ios-close-circle-outline:before{content:"\f14d"}
+@import '../icon/icon.scss';
 
 @mixin centerMiddle {
   position: absolute;
