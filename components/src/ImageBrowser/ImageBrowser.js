@@ -61,8 +61,10 @@ ImageBrowser.prototype = {
       
       const current = +target.dataset.index
       this.current = current
+
+      const len = this.images.length
       
-      ;[current - 1, current, current + 1].forEach(i => {
+      ;[(current - 1 + len) % len, current, (current + 1) % len].forEach(i => {
         const image = this.images[i]
         if (image && image.dom.nodeName.toLocaleLowerCase() === 'img') {
           image.dom.setAttribute('src', image.url)
@@ -72,14 +74,14 @@ ImageBrowser.prototype = {
       imageSwiper.scrollLeft = current * 1000
 
       this._titleDOM.textContent = this.images[current].text
-      this._pagnationDOM.textContent = `${current + 1}/${this.images.length}`
+      this._pagnationDOM.textContent = `${current + 1}/${len}`
 
       const arrowBtns = this._dom.getElementsByClassName('image-browser__arrow-btn')
       if (current == 0) {
         arrowBtns[0].classList.add('image-browser__btn_disable')
       }
 
-      if (current == this.images.length - 1) {
+      if (current == len - 1) {
         arrowBtns[1].classList.add('image-browser__btn_disable')
       }
     }
@@ -91,9 +93,6 @@ ImageBrowser.prototype = {
     const dom = this._dom
     if (this.show) {
       this.show = false
-      
-      ;[...dom.getElementsByClassName('image-browser__arrow-btn')].forEach(e => e.classList.remove('image-browser__btn_disable'))
-
       dom.classList.remove('image-browser__show')
       this.current = 0
     }
@@ -141,11 +140,11 @@ ImageBrowser.prototype = {
     const toolbar = create('div', 'image-browser__row image-browser__toolbar')
 
     const $1 = create('div', 'image-browser__toolbar-item image-browser__toolbar-item_left')
-    const rotateLeftBtn = create('button', 'image-browser__btn')
+    const rotateLeftBtn = create('button', 'image-browser__btn image-browser__rotate-btn')
     rotateLeftBtn.textContent = '向左旋转'
     rotateLeftBtn.onclick = () => { rotate(this.images[this.current].dom, -90) }
     $1.appendChild(rotateLeftBtn)
-    const rotateRightBtn = create('button', 'image-browser__btn')
+    const rotateRightBtn = create('button', 'image-browser__btn image-browser__rotate-btn')
     rotateRightBtn.textContent = '向右旋转'
     rotateRightBtn.onclick = () => { rotate(this.images[this.current].dom, 90) }
     $1.appendChild(rotateRightBtn)
@@ -205,42 +204,23 @@ ImageBrowser.prototype = {
 
     ;[backBtn, imageSwiper, forwardBtn].forEach(e => imageNav.appendChild(e))
 
-    backBtn.onclick = () => {
-      if (this.current == 0) {
-        return
+    const switchImage = (step) => {
+      return () => {
+        const len = this.images.length
+        const current = (this.current + step + len) % len
+        imageSwiper.scrollLeft = current * 1000
+        this._titleDOM.textContent = this.images[current].text
+        this._pagnationDOM.textContent = `${current + 1}/${len}`
+        this.lazyLoadImage((current + step + len) % len)
+        this.current = current
       }
-
-      forwardBtn.classList.remove('image-browser__btn_disable')
-
-      scroll({ dom: imageSwiper, offset: -1000 })
-      this.current = this.current - 1
-      
-      this._titleDOM.textContent = this.images[this.current].text
-      this._pagnationDOM.textContent = `${this.current + 1}/${this.images.length}`
-      
-      this.lazyLoadImage(this.current - 1)
-
-      this.current == 0 && backBtn.classList.add('image-browser__btn_disable')
     }
-    
-    forwardBtn.onclick = () => {
-      const len = this.images.length
-      if (this.current == len - 1) {
-        return
-      }
 
-      backBtn.classList.remove('image-browser__btn_disable')
+    const previous = switchImage(-1)
+    const next = switchImage(1)
 
-      scroll({ dom: imageSwiper, offset: 1000 })
-      this.current = this.current + 1
-      
-      this._titleDOM.textContent = this.images[this.current].text
-      this._pagnationDOM.textContent = `${this.current + 1}/${len}`
-
-      this.lazyLoadImage(this.current + 1)
-
-      this.current == len - 1 && forwardBtn.classList.add('image-browser__btn_disable')
-    }
+    backBtn.onclick = previous
+    forwardBtn.onclick = next
 
     return imageNav
   },

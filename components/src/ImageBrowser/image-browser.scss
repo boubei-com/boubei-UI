@@ -6,6 +6,11 @@
   margin: auto;
 }
 
+@mixin btnHover {
+  color: rgba($color: #012cf7, $alpha: 0.8);
+  background: #eee;
+}
+
 .image-browser {
   @include centerMiddle;
   width: 1200px; height: 700px;
@@ -49,41 +54,41 @@
   }
   &__image-nav {
     height: 600px;
+    margin: 0 20px;
     display: -webkit-flex;
     display: flex;
-    -webkit-justify-content: space-around;
-    justify-content: space-around;
     -webkit-align-items: center;
     align-items: center;
   }
   &__btn {
     color: #888;
     box-sizing: border-box;
-    border: 1px solid #eee;
+    border: 0;
     border-radius: 4px;
     outline: none;
     cursor: pointer;
-    padding: 5px 0.5em;
-    &_disable {
-      background: #eee;
-      color: #e2e2e2;
-    }
+    padding: 5px 1em;
+  }
+  &__rotate-btn:hover {
+    @include btnHover;
   }
   &__download-btn {
     background: rgba($color: #012cf7, $alpha: 0.8);
     color: #fff;
-    padding-left: 1em; padding-right: 1em;
   }
   &__arrow-btn {
-    box-shadow: 0 0 12px rgba(0,0,0,.1);
-    width: 50px; height: 50px;
-    font-size: 20px;
+    width: 80px; height: 80px;
+    font-size: 44px;
+    border: 0;
     padding: 0;
     margin: 0;
+    &:hover {
+      @include btnHover;
+    }
   }
   &__close-btn {
     font-size: 20px; color: #353535;
-    border: none;
+    border: 0;
   }
   &__image-swiper {
     width: 1000px; height: 600px;

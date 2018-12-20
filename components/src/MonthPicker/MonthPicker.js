@@ -104,7 +104,7 @@ class MonthPicker {
     const yearOperation = (years) => {
       return () => {
         const { year } = this.opts
-        const currentYear = years + year
+        const currentYear = +year + years
         this.opts.year = currentYear
         yearText.textContent = currentYear
         return currentYear
