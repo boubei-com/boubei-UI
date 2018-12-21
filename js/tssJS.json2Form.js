@@ -204,10 +204,9 @@ var Field = function(info) {
 			loadList();
 
 			var tdNode = tssJS("#" + field.name)[0].parentNode;
-            var refreshBT = tssJS.createElement('img');
-            refreshBT.src = "images/icon_refresh.gif";
-            refreshBT.title = "刷新下拉列表";
-            tssJS(refreshBT).css("margin-left", "4px").css("cursor", "pointer").click( function() {      
+			var refreshBT = tssJS.createElement('span', 'icon-sync');
+            refreshBT.title = "刷新附件下拉列表";
+            tssJS(refreshBT).css("margin-left", "4px").css("font-size", '15px').css("cursor", "pointer").click( function() {     
                 loadList();
             } );  
             tdNode.appendChild(refreshBT);
