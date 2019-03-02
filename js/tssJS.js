@@ -887,8 +887,11 @@
             $.waitingLayerCount ++;
         },
 
-        hideWaitingLayer: function() {
+        hideWaitingLayer: function(all) {
             $.waitingLayerCount && $.waitingLayerCount --;
+            if(all) {
+                $.waitingLayerCount = 0;
+            }
 
             var waitingObj = $("#_waiting");
             if( waitingObj.length > 0 && $.waitingLayerCount <= 0 ) {

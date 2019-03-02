@@ -52,6 +52,7 @@
         <a href="#" class="tssbutton blue medium">test prompt</a> 
         <a href="#" class="tssbutton blue" id="a4">prompt passwd</a> 
         <input type="button" class="tssbutton black" value="test气泡" onclick="test()"/>
+        <a href="#" class="tssbutton blue" id="a5">check code</a> 
     </div>
 
 
@@ -84,6 +85,14 @@
                 $.alert("your input keyword: " + result);
             }, "123456", true);
         });
+
+    
+
+    $("#a5").click(function(){
+        $.checkCode("need_sms_check_code", "请输入手机短信验证码", function(result) {
+            $.alert("your input keyword: " + result);
+        });
+    });
  
  
     </script>  

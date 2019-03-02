@@ -835,7 +835,8 @@ WorkSpace\:Box WorkSpace\:PageStep .tssbutton {
   cursor: move;
 }
 #alert_box .ok,
-#alert_box .cancel {
+#alert_box .cancel,
+#alert_box button {
   color: #fff;
   border: solid 1px #049cdb;
   background: #049cdb;
@@ -846,19 +847,23 @@ WorkSpace\:Box WorkSpace\:PageStep .tssbutton {
   margin-left: 1em;
 }
 #alert_box .ok:hover,
-#alert_box .cancel:hover {
+#alert_box .cancel:hover,
+#alert_box button:hover {
   background-color: #03719f;
 }
 #alert_box .ok:active,
-#alert_box .cancel:active {
+#alert_box .cancel:active,
+#alert_box button:active {
   color: #e8e8e8;
 }
 #alert_box .ok:hover,
-#alert_box .cancel:hover {
+#alert_box .cancel:hover,
+#alert_box button:hover {
   text-decoration: none;
 }
 #alert_box .ok:active,
-#alert_box .cancel:active {
+#alert_box .cancel:active,
+#alert_box button:active {
   position: relative;
   top: 1px;
 }

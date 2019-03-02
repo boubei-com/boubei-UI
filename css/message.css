@@ -99,6 +99,20 @@
 .red:active {
   color: #e8e8e8;
 }
+.white {
+  color: #333;
+  border: solid 1px #fff;
+  background: #fff;
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  border: solid 1px #ccc;
+}
+.white:hover {
+  background-color: #e0e0e0;
+}
+.white:active {
+  color: #1c1c1c;
+}
 .tss-panel {
   position: absolute;
   vertical-align: top;
@@ -319,7 +333,8 @@
   cursor: move;
 }
 #alert_box .ok,
-#alert_box .cancel {
+#alert_box .cancel,
+#alert_box button {
   color: #fff;
   border: solid 1px #049cdb;
   background: #049cdb;
@@ -330,19 +345,23 @@
   margin-left: 1em;
 }
 #alert_box .ok:hover,
-#alert_box .cancel:hover {
+#alert_box .cancel:hover,
+#alert_box button:hover {
   background-color: #03719f;
 }
 #alert_box .ok:active,
-#alert_box .cancel:active {
+#alert_box .cancel:active,
+#alert_box button:active {
   color: #e8e8e8;
 }
 #alert_box .ok:hover,
-#alert_box .cancel:hover {
+#alert_box .cancel:hover,
+#alert_box button:hover {
   text-decoration: none;
 }
 #alert_box .ok:active,
-#alert_box .cancel:active {
+#alert_box .cancel:active,
+#alert_box button:active {
   position: relative;
   top: 1px;
 }

@@ -33,18 +33,6 @@ CONTEXTPATH = "tss";
             request.setFormContent(arg.formNode);
         }
 
-        if( (request.method||"").toUpperCase() == 'GET') { // 将params里参数拼到url
-            $.each(request.params, function(key, val) {
-                if(request.url.indexOf("?") < 0) {
-                    request.url += '?';
-                } else {
-                    request.url += '&';
-                }
-                request.url += key+ "=" + val;
-            });
-            request.url = encodeURI( request.url );
-        }
-
         request.ondata = arg.ondata || request.ondata;
         request.onresult = arg.onresult || request.onresult;
         request.onsuccess = arg.onsuccess || request.onsuccess;
@@ -292,10 +280,10 @@ CONTEXTPATH = "tss";
                     }
                 }
 
+                this.packageRequestParams();
                 this.xmlhttp.open(this.method, this.url, this.async);
                  
                 this.setTimeout(); // 增加超时判定
-                this.packageRequestParams();
                 this.customizeRequestHeader();
 
                 this.xmlhttp.send(this.requestBody);
@@ -337,6 +325,20 @@ CONTEXTPATH = "tss";
 
         /* 对发送数据进行封装，以XML格式发送 */
         packageRequestParams: function() {
+            if( (this.method||"").toUpperCase() == 'GET') { // 将params里参数拼到url
+                var url = this.url;
+                $.each(this.params, function(key, val) {
+                    if(url.indexOf("?") < 0) {
+                        url += '?';
+                    } else {
+                        url += '&';
+                    }
+                    url += key+ "=" + val;
+                });
+                this.url = encodeURI( url );
+                return;
+            }
+
             var contentXml = $.parseXML("<" + _XML_NODE_REQUEST_ROOT+"/>");
             var contentXmlRoot = contentXml.documentElement;
          
@@ -393,6 +395,16 @@ CONTEXTPATH = "tss";
         onload: function(response) {
             this.responseText = response.responseText;
 
+            var _this = this;
+            if( ['need_sms_check_code','need_email_check_code','need_img_check_code'].contains(this.responseText) ) {
+                var codeType = _this.responseText;
+                $.checkCode(codeType, function(randomKey) {
+                    _this.addParam("randomKey", randomKey);
+                    _this.send();
+                });
+                return;
+            }
+
             //远程(200) 或 本地(0)才允许
             var httpStatus = response.status; 
             if(httpStatus != _HTTP_RESPONSE_STATUS_LOCAL_OK && httpStatus != _HTTP_RESPONSE_STATUS_REMOTE_OK) {
@@ -409,7 +421,7 @@ CONTEXTPATH = "tss";
             }
 
             // JSON数据：因json的请求返回数据非XML格式，但出异常时异常信息是XML格式，所以如果没有异常，则直接执行ondata
-            if(this.type == "json" && this.responseText.indexOf("<Error>") < 0) {
+            if(this.type == "json" && this.responseText.indexOf("<Error>") < 0 && this.responseText.indexOf("<script>") < 0) {
                 this.ondata();
                 return;
             }
@@ -417,6 +429,13 @@ CONTEXTPATH = "tss";
             // XML数据：解析返回结果，判断是success、error or 普通XML数据
             var rp = new HTTP_Response_Parser(this.responseText);
             this.responseXML = rp.xmlValueDom;
+
+            // 当返回数据中含脚本内容则自动执行
+            var script = this.getNodeValue("script");
+            if( script ) {
+                $.createScript(script); // 创建script元素并添加到head中.
+                return;
+            }
 
             if(rp.result.dataType == _HTTP_RESPONSE_DATA_TYPE_EXCEPTION) {
                 new Message_Exception(rp.result, this);
@@ -427,12 +446,6 @@ CONTEXTPATH = "tss";
             else {
                 this.ondata();
                 this.onresult();
-
-                // 当返回数据中含脚本内容则自动执行
-                var script = this.getNodeValue("script");
-                if( script ) {
-                    $.createScript(script); // 创建script元素并添加到head中.
-                }
             }
         },
 
