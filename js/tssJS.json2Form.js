@@ -19,7 +19,7 @@ var Field = function(info) {
 
 		if(this.defaultValue) {
             var dv = (this.defaultValue+"").trim();
-            if( dv.indexOf("#") == 0 ) {
+            if( dv.indexOf("#_") == 0 ) {
                 var _dvs = (dv+"||").split("||");  // #_day1||today-1  或 #_day1
                 dv = $.Cookie.getValue(_dvs[0].substring(1)) || _dvs[1]; // 通用查询条件写在cookie里
             } 
@@ -184,6 +184,10 @@ var Field = function(info) {
 			field.jsonUrl = decodeURI(field.jsonUrl); // 从浏览器复制过来已经带了encode
 			function loadList() {
 				function setList(result) { 
+					if( result.length == 0 ) {
+						result.push({"text": "没有数据", "value": ""})
+					}
+					
 					var values = [], texts = [];
 					result.each(function(i, item){
 						values.push( $.vt(item).value );
@@ -224,7 +228,11 @@ var Field = function(info) {
  
 		$.getJSON(service, params, 
 			function(result) { 
-				if( result && result.length ) {
+				if( result ) {
+					if( result.length == 0 ) {
+						result.push({"text": "没有数据", "value": ""})
+					}
+
 					var values = [], texts = [];
 					result.each(function(i, item){
 						values.push( $.vt(item).value );

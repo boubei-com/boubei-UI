@@ -1935,7 +1935,7 @@
                 $(info).html("剩余时间: <span>1</span> 秒").css("padding", "5px 0 0 120px").css("color", "#666").css("fontSize", "14px");
 
                 var cancel = $.createElement("span");
-                $(cancel).html("<a href='#'>取 消</a>").css("padding", "5px 0 0 100px").css("fontSize", "14px")
+                $(cancel).html("<a href='#'>隐 藏</a>").css("padding", "5px 0 0 100px").css("fontSize", "14px")
                     .click(function() { pThis.stop(); });
 
                 graph.appendChild(info);
