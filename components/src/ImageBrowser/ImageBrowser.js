@@ -234,9 +234,9 @@ ImageBrowser.prototype = {
     return image
   },
 
-  createUnknownFileTypeDOM (index) {
+  createUnknownFileTypeDOM (url,index) {
     const div = create('div', 'image-browser__image-placeholder')
-    div.textContent = '该文件不是图片，点击下载进行查看'
+    div.innerHTML = '<a href="' + url + '" target="_blank">预览或下载</a>'
     div.dataset.index = index
     return div
   },
@@ -247,7 +247,7 @@ ImageBrowser.prototype = {
     images.forEach((e, index) => {
       let dom = extensions.includes(getFileExtension(e.text).toLocaleLowerCase()) ?
         this.createImgDOM({ src: e.url, index }) :
-        this.createUnknownFileTypeDOM(index)
+        this.createUnknownFileTypeDOM(e.url,index)
 
       const imageWrapper = create('div', 'image-browser__image-wrapper')
       imageWrapper.style.left = `${index * 1000}px`
