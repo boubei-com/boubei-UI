@@ -875,7 +875,11 @@
                 waitingDiv.id = "_waiting";
                 document.body.appendChild(waitingDiv);
 
-                $(waitingDiv).css("width", "100%").css("height", "100%")
+                var height = "100%";
+                if( document.body.scrollHeight > document.body.clientHeight ) {
+                    height = document.body.scrollHeight + "px";
+                }
+                $(waitingDiv).css("width", "100%").css("height", height)
                              .css("position", "absolute").css("left", "0px").css("top", "0px")
                              .css("cursor", "wait").css("zIndex", "998").css("background", "black");
                 $.setOpacity(waitingDiv, 33);
@@ -2156,12 +2160,18 @@
     };
 
     // content：内容，title：对话框标题  
-    $.tip = function(content, title) {
+    $.tip = function(content, title, callback) {
         var boxEl = popupBox(title || '消息提醒');
         $(".content", boxEl).addClass("tip");
-        $(".btbox", boxEl).hide();
+        $(".btbox .ok", boxEl).attr("value", "我知道了");
         $(".content .message", boxEl).html(content);
         $(boxEl).css("width", "250px").css("position", "fixed").css("right", "1px").css("bottom", "1px").css("top", "").css("left", "");
+
+        function ok() {
+            closeBox();
+            callback && callback();
+        }
+        $(".btbox .ok", boxEl).click(ok);
     };
 
     // content：内容，title：对话框标题，callback：回调函数    

@@ -230,7 +230,7 @@
 	str[str.length] = "</book>";
 
 	var dataXml = str.join("\r\n");
-	$.assertEquals(dataXml, dataXml.convertEntry().revertEntity());
+	$.assertEquals(dataXml, dataXml.convertEntry().revertEntry());
 
 	var cdateNodeXML = "<![CDATA[ 1 > 2 ]]>";
 	$.assertEquals(cdateNodeXML, cdateNodeXML.convertCDATA().revertCDATA());
@@ -271,7 +271,7 @@
 	</script>
 </head>
 
-<body>
+<body style="height:600px">
 
 
 	<div id='div1' class="c1" data-x="JK">

@@ -875,7 +875,11 @@
                 waitingDiv.id = "_waiting";
                 document.body.appendChild(waitingDiv);
 
-                $(waitingDiv).css("width", "100%").css("height", "100%")
+                var height = "100%";
+                if( document.body.scrollHeight > document.body.clientHeight ) {
+                    height = document.body.scrollHeight + "px";
+                }
+                $(waitingDiv).css("width", "100%").css("height", height)
                              .css("position", "absolute").css("left", "0px").css("top", "0px")
                              .css("cursor", "wait").css("zIndex", "998").css("background", "black");
                 $.setOpacity(waitingDiv, 33);

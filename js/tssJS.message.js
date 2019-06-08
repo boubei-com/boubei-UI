@@ -158,12 +158,18 @@
     };
 
     // content：内容，title：对话框标题  
-    $.tip = function(content, title) {
+    $.tip = function(content, title, callback) {
         var boxEl = popupBox(title || '消息提醒');
         $(".content", boxEl).addClass("tip");
-        $(".btbox", boxEl).hide();
+        $(".btbox .ok", boxEl).attr("value", "我知道了");
         $(".content .message", boxEl).html(content);
         $(boxEl).css("width", "250px").css("position", "fixed").css("right", "1px").css("bottom", "1px").css("top", "").css("left", "");
+
+        function ok() {
+            closeBox();
+            callback && callback();
+        }
+        $(".btbox .ok", boxEl).click(ok);
     };
 
     // content：内容，title：对话框标题，callback：回调函数    
