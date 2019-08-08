@@ -19,10 +19,10 @@
         if( data ) {
             grid = new $.Grid($1(id), data);
             GridCache[grid.id] = grid;  
-        }
 
-        var onFinish = $("#" + id).attr("onFinish");
-        onFinish && $.execCommand( onFinish + "()" );
+            var onFinish = $("#" + id).attr("onFinish");
+            onFinish && $.execCommand( onFinish + "()" );
+        }
         
         return grid;
     };
