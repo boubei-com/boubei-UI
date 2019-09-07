@@ -4,6 +4,7 @@
  * 事件: 
  * 1、onLoad:   Grid更新加载完成后触发 $("#grid").attr("onLoad", "f1"); 注意此时Grid对象还没有完全生成
  * 2、onFinish: Grid生成后触发 $("#grid").attr("onFinish", "f2"); 
+ * 3. onScrollToBottom
  * 
  * TODO:
  *  !. Grid控件表头增加求和功能

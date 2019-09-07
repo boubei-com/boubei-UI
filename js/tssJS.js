@@ -1150,7 +1150,7 @@
 
             /* 将字符串转化成xml节点对象 */
             toNode: function(xml) {
-                xml = xml.revertEntry();
+                xml = xml.revertEntry().replace(/\x02|\x01/g, '');
                 return $.parseXML(xml).documentElement;
             },
 
@@ -1168,6 +1168,7 @@
             },
 
             setText: function(node, textValue) {
+                textValue = String(textValue||"").replace(/\x02|\x01/g, '');
                 node.text = textValue;
                 if (node.textContent || node.textContent == "") {
                     node.textContent = textValue; // chrome
@@ -1187,7 +1188,8 @@
             },
 
             createCDATA: function(data) {
-                data = String(data).convertCDATA();
+                // 替换掉0x01/0x02等一些导致XML失败的特殊字符
+                data = String(data||"").replace(/\x02|\x01/g, '').convertCDATA();
                 if(window.DOMParser) {
                     return $.parseXML("<root><![CDATA[" + data + "]]></root>").documentElement.firstChild;
                 }
