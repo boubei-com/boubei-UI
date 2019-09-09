@@ -184,7 +184,7 @@ ImageBrowser.prototype = {
     const openNewWindowBtn = create('button', 'image-browser__btn image-browser__download-btn')
     openNewWindowBtn.textContent = '新窗口中查看'
     openNewWindowBtn.onclick = () => {
-      window.open(window.location.origin + this.images[this.current].url, "_self");
+      window.open(window.location.origin + this.images[this.current].url, "_blank");
     }
     $3.appendChild(openNewWindowBtn);
     const closeBtn = create('button', 'image-browser__btn image-browser__close-btn ion-ios-close-circle-outline')

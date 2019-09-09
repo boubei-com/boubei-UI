@@ -1168,7 +1168,7 @@
             },
 
             setText: function(node, textValue) {
-                textValue = String(textValue||"").replace(/\x02|\x01/g, '');
+                textValue = (typeof(textValue) == 'string') ? String(textValue).replace(/\x02|\x01/g, '') : textValue;
                 node.text = textValue;
                 if (node.textContent || node.textContent == "") {
                     node.textContent = textValue; // chrome
@@ -1189,7 +1189,8 @@
 
             createCDATA: function(data) {
                 // 替换掉0x01/0x02等一些导致XML失败的特殊字符
-                data = String(data||"").replace(/\x02|\x01/g, '').convertCDATA();
+                data = (typeof(data) == 'string') ? String(data).replace(/\x02|\x01/g, '') : data;
+                data = String(data).convertCDATA();
                 if(window.DOMParser) {
                     return $.parseXML("<root><![CDATA[" + data + "]]></root>").documentElement.firstChild;
                 }
