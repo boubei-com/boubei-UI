@@ -938,6 +938,10 @@
         Query: {
             items: {},
 
+            getItems: function() {
+                return items;
+            },
+
             get: function(name, decode) {
                 var str = items[name];
                 return decode ? unescape(str) : str; // decode=true，对参数值（可能为中文等）进行编码
