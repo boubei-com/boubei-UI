@@ -195,6 +195,14 @@
                 return (value == null || (typeof(value) == 'string' && value.trim() == ""));
             },
 
+            /**
+             * 替换各种分隔符（tab、空格、回车、英文逗号、中文逗号）为统一分隔符
+             */
+            fixSplit: function(value, split) {
+                split = split || ',';
+                return (value||'').replace(/\t+|\r|\n|,|，|\s+|、/ig, split);
+            },
+
             // 抛出一个异常
             error: function(msg) {
                 throw msg;
@@ -4911,8 +4919,10 @@
             $("input[name='grid_cb']", this.tbody).each(function(){
                 if(this.checked){
                     var tr = this.parentNode.parentNode;
-                    var fValue = $("td[name='" + field + "']", tr).attr("value");
-                    result.push(fValue);
+                    var $td = $("td[name='" + field + "']", tr);
+                    if( $td.length ) {
+                        result.push( $td.attr("value") );
+                    }
                 }
             });
             return result;

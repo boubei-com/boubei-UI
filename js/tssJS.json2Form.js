@@ -29,7 +29,7 @@ var Field = function(info) {
             this.defaultValue = (dv == "undefined" ? "" : dv);
         }
 
-		this.width  = (info.width || "240px").trim();
+		this.width  = (info.width || "220px").trim();
 		if( !this.jsonUrl ) {
 			this.height = info.height;	
 		}

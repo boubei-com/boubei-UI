@@ -525,8 +525,10 @@
             $("input[name='grid_cb']", this.tbody).each(function(){
                 if(this.checked){
                     var tr = this.parentNode.parentNode;
-                    var fValue = $("td[name='" + field + "']", tr).attr("value");
-                    result.push(fValue);
+                    var $td = $("td[name='" + field + "']", tr);
+                    if( $td.length ) {
+                        result.push( $td.attr("value") );
+                    }
                 }
             });
             return result;

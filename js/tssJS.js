@@ -195,6 +195,14 @@
                 return (value == null || (typeof(value) == 'string' && value.trim() == ""));
             },
 
+            /**
+             * 替换各种分隔符（tab、空格、回车、英文逗号、中文逗号）为统一分隔符
+             */
+            fixSplit: function(value, split) {
+                split = split || ',';
+                return (value||'').replace(/\t+|\r|\n|,|，|\s+|、/ig, split);
+            },
+
             // 抛出一个异常
             error: function(msg) {
                 throw msg;
