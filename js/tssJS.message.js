@@ -155,6 +155,15 @@
     closeBox = function(all) {
         $("#alert_box").hide().remove();
         $.hideWaitingLayer(all);
+    },
+
+    bindEnterKey = function(el, fn) {
+        $(el).addEvent("keydown", function(ev) {
+            if(13 == ev.keyCode) { // enter
+                $.Event.cancel(ev);
+                setTimeout(fn, 10);
+            }
+        });
     };
 
     // content：内容，title：对话框标题  
@@ -224,6 +233,7 @@
         }
         $(".btbox .ok", boxEl).click(ok);
         $(".btbox .cancel", boxEl).click(closeBox);
+        bindEnterKey(boxEl, ok);
     };
 
     $.checkCode = function(codeType, callback){

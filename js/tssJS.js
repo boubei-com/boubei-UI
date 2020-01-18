@@ -242,6 +242,12 @@
 
                 if (!tmp || !tmp.nodeName || tmp.nodeName === "parsererror") {
                     console.log("Invalid XML: " + data);
+                } else {
+                    var errorNode = tmp.querySelector("parsererror");
+                    if( errorNode ) {
+                        console.log("Invalid XML: " + $.XML.getText(errorNode) );
+                        console.log(data);
+                    }
                 }
 
                 return xml;
