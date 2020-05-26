@@ -42,16 +42,18 @@ var Field = function(info) {
 		}
 
 		this.mode = this.type.toLowerCase();
-		if(this.jsonUrl) {
-			this.mode = "combotree";
-		} else if(this.options && this.options.codes && this.options.codes.length) {
-			// this.mode = this.multiple ? "combotree" : "combo";
-			this.mode = "combotree";
+		if(this.mode !== "hidden") {
+			if(this.jsonUrl) {
+				this.mode = "combotree";
+			} else if(this.options && this.options.codes && this.options.codes.length) {
+				this.mode = "combotree";
+			}
+			if(this.type == "file") {
+				this.mode = "combotree";
+				this.multiple = true;
+			}
 		}
-		if(this.type == "file") {
-			this.mode = "combotree";
-			this.multiple = true;
-		}
+		
 		switch(this.mode) {
 			case "number":
 				this.checkReg = this.checkReg || "^(-?\\d+)(\\.\\d+)?$"; // 浮点数
@@ -179,7 +181,7 @@ var Field = function(info) {
 		var tssForm = $.F(formId, $.XML.toNode(str.join("")));
 
 		fields.each(function(i, field){
-			if( !field.jsonUrl ) return;
+			if( !field.jsonUrl || field.type === 'hidden' ) return;
 
 			field.jsonUrl = decodeURI(field.jsonUrl); // 从浏览器复制过来已经带了encode
 			function loadList() {
