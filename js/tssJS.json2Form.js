@@ -57,11 +57,11 @@ var Field = function(info) {
 		switch(this.mode) {
 			case "number":
 				this.checkReg = this.checkReg || "^(-?\\d+)(\\.\\d+)?$"; // 浮点数
-				this.errorMsg = this.errorMsg || "请输入数字";
+				this._errorMsg = this.errorMsg || "请输入数字";
 				break;
 			case "int":
 				this.checkReg = this.checkReg || "^(-?\\d+)$"; // 整数
-				this.errorMsg = this.errorMsg || "请输入整数";
+				this._errorMsg = this.errorMsg || "请输入整数";
 				break;
 			case "string":
 			case "combo":
@@ -82,8 +82,11 @@ var Field = function(info) {
 			if(this.checkReg) {
 				column += " checkReg='" +this.checkReg+ "' ";
 			}
+			if(this._errorMsg) {
+				column += " errorMsg='" +this._errorMsg+ "' ";
+			}
 			if(this.errorMsg) {
-				column += " errorMsg='" +this.errorMsg+ "' ";
+				column += " placeholder='" +this.errorMsg+ "' ";
 			}
 			if(this.multiple) {
 				column += " multiple='multiple' ";
