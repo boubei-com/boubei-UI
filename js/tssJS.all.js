@@ -200,7 +200,7 @@
              */
             fixSplit: function(value, split) {
                 split = split || ',';
-                return (value||'').replace(/\t+|\r|\n|,|，|\s+|、/ig, split);
+                return (value||'').trim().replace(/(\t+|\r|\n|,|，|\s+|、)+/ig, split);
             },
 
             // 抛出一个异常
