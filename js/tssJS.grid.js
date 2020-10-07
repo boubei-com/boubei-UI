@@ -276,7 +276,7 @@
     Grid.prototype = {
         load: function(data, append) {
             if("object" != typeof(data) || data.nodeType != $.XML._NODE_TYPE_ELEMENT) {
-                return $.alert("传入的Grid数据有问题。")  
+                return $.tip("Grid数据加载异常，请刷新重试");   
             } 
 
             // 初始化变量
@@ -791,6 +791,7 @@
 
                     var pageInfoNode = this.getNodeValue("PageInfo");
                     $.initGridToolBar(pageBar, pageInfoNode, gotoPage);
+                    $.hideWaitingLayer();
                 }               
                 request.send();
             }
